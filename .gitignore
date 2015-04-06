@@ -1,0 +1,6 @@
+.settings
+resources/tfl
+solver/*.*
+bin/*
+.classpath
+.project

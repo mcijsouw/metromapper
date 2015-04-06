@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" xmlns:y="http://www.yworks.com/xml/graphml">
+<key id="x" for="node" attr.name="x_coordinate" attr.type="double"/>
+<key id="y" for="node" attr.name="y_coordinate" attr.type="double"/>
+<key id="label" for="node" attr.name="station_name" attr.type="string"/>
+<key id="regular" for="node" attr.name="regular_vertex" attr.type="boolean"/>
+<key id="dummy" for="node" attr.name="dummy_vertex" attr.type="boolean"/>
+<key id="labelVertex" for="node" attr.name="label_vertex" attr.type="boolean"/>
+<key id="tick" for="node" attr.name="tick_vertex" attr.type="boolean"/>
+<key id="time" for="edge" attr.name="edge_time" attr.type="integer"/>
+<key id="dijkstra_count" for="edge" attr.name="edge_time" attr.type="integer"/>
+<key id="l0" for="edge" attr.name="l0" attr.type="boolean" color.r="0" color.g="176" color.b="144">
+	<default>FALSE</default>
+</key>
+<key id="l1" for="edge" attr.name="l1" attr.type="boolean" color.r="255" color.g="182" color.b="193">
+	<default>FALSE</default>
+</key>
+<key id="l2" for="edge" attr.name="l2" attr.type="boolean" color.r="255" color.g="0" color.b="144">
+	<default>FALSE</default>
+</key>
+<graph id="G" edgedefault="undirected">
+	<node id="V1">
+		<data key="x">0</data>
+		<data key="y">0</data>
+		<data key="label">V1</data>
+	</node>
+	<node id="V2">
+		<data key="x">3</data>
+		<data key="y">0</data>
+		<data key="label">V2</data>
+	</node>
+	<node id="V3">
+		<data key="x">6</data>
+		<data key="y">0</data>
+		<data key="label">V3</data>
+	</node>
+	<node id="V4">
+		<data key="x">9</data>
+		<data key="y">0</data>
+		<data key="label">V4</data>
+	</node>
+	<node id="V5">
+		<data key="x">12</data>
+		<data key="y">0</data>
+		<data key="label">V5</data>
+	</node>
+	<edge id="e1" source="V1" target="V2">
+		<data key="l0">true</data>
+		<data key="time" line="l0">100</data>
+	</edge>
+	<edge id="e2" source="V3" target="V2">
+		<data key="l0">true</data>
+		<data key="time" line="l0">100</data>
+	</edge>
+	<edge id="e3" source="V3" target="V4">
+		<data key="l0">true</data>
+		<data key="time" line="l0">100</data>
+	</edge>
+	<edge id="e4" source="V4" target="V5">
+		<data key="l0">true</data>
+		<data key="time" line="l0">100</data>
+	</edge>
+</graph>
+</graphml>

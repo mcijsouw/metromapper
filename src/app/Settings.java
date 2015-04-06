@@ -1,0 +1,48 @@
+package app;
+
+import model.MetroVertex;
+
+public class Settings {
+
+	public static final int CONTRACT_NONE = 0;
+	public static final int CONTRACT_ALL = 1;
+	public static final int CONTRACT_NON_AJACENT_TO_INTERSECTION = 2;
+	public static final int CONTRACT_NON_AJACENT_TO_INTERSECTION_OR_PENDANT_EDGE = 3;
+
+	public static final int PLANARITY_NONE = 0;
+	public static final int PLANARITY_ALL_EDGE_PAIRS = 1;
+	public static final int PLANARITY_FACE_HEURISTIC = 2;
+	public static final int PLANARITY_PENDANT_EDGES_ONLY = 3;
+	
+	public static final int LINE_THICKNESS_PASSENGER_COUNT = 0;
+	public static final int LINE_THICKNESS_DIJKSTRA_PATH_COUNT = 1;
+
+	/* Default settings */
+	public static final String[] inputMaps = new String[] { "Karlsruhe", "London", "London-tfl", "Montreal", "Small", "Small2", "Sydney", "Vienna", "Washington" };
+	public static final String defaultInputMap = "Small";
+	public static String inputMap = defaultInputMap;
+	public static int degreeTwoVerticesContractionMode = CONTRACT_NONE;
+	public static int planarityMode = PLANARITY_NONE;
+	public static boolean convexHullDummyEdgesInFaceComputation = false;
+	public static int totalEdgeLengthImportance = 5;
+	public static int geographicDeviationImportance = 5;
+	public static int bendsOnLineImportance = 5;
+	public static boolean dijkstraCountBasedBendFactors = true;
+	public static int minimumEdgeLength = 3;
+	public static int cplexTimeLimit = 10;
+	public static boolean drawOriginalVertices = true;
+	public static String saveSVGDefaultFilePath = "E:/Master Project";
+	public static String loadGraphMLDefaultFilePath = "E:/Master Project/Workspace/MetroMapperNew/resources";
+	public static int passengerCountTime = 30; // 0..95 (24 * 4 time slots)
+	public static int lineThicknessAlgorithm = LINE_THICKNESS_DIJKSTRA_PATH_COUNT;
+	public static MetroVertex sourceStation = null;
+	public static MetroVertex destinationStation = null;
+	public static boolean renderTransferGraph = false;
+	public static int defaultTransferTimeInSeconds = 5 * 60;
+	public static boolean drawVertexLabels = false;
+	public static boolean drawEdgeLabels = true;
+	public static boolean drawPolygonWireframes = false;
+	public static boolean drawArrowHints = true;
+	public static int arrowSizePercentage = 40;
+
+}
