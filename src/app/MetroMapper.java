@@ -49,6 +49,7 @@ public class MetroMapper {
 				this.guiBuilder.setGraph(this.g);
 			}
 			svgCanvas.renderGraph(this.g);
+			this.computeDijkstraWeights();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

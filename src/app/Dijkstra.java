@@ -15,9 +15,16 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.decorators.NumberEdgeValue;
 
 public class Dijkstra {
+	
+	public static int minAllPairsCount = 0;
+	public static int maxAllPairsCount = 0;
+	public static int minSingleSourceCount = 0;
+	public static int maxSingleSourceCount = 0;
 
 	//                    source,              destination, edge-list
-	public static HashMap<MetroVertex, HashMap<MetroVertex, List>> shortestPaths; 
+	public static HashMap<MetroVertex, HashMap<MetroVertex, List>> shortestPaths;
+	
+	
 	
 	/**
 	 * Compute paths of underlying transfer graph, and increase the Dijkstra counts in the normal graph.
@@ -27,6 +34,10 @@ public class Dijkstra {
 		Graph tg = (Graph) g.getUserDatum("transferGraph");
 		
 		shortestPaths = new HashMap<MetroVertex, HashMap<MetroVertex, List>>();
+		minAllPairsCount = Integer.MAX_VALUE;
+		maxAllPairsCount = 0;
+		minSingleSourceCount = Integer.MAX_VALUE;
+		maxSingleSourceCount = 0;
 		
 		HashMap<TransferGraphEdge, Integer> directions = new HashMap<TransferGraphEdge, Integer>();
 		ArrayList<TransferGraphEdge> oneWayLines = new ArrayList<TransferGraphEdge>();
@@ -132,8 +143,13 @@ public class Dijkstra {
 
 						// Increase counts
 						intermediateEdge.increaseAllPairsDijkstraCount();
+						minAllPairsCount = Math.min(minAllPairsCount, intermediateEdge.getAllPairsDijkstraCount());
+						maxAllPairsCount = Math.max(maxAllPairsCount, intermediateEdge.getAllPairsDijkstraCount());
+						
 						if(v1isSourceStation) {
 							intermediateEdge.increaseDijkstraCount();
+							minSingleSourceCount = Math.min(minSingleSourceCount, intermediateEdge.getDijkstraCount());
+							maxSingleSourceCount = Math.max(maxSingleSourceCount, intermediateEdge.getDijkstraCount());
 							
 							int dir;
 							if(intermediateEdge.getFirst().equals(prevSecond)) {

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import app.SvgCanvas;
 import mip.comparator.CircularOrderComparator;
 import edu.uci.ics.jung.graph.Edge;
 import edu.uci.ics.jung.graph.impl.UndirectedSparseVertex;
@@ -382,7 +383,7 @@ public class MetroVertex extends UndirectedSparseVertex {
 		this.color = color;
 	}
 	
-	public double getPerpendicularAngle(MetroPath path) {
+	public double getPerpendicularAngle() {
 		double angleSum = 0;
 		int angleSumAmount = 0;
 		for(Object o : this.getIncidentEdges()) {
@@ -390,7 +391,7 @@ public class MetroVertex extends UndirectedSparseVertex {
 			
 			int i = 0;
 			for(Boolean b : (Boolean[]) e.getUserDatum("lineArray")) {
-				if(b == true && path.getName().equals("l" + i)) {
+				//if(b == true && path.getName().equals("l" + i)) {
 					MetroVertex first = e.getFirst();
 					MetroVertex second = e.getSecond();
 					
@@ -403,7 +404,7 @@ public class MetroVertex extends UndirectedSparseVertex {
 					double angle = Math.atan2(first.getY() - second.getY(), first.getX() - second.getX());
 					angleSum += angle;
 					angleSumAmount++;
-				}
+				//}
 				i++;
 			}
 			
@@ -413,6 +414,25 @@ public class MetroVertex extends UndirectedSparseVertex {
 			degreeOneAdjustment = Math.PI * 0.5;
 		}
 		return (angleSum / (double)angleSumAmount) + degreeOneAdjustment;
+	}
+
+	public double getCombinedThickness(SvgCanvas canvas, MetroPath path) {
+		
+		double combinedThickness = 0;
+		int combinedThicknessAmount = 0;
+		for(Object incObj : this.getIncidentEdges()) {
+			MetroEdge incEdge = (MetroEdge) incObj;
+			int i = 0;
+			for(Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
+				if(b == true && path.getName().equals("l" + i)) {
+					combinedThickness += canvas.getLineThickness(path, incEdge);
+					combinedThicknessAmount++;
+				}
+				i++;
+			}
+		}
+		return (combinedThickness / (double) combinedThicknessAmount);
+		
 	}
 
 }

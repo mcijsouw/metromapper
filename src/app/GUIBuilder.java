@@ -2,6 +2,7 @@ package app;
 
 import io.CSVCountReader;
 import io.GraphMLReader;
+import io.Questionnaire;
 import io.SvgExporter;
 
 import java.awt.BorderLayout;
@@ -153,6 +154,25 @@ public class GUIBuilder {
 				}
 			}
 		});
+		
+
+		// Generate Question button
+		final JButton questionBtn = new JButton("Generate question");
+		questionBtn.setPreferredSize(new Dimension(270, 30));
+		questionBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Settings.sourceStation != null && Settings.destinationStation != null) {
+					Settings.isGeneratingQuestion = true;
+					app.repaintMap();
+					String path = Questionnaire.generateQuestion(app);
+					JOptionPane.showMessageDialog(frame, "Wrote to " + path + "!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+					Settings.isGeneratingQuestion = false;
+				} else {
+					JOptionPane.showMessageDialog(frame, "Specify source and destination stations first!", "Warning!", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		sidebarGeneral.add(questionBtn);
 
 		// "Map:" label
 		JLabel mapsLabel = new JLabel("Map:");
@@ -656,6 +676,22 @@ public class GUIBuilder {
 			}
 		});
 		sidebarRendering.add(BorderLayout.CENTER, timeSlider);
+		
+
+		JLabel pairsLabel = new JLabel("Shortest paths algorithm:");
+		pairsLabel.setFont(new Font("Dialog", Font.BOLD, 11));
+		sidebarRendering.add(pairsLabel);
+
+		JComboBox<String> pairsList = new JComboBox<String>(new String[] { "Single source", "All pairs" });
+		pairsList.setSelectedIndex(Settings.shortestPathsAlgorithm);
+		pairsList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Settings.shortestPathsAlgorithm = ((JComboBox) e.getSource()).getSelectedIndex();
+				app.repaintMap();
+			}
+		});
+		pairsList.setPreferredSize(new Dimension(270, 22));
+		sidebarRendering.add(pairsList);
 
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("General", null, sidebarGeneral, null);
@@ -665,7 +701,7 @@ public class GUIBuilder {
 		tabbedPane.addTab("Rendering", null, sidebarRendering, null);
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
 		
-		tabbedPane.setSelectedIndex(1); // Default tab
+		tabbedPane.setSelectedIndex(2); // Default tab
 
 		center.add(BorderLayout.CENTER, this.svgCanvas);
 		main.add(BorderLayout.CENTER, center);
