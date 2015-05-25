@@ -21,7 +21,7 @@ public class Settings {
 	public static final int SHORTEST_PATHS_ALL_PAIRS = 1;
 
 	/* Default settings */
-	public static final String[] inputMaps = new String[] { "Karlsruhe", "London", "London-tfl", "Montreal", "Small", "Small2", "Sydney", "Vienna", "Washington" };
+	public static final String[] inputMaps = new String[] { "Karlsruhe", "London", "London-tfl", "Montreal", "Sydney", "Vienna", "Washington" };
 	public static final String defaultInputMap = "Sydney";
 	public static String inputMap = defaultInputMap;
 	public static int degreeTwoVerticesContractionMode = CONTRACT_NONE;
@@ -52,5 +52,6 @@ public class Settings {
 	public static boolean isGeneratingQuestion = false;
 	public static boolean fixedLineThicknesses = true;
 	public static boolean flipMap = false;
+	public static String questionnaireBasePath = "D:/Xampp/htdocs/metromapper.dev/public_html/maps/";
 
 }

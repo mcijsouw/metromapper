@@ -34,7 +34,7 @@ public class Questionnaire {
 	{
 		SvgCanvas canvas = app.getSvgCanvas();
 		String rand = Questionnaire.generateString("abcdefghijklmnopqrstuvwxyz0123456789", 8);
-		String basepath = "D:/Xampp/htdocs/metromapper.dev/public_html/maps/";
+		String basepath = Settings.questionnaireBasePath;
 		
 		// Save map.png		
 		BufferedImage img = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
