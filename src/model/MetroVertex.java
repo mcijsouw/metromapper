@@ -6,10 +6,15 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
+
+import org.apache.xalan.extensions.MethodResolver;
 
 import app.SvgCanvas;
+import mip.GraphTools;
 import mip.comparator.CircularOrderComparator;
 import edu.uci.ics.jung.graph.Edge;
+import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.impl.UndirectedSparseVertex;
 
 public class MetroVertex extends UndirectedSparseVertex {
@@ -422,17 +427,48 @@ public class MetroVertex extends UndirectedSparseVertex {
 		int combinedThicknessAmount = 0;
 		for(Object incObj : this.getIncidentEdges()) {
 			MetroEdge incEdge = (MetroEdge) incObj;
-			int i = 0;
+			int i = -1;
 			for(Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
+				i++;
 				if(b == true && path.getName().equals("l" + i)) {
 					combinedThickness += canvas.getLineThickness(path, incEdge);
 					combinedThicknessAmount++;
+					break;
+				}
+			}
+		}
+		
+		if(combinedThicknessAmount > 0) {
+			return (combinedThickness / (double) combinedThicknessAmount);
+		}
+		return 0;
+	}
+
+	public int getMinLength(SvgCanvas canvas, Graph g, Set paths) {
+		double max = 0.0;
+		for(Object incObj : this.getIncidentEdges()) {
+			MetroEdge incEdge = (MetroEdge) incObj;
+			int i = 0;
+			double total = 0.0;
+			for(Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
+				if(b == true) {
+					MetroPath path = null;
+					for(Object o : paths) {
+						MetroPath p = (MetroPath) o;
+						if(p.getName().equals("l" + i)) {
+							incEdge.getDijkstraCount(p.getName());
+							path = p;
+							break;
+						}
+					}
+					System.out.println("canvas.getLineThickness(" + path + ", " + incEdge + ")");
+					total += canvas.getLineThickness(path, incEdge);
 				}
 				i++;
 			}
+			max = Math.max(max, total);
 		}
-		return (combinedThickness / (double) combinedThicknessAmount);
-		
+		return (int) max;
 	}
 
 }

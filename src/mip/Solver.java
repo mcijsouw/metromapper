@@ -8,6 +8,7 @@ import ilog.cplex.IloCplex.IntParam;
 import io.GraphMLReader;
 import io.GraphMLWriter;
 
+import java.awt.geom.Path2D;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -29,6 +30,7 @@ import model.MetroEdge;
 import model.MetroPath;
 import model.MetroVertex;
 import model.TransferGraph;
+import model.TransferGraphEdge;
 import app.Dijkstra;
 import app.MetroMapper;
 import app.Settings;
@@ -268,6 +270,10 @@ public class Solver extends SwingWorker<Void, Void> {
 
 	private ILP generateLabelledMetroILP(Graph g, String outFile, int planarity, int lengthFac, int deviationFac, int bendFac, int minLength) throws IOException, UnknownVariableException {
 
+		int orgMinLength = minLength;
+		
+		Set paths = GraphTools.getMetroLines(g);
+		
 		System.out.println("generating labelled ILP");
 
 		// need the StringLabeller associated with this graph
@@ -340,11 +346,26 @@ public class Solver extends SwingWorker<Void, Void> {
 					e.setLength(len);
 			}
 
+
 			MetroVertex first = (MetroVertex) e.getEndpoints().getFirst();
 			MetroVertex second = (MetroVertex) e.getEndpoints().getSecond();
 			String id_first = vertexIDs.getLabel(first);
 			String id_second = vertexIDs.getLabel(second);
-
+			
+			// @Michel debug
+			if(Settings.modifiedSchematization == true) {
+				/*if(first.isIntersection()) {
+					minLength = first.getMinLength(this.app.getSvgCanvas(), g, paths);
+				} else if(second.isIntersection()) {
+					minLength = second.getMinLength(this.app.getSvgCanvas(), g, paths);
+				} else {
+					minLength = orgMinLength;
+				}
+				if(true) {
+					//throw new UnknownVariableException("die..");
+				}*/
+			}
+			
 			/* regular and main edges */
 			if (e.isRegular() || e.isLabelMainDummy()) {
 				int sector = ((Integer) e.getUserDatum("sector1to2")).intValue();
@@ -2410,7 +2431,7 @@ public class Solver extends SwingWorker<Void, Void> {
 
 						// Find shared incident edge
 						// System.out.println("find shared edge between " + realFirst + " and " + realSecond);
-						if(Settings.dijkstraCountBasedBendFactors == true) {
+						if(Settings.modifiedSchematization == true) {
 							int count = (int) currentEdge.getAllPairsDijkstraCount(currentLine.getName());
 							int multiplier = (int) (((double) (count - allPairsDijkstraAvgCount)) / ((double) (allPairsDijkstraMaxCount - allPairsDijkstraAvgCount)) * 10.0);
 							currentBendFac = Math.max(0, multiplier + 5); // varies from 1 - (10 + 5)
