@@ -4,3 +4,4 @@ solver/*.*
 bin/*
 .classpath
 .project
+/bin
