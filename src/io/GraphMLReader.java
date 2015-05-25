@@ -1,6 +1,8 @@
 package io;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,6 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import model.MetroEdge;
 import model.MetroVertex;
 import model.OrderedEdgeListManager;
+import model.Point;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -23,6 +26,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import app.Settings;
 import edu.uci.ics.jung.exceptions.FatalException;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.Vertex;
@@ -101,6 +105,16 @@ public class GraphMLReader {
 		document = builder.parse(new File(filename));
 	}
 
+	private Point2D rotate(MetroVertex mv, double angle) {
+		Point2D result = new Point2D.Double();
+		Point2D point = new Point2D.Double(mv.getX(), mv.getY());
+	    AffineTransform rotation = new AffineTransform();
+	    double angleInRadians = (angle * Math.PI / 180);
+	    rotation.rotate(angleInRadians, 0, 0);
+	    rotation.transform(point, result);
+		return result;
+	}
+	
 	/**
 	 * 
 	 */
@@ -194,6 +208,11 @@ public class GraphMLReader {
 				}
 				if (!(gotX && gotY))
 					throw new FatalException("Vertex has no position data");
+				if(Settings.flipMap == true) {
+					Point2D p = this.rotate(mv, 135.0);
+					mv.setX(p.getX());
+					mv.setY(p.getY() * -1);
+				}
 			}
 
 			currentVertex = currentVertex.getNextSibling();

@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -66,12 +67,14 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	private Graph g;
 	private CSVCountReader countReader;
 	private MetroMapper app;
-	
+
 	private boolean shiftButtonIsDown = false;
+
+	HashMap<MetroEdge, HashMap<Integer, MetroPath>> slotLists;
 
 	public SvgCanvas(MetroMapper app) {
 		this.app = app;
-		
+
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -108,7 +111,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		yCenter = orgYCenter;
 		xCenter = orgXCenter;
 
-		//System.out.println("Centering view on (" + xCenter + ", " + yCenter + ")");
+		// System.out.println("Centering view on (" + xCenter + ", " + yCenter + ")");
 
 		scaleMultiplier = (double) 500 / (orgYRangeMax - orgYRangeMin);
 
@@ -122,14 +125,12 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		computedZoomLevel = zoomMultipliers[zoomLevel];
 
 	}
-	
-	public ViewPosition getViewPositionObject()
-	{
+
+	public ViewPosition getViewPositionObject() {
 		return new ViewPosition(this.zoomLevel, this.dragOffsetX, this.dragOffsetY);
 	}
-	
-	public void setViewPosition(ViewPosition vp)
-	{
+
+	public void setViewPosition(ViewPosition vp) {
 		this.zoomLevel = vp.zoomLevel;
 		this.dragOffsetX = vp.dragOffsetX;
 		this.dragOffsetY = vp.dragOffsetY;
@@ -202,7 +203,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		super.paintComponent(g2d);
 		if (this.g instanceof Graph) {
 			try {
-				if(Settings.renderTransferGraph) {
+				if (Settings.renderTransferGraph) {
 					drawGraphToG2D(g2d, (Graph) this.g.getUserDatum("transferGraph"));
 				} else {
 					drawGraphToG2D(g2d, this.g);
@@ -226,55 +227,62 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 	private double getDijkstraCountThickness(MetroEdge edge, MetroPath path) {
 		// @todo remove debug r
-		//double r = edge.getDijkstraCount() / 500.0 - 0.5; // dijkstra count curve
-		//double r = Math.atan(Math.pow(edge.getDijkstraCount(path.getName()) / 5.0, 2)) * 5; // dijkstra count curve
+		// double r = edge.getDijkstraCount() / 500.0 - 0.5; // dijkstra count curve
+		// double r = Math.atan(Math.pow(edge.getDijkstraCount(path.getName()) / 5.0, 2)) * 5; // dijkstra count curve
+
 		double count;
 		int diff;
-		if(Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+		int c1;
+		if (Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
 			diff = Dijkstra.maxSingleSourceCount - Dijkstra.minSingleSourceCount;
 			count = edge.getDijkstraCount(path.getName());
+			c1 = 3;
 		} else {
 			diff = Dijkstra.maxAllPairsCount - Dijkstra.minAllPairsCount;
 			count = edge.getAllPairsDijkstraCount(path.getName());
+			c1 = 1;
 		}
-		//System.out.println(Math.atan(count / diff));
-		double r = Math.atan(Math.pow(count, 2) / Math.pow(diff, 2)) * 10 ; // dijkstra count curve
-		
+
+		double baseThickness = 1.0;
+
+		if (Settings.fixedLineThicknesses == true) {
+			return 2.5;
+		}
+
+		// System.out.println("count: " + count);
+		// System.out.println(Math.atan(count / diff));
+		double r = baseThickness + Math.atan(Math.pow(count, 2) * c1 / Math.pow(diff, 2)) * 6; // dijkstra count curve
+
 		return r;
 	}
-	
-	HashMap<MetroEdge, HashMap<Integer, MetroPath>> originalDirection;
-	HashMap<MetroEdge, HashMap<Integer, MetroPath>> inverseDirection;
-	
+
 	private Point computePoint(MetroPath path, MetroEdge edge, MetroVertex mv, Integer slot, boolean debug) {
-		
-		
-		HashMap<Integer, MetroPath> slotlist = getSlotListForEdge(edge, edge.getSecond());
+
+		HashMap<Integer, MetroPath> slotlist = getSlotListForEdge(edge);
 		double angle = mv.getPerpendicularAngle();
-			
-		if(debug) {
+
+		if (debug) {
 			System.out.println("DEBUG: slotlist for edge " + edge + " and vertex " + mv + ": " + slotlist);
-			System.out.println(originalDirection);
-			System.out.println(inverseDirection);
+			System.out.println(slotLists);
 		}
-		
+
 		double offset = 0.0;
 		double totalEdgeOffset = 0.0;
 		boolean pathFound = false;
-		if(slotlist != null) {
-			for(Entry<Integer, MetroPath> entry : slotlist.entrySet()) {
+		if (slotlist != null) {
+			for (Entry<Integer, MetroPath> entry : slotlist.entrySet()) {
 				int s = entry.getKey();
 				MetroPath p = entry.getValue();
 				double thickness = mv.getCombinedThickness(this, p);
-				
-				System.out.println("thickness of line " + edge + " on vertex " + mv.getName() + " in path " + p + " (slot " + s + "): " + thickness);
-				
-				if(pathFound == false) {
+
+				// System.out.println("thickness of line " + edge + " on vertex " + mv.getName() + " in path " + p + " (slot " + s + "): " + thickness);
+
+				if (pathFound == false) {
 					offset += thickness;
 				}
 				totalEdgeOffset += thickness;
 
-				if(path.equals(p)) {
+				if (path.equals(p)) {
 					pathFound = true;
 					// subtract half of its own thickness
 					offset -= thickness * 0.5;
@@ -283,340 +291,330 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 			// in the end, subtract half of the total (combined) offset
 			offset -= totalEdgeOffset * 0.5;
 		}
-		
+
 		double x = mv.getX() + Math.cos(angle) * offset / scaleMultiplier;
 		double y = mv.getY() + Math.sin(angle) * offset / scaleMultiplier;
-		
+
 		return new Point(x, y);
 	}
-	
-	private void findFreeSlot(MetroPath path, MetroEdge edge, MetroVertex first) {
-		HashMap<MetroEdge, HashMap<Integer, MetroPath>> dir;
-		if (edge.getEndpoints().getFirst().equals(first)) { // original direction
-			dir = originalDirection;
-		} else { // inverse direction
-			dir = inverseDirection;
-		} 
-		HashMap<Integer, MetroPath> m = dir.get(edge);
-		
-		if(m == null) {
+
+	private void findFreeSlot(MetroPath path, MetroEdge edge) {
+
+		HashMap<Integer, MetroPath> m = slotLists.get(edge);
+
+		if (m == null) {
 			HashMap<Integer, MetroPath> sub = new HashMap<Integer, MetroPath>();
 			sub.put(new Integer(1), path);
-			dir.put(edge, sub);
+			slotLists.put(edge, sub);
 		} else {
 			m.put((m.size() + 1), path);
-			dir.put(edge, m);
+			slotLists.put(edge, m);
 		}
 	}
-	
-	private Integer getSlot(MetroPath path, MetroEdge edge, MetroVertex first) {
-		HashMap<Integer, MetroPath> m;
-		if (edge.getEndpoints().getFirst().equals(first)) { // original direction
-			m = originalDirection.get(edge);
-		} else { // inverse direction
-			m = inverseDirection.get(edge);
-		}
-		if(m != null) {
-			for(Entry<Integer, MetroPath> entry : m.entrySet()) {
-				if(entry.getValue().equals(path)) {
+
+	private Integer getSlot(MetroPath path, MetroEdge edge) {
+		HashMap<Integer, MetroPath> m = slotLists.get(edge);
+		if (m != null) {
+			// Get key by value
+			for (Entry<Integer, MetroPath> entry : m.entrySet()) {
+				if (entry.getValue().equals(path)) {
 					return entry.getKey();
 				}
 			}
 		}
 		return -1;
 	}
-	
-	private HashMap<Integer, MetroPath> getSlotListForEdge(MetroEdge edge, MetroVertex first) {
-		boolean debug = false;//first.getName().equals("V5");
-		if(debug) {
-			System.out.println(edge);
-			System.out.println(originalDirection);
-			System.out.println(inverseDirection);
-		}
-		if (edge.getEndpoints().getFirst().equals(first)) { // original direction
-			return originalDirection.get(edge);
-		} else { // inverse direction
-			return inverseDirection.get(edge);
-		}
+
+	private HashMap<Integer, MetroPath> getSlotListForEdge(MetroEdge edge) {
+		return slotLists.get(edge);
 	}
-	
+
 	public double getLineThickness(MetroPath path, MetroEdge edge) {
-		double thickness = 0.5;
-		if (Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_PASSENGER_COUNT) {
-			thickness += getPassengerCountThickness(edge, path);
-		} else if (Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_DIJKSTRA_PATH_COUNT) {
-			thickness += getDijkstraCountThickness(edge, path);
-		}
-		return thickness;
+		return this.getLineThickness(path, edge, false);
 	}
-	
+
+	public double getLineThickness(MetroPath path, MetroEdge edge, boolean debug) {
+		if (Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_PASSENGER_COUNT) {
+			return getPassengerCountThickness(edge, path);
+		} else if (Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_DIJKSTRA_PATH_COUNT) {
+			return getDijkstraCountThickness(edge, path);
+		}
+		return 0;
+	}
+
 	private void drawGraphToG2D(Graphics2D g2d, Graph g) {
 
 		double scale = zoomMultipliers[zoomLevel];
 		boolean isTransferGraph = (g.getUserDatum("isTransferGraph") != null && g.getUserDatum("isTransferGraph").equals(true));
 		List shortestPath = null;
-		if(Settings.sourceStation instanceof MetroVertex && Settings.destinationStation instanceof MetroVertex) {
-			if(Dijkstra.shortestPaths.containsKey(Settings.sourceStation)) {
+		if (Settings.sourceStation instanceof MetroVertex && Settings.destinationStation instanceof MetroVertex) {
+			if (Dijkstra.shortestPaths.containsKey(Settings.sourceStation)) {
 				shortestPath = Dijkstra.shortestPaths.get(Settings.sourceStation).get(Settings.destinationStation);
 			}
 		}
-		
+
 		// Edges
 		Color[] colors = (Color[]) ((Vector) g.getUserDatum("colors")).toArray(new Color[0]);
-		originalDirection = new HashMap<MetroEdge, HashMap<Integer, MetroPath>>(g.numEdges());
-		inverseDirection = new HashMap<MetroEdge, HashMap<Integer, MetroPath>>(g.numEdges());
-		
+		slotLists = new HashMap<MetroEdge, HashMap<Integer, MetroPath>>(g.numEdges());
+
 		// Preprocessing step: compute SLOTS first!
 		for (Object pathObject : GraphTools.getMetroLines(g)) {
 			MetroPath path = (MetroPath) pathObject;
 			MetroEdge previousEdge = null;
-			for(Object edgeObject : path) {
+			for (Object edgeObject : path) {
 				MetroEdge edge = (MetroEdge) edgeObject;
 				MetroVertex first = edge.getFirst();
 				MetroVertex second = edge.getSecond();
 				// turn around if necessary
 				if (previousEdge != null && second.isIncident(previousEdge)) {
-					//System.out.println("turned around");
+					// System.out.println("turned around");
 					MetroVertex secondTemp = second;
 					second = first;
 					first = secondTemp;
 				}
-				//if(edge.getMultiplicity() > 1) {
-					findFreeSlot(path, edge, first);
-				//}
+
+				findFreeSlot(path, edge);
+
 				previousEdge = edge;
 			}
 		}
 		// End preprocessing step
-		
-		//System.out.println("preprocessing done");
-		
+
+		// System.out.println("preprocessing done");
+
 		for (Object pathObject : GraphTools.getMetroLines(g)) {
 			Path2D path2d = null;
 			MetroPath path = (MetroPath) pathObject;
-			
-			
-			//System.out.println("--- path " + path + " ---");
+
+			// System.out.println("--- path " + path + " ---");
 
 			MetroEdge previousEdge = null;
 			Point previousFrom = null;
 			Point previousTo = null;
-			
+
 			// START MULTIEDGE CODE
-			for(Object edgeObject : path) {
+			for (Object edgeObject : path) {
 				path2d = new Path2D.Float();
 				MetroEdge edge = (MetroEdge) edgeObject;
 				TransferGraphEdge tge = null;
-				if(isTransferGraph) {
+				if (isTransferGraph) {
 					tge = (TransferGraphEdge) edge;
-				}				
-				
+				}
+
 				int dijkstraCount = 0;
-				if(isTransferGraph) {
+				if (isTransferGraph) {
 					dijkstraCount = tge.getDijkstraCount();
 				} else {
 					dijkstraCount = (int) edge.getDijkstraCount(path.getName());
 				}
-				
+
 				// Check if this edge is contained in the source~destination shortest path
 				boolean inShortestPath = false;
-				if(this.shiftButtonIsDown) {
-					if(shortestPath != null) {
-						if(isTransferGraph) {
-							if(shortestPath.contains(tge)) {
-								inShortestPath = true;
+				if (this.shiftButtonIsDown) {
+					if (shortestPath != null) {
+						if (isTransferGraph) {
+							if (shortestPath.contains(tge)) {
+								Boolean[] lines = (Boolean[]) tge.getUserDatum("lineArray");
+								for (int i = 0; i < lines.length; i++) {
+									if (lines[i].booleanValue() && path.getName().equals("l" + i)) {
+										inShortestPath = true;
+										break;
+									}
+								}
 								break;
 							}
 						} else {
-							for(TransferGraphEdge t : edge.getTransferGraphEdges().values()) {
-								if(shortestPath.contains(t)) {
-									inShortestPath = true;
+							for (TransferGraphEdge t : edge.getTransferGraphEdges().values()) {
+								if (shortestPath.contains(t)) {
+									Boolean[] lines = (Boolean[]) t.getUserDatum("lineArray");
+									for (int i = 0; i < lines.length; i++) {
+										if (lines[i].booleanValue() && path.getName().equals("l" + i)) {
+											inShortestPath = true;
+											break;
+										}
+									}
 									break;
 								}
 							}
 						}
 					}
 				}
-				
+
 				// Edge color
 				Color c = colors[path.getColor()];
 				float red = (float) ((double) c.getRed() / 255.0);
 				float green = (float) ((double) c.getGreen() / 255.0);
 				float blue = (float) ((double) c.getBlue() / 255.0);
-				//float alpha = (float) Math.max(0.2, Math.min((dijkstraCount + 1) * 0.2, 1.0));
+				// float alpha = (float) Math.max(0.2, Math.min((dijkstraCount + 1) * 0.2, 1.0));
 				float alpha = 1f;
-				if(shiftButtonIsDown == true && inShortestPath == false) {
+				if (shiftButtonIsDown == true && inShortestPath == false) {
 					alpha = 0.15f;
 				}
 				g2d.setColor(new Color(red, green, blue, alpha));
-				
-				
+
 				// line thickness
 				double thickness = getLineThickness(path, edge);
-				
+
 				MetroVertex first = edge.getFirst();
 				MetroVertex second = edge.getSecond();
-				
-				//System.out.println("Dijkstra count " + dijkstraCount + " => opacity " + alpha);
+
+				// System.out.println("Dijkstra count " + dijkstraCount + " => opacity " + alpha);
 
 				// turn around if necessary
 				if (previousEdge != null && second.isIncident(previousEdge)) {
-					//System.out.println("turned around");
+					// System.out.println("turned around");
 					MetroVertex secondTemp = second;
 					second = first;
 					first = secondTemp;
 				}
-				
-				
 
-				if(dijkstraCount == 0 && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
-					
-					float dash[] = {(float)(thickness*scale), (float)(thickness*scale*2.0)};
-					g2d.setStroke(new BasicStroke((float)(thickness*scale), BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dash, 0.0f));
-					path2d.moveTo(getImageX(first), getImageY(first));
-					path2d.lineTo(getImageX(second), getImageY(second));
-					g2d.draw(path2d);
-					
+				double pAngleFirst = first.getPerpendicularAngle();
+				double pAngleSecond = second.getPerpendicularAngle();
+
+				Point p1org = new Point(first.getX(), first.getY());
+				Point p2org = new Point(second.getX(), second.getY());
+
+				Integer slot = getSlot(path, edge);
+
+				Point p1 = computePoint(path, edge, first, slot, false);
+				Point p2 = computePoint(path, edge, second, slot, false);
+
+				double averageThicknessFirst = first.getCombinedThickness(this, path);
+				double averageThicknessSecond = second.getCombinedThickness(this, path);
+
+				// Draw polygon
+
+				// Debug path, draw line from ORG to COMPUTED vertex
+				/*
+				 * Color tempColor = g2d.getColor(); g2d.setColor(Color.black); g2d.setStroke(new BasicStroke(2.0f)); Path2D debugPath = new Path2D.Double(); debugPath.moveTo(getImageX(p1org.getX()),
+				 * getImageY(p1org.getY())); debugPath.lineTo(getImageX(p1.getX()), getImageY(p1.getY())); g2d.draw(debugPath);
+				 * 
+				 * debugPath = new Path2D.Double(); debugPath.moveTo(getImageX(p2org.getX()), getImageY(p2org.getY())); debugPath.lineTo(getImageX(p2.getX()), getImageY(p2.getY()));
+				 * g2d.draw(debugPath);
+				 * 
+				 * g2d.setColor(tempColor);
+				 * 
+				 * this.drawTestCircle(g2d, p1); this.drawTestCircle(g2d, p2);
+				 */
+				// End debug path
+
+				Line2D line1 = new Line2D.Double((int) (getImageX(p1) + (0.5 * averageThicknessFirst * scale * Math.cos(pAngleFirst))),
+						(int) (getImageY(p1) + (0.5 * averageThicknessFirst * scale * -Math.sin(pAngleFirst))),
+						(int) (getImageX(p2) + (0.5 * averageThicknessSecond * scale * Math.cos(pAngleSecond))),
+						(int) (getImageY(p2) + (0.5 * averageThicknessSecond * scale * -Math.sin(pAngleSecond))));
+
+				Line2D line2 = new Line2D.Double((int) (getImageX(p1) - (0.5 * averageThicknessFirst * scale * Math.cos(pAngleFirst))),
+						(int) (getImageY(p1) - (0.5 * averageThicknessFirst * scale * -Math.sin(pAngleFirst))),
+						(int) (getImageX(p2) - (0.5 * averageThicknessSecond * scale * Math.cos(pAngleSecond))),
+						(int) (getImageY(p2) - (0.5 * averageThicknessSecond * scale * -Math.sin(pAngleSecond))));
+
+				Polygon polygon = new Polygon();
+				if (line1.intersectsLine(line2)) {
+					polygon.addPoint((int) line1.getX1(), (int) line1.getY1()); // 1
+					polygon.addPoint((int) line2.getX2(), (int) line2.getY2()); // 3
+					polygon.addPoint((int) line1.getX2(), (int) line1.getY2()); // 2
+					polygon.addPoint((int) line2.getX1(), (int) line2.getY1()); // 4
 				} else {
-					
-					// Draw polygon
-					
-					double pAngleFirst = first.getPerpendicularAngle();
-					double pAngleSecond = second.getPerpendicularAngle();
-					
-					Point p1org = new Point(first.getX(), first.getY());
-					Point p2org = new Point(second.getX(), second.getY());
-					
-					Integer slot = getSlot(path, edge, first);
-					
-					Point p1 = computePoint(path, edge, first, slot, first.getName().equals("V5"));
-					Point p2 = computePoint(path, edge, second, slot, second.getName().equals("V5"));
-					
-					double averageThicknessFirst = first.getCombinedThickness(this, path);
-					double averageThicknessSecond = second.getCombinedThickness(this, path);
-					
-					// Debug, draw line from ORG to COMPUTED vertex
-					Color tempColor = g2d.getColor();
-					g2d.setColor(Color.black);
-					g2d.setStroke(new BasicStroke(2.0f));
-					Path2D debugPath = new Path2D.Double();
-					debugPath.moveTo(getImageX(p1org.getX()), getImageY(p1org.getY()));
-					debugPath.lineTo(getImageX(p1.getX()), getImageY(p1.getY()));
-					g2d.draw(debugPath);
-					
-					debugPath = new Path2D.Double();
-					debugPath.moveTo(getImageX(p2org.getX()), getImageY(p2org.getY()));
-					debugPath.lineTo(getImageX(p2.getX()), getImageY(p2.getY()));
-					g2d.draw(debugPath);
-					
-					g2d.setColor(tempColor);
-					
-					
-					/*if(first.getName().equals("Vx") || second.getName().equals("Vx")) {
-						System.out.println(slot);
-						System.out.println(edge);
-						System.out.println(p1);
-						System.out.println(p2);
-						System.out.println("---");
-					}*/
-	
-					Line2D line1 = new Line2D.Double(
-							(int)(getImageX(p1) + (0.5 * averageThicknessFirst * scale * Math.cos(pAngleFirst))), 
-							(int)(getImageY(p1) + (0.5 * averageThicknessFirst * scale * -Math.sin(pAngleFirst))), 
-							(int)(getImageX(p2) + (0.5 * averageThicknessSecond * scale * Math.cos(pAngleSecond))), 
-							(int)(getImageY(p2) + (0.5 * averageThicknessSecond * scale * -Math.sin(pAngleSecond))));
-					
-					Line2D line2 = new Line2D.Double(
-							(int)(getImageX(p1) - (0.5 * averageThicknessFirst * scale * Math.cos(pAngleFirst))), 
-							(int)(getImageY(p1) - (0.5 * averageThicknessFirst * scale * -Math.sin(pAngleFirst))), 
-							(int)(getImageX(p2) - (0.5 * averageThicknessSecond * scale * Math.cos(pAngleSecond))), 
-							(int)(getImageY(p2) - (0.5 * averageThicknessSecond * scale * -Math.sin(pAngleSecond))));
-					
-					
-					Polygon polygon = new Polygon();
-					if(line1.intersectsLine(line2)) {
-						polygon.addPoint((int)line1.getX1(), (int)line1.getY1()); // 1
-						polygon.addPoint((int)line2.getX2(), (int)line2.getY2()); // 3
-						polygon.addPoint((int)line1.getX2(), (int)line1.getY2()); // 2
-						polygon.addPoint((int)line2.getX1(), (int)line2.getY1()); // 4
-					} else {
-						polygon.addPoint((int)line1.getX1(), (int)line1.getY1()); // 1
-						polygon.addPoint((int)line1.getX2(), (int)line1.getY2()); // 2
-						polygon.addPoint((int)line2.getX2(), (int)line2.getY2()); // 3
-						polygon.addPoint((int)line2.getX1(), (int)line2.getY1()); // 4
-					}
-					
-					if(Settings.drawPolygonWireframes == true) {
-						g2d.setStroke(new BasicStroke((float)(0.25*scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
-						g2d.drawPolygon(polygon);
-					} else {
-						g2d.setStroke(new BasicStroke(0f));
-						g2d.fillPolygon(polygon);
-					}
-					// End of polygon drawing
-				
-					this.drawTestCircle(g2d, p1);
-					this.drawTestCircle(g2d, p2);
+					polygon.addPoint((int) line1.getX1(), (int) line1.getY1()); // 1
+					polygon.addPoint((int) line1.getX2(), (int) line1.getY2()); // 2
+					polygon.addPoint((int) line2.getX2(), (int) line2.getY2()); // 3
+					polygon.addPoint((int) line2.getX1(), (int) line2.getY1()); // 4
 				}
-				
-				
-				
-				if(Settings.drawEdgeLabels) {
+
+				if (Settings.drawPolygonWireframes == true) {
+
+					g2d.setStroke(new BasicStroke((float) (0.25 * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
+					g2d.drawPolygon(polygon);
+
+				} else if (dijkstraCount == 0 && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+
+					// Dashed line
+
+					float dash[] = { (float) (thickness * scale), (float) (thickness * scale * 2.0) };
+					g2d.setStroke(new BasicStroke((float) (thickness * scale), BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dash, 0.0f));
+					path2d.moveTo(getImageX(p1), getImageY(p1));
+					path2d.lineTo(getImageX(p2), getImageY(p2));
+					g2d.draw(path2d);
+
+				} else if (Settings.fixedLineThicknesses) {
+
+					g2d.setStroke(new BasicStroke((float) (thickness * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+					path2d.moveTo(getImageX(p1), getImageY(p1));
+					path2d.lineTo(getImageX(p2), getImageY(p2));
+					g2d.draw(path2d);
+
+				} else {
+
+					g2d.setStroke(new BasicStroke(0f));
+					g2d.fillPolygon(polygon);
+
+				}
+				// End of polygon drawing
+
+				if (Settings.drawEdgeLabels) {
 					// Put weight in the middle of the edge
-					//g2d.setColor(new Color(0, 0, 0, 0.8f));
+					// g2d.setColor(new Color(0, 0, 0, 0.8f));
 					g2d.setFont(new Font("Arial", Font.PLAIN, (int) (3 * scale)));
 					double offset = 0.2;
 					String dijkstraCountString = "";
-					String allPairsDijkstraCountString = "";
 					String directionString = "dir: ";
-					if(isTransferGraph) {
-						dijkstraCountString += "<" + String.valueOf(tge.getDijkstraCount()) + "," + String.valueOf(tge.getTime()) + ">";
-						allPairsDijkstraCountString += "<" + String.valueOf(tge.getAllPairsDijkstraCount()) + "," + String.valueOf(tge.getTime()) + ">";
+					if (isTransferGraph) {
+						if (Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+							dijkstraCountString += "<" + String.valueOf(tge.getDijkstraCount()) + "," + String.valueOf(tge.getTime()) + ">";
+						} else {
+							dijkstraCountString += "<" + String.valueOf(tge.getAllPairsDijkstraCount()) + "," + String.valueOf(tge.getTime()) + ">";
+						}
 						directionString += tge.getOriginalEdge().getArrowDirection();
 					} else {
-						for(TransferGraphEdge tge2 : edge.getTransferGraphEdges().values()) {					
-							dijkstraCountString += "<" + String.valueOf(tge2.getDijkstraCount()) + "," + String.valueOf(tge2.getTime()) + ">";
-							allPairsDijkstraCountString += "<" + String.valueOf(tge2.getAllPairsDijkstraCount()) + "," + String.valueOf(tge2.getTime()) + ">";
+						for (TransferGraphEdge tge2 : edge.getTransferGraphEdges().values()) {
+							if (Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+								dijkstraCountString += "<" + String.valueOf(tge2.getDijkstraCount()) + "," + String.valueOf(tge2.getTime()) + ">";
+							} else {
+								dijkstraCountString += "<" + String.valueOf(tge2.getAllPairsDijkstraCount()) + "," + String.valueOf(tge2.getTime()) + ">";
+							}
 						}
 						directionString += edge.getArrowDirection();
 					}
-					
+
 					g2d.setColor(new Color(0, 0, 0, 0.5f));
-					g2d.drawString(allPairsDijkstraCountString, (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset*scale)), (float) (((getImageY(first) + getImageY(second)) / 2.0) + (offset*scale)));
-					//g2d.drawString(directionString, (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset*scale)), (float) (((getImageY(first) + getImageY(second)) / 2.0) + (offset*scale)));
-					//double angle = Math.atan2(Math.abs(first.getY() - second.getY()), Math.abs(first.getX() - second.getX()));
-					//g2d.drawString(String.valueOf(angle), (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset*scale)), (float) (((getImageY(first) + getImageY(second)) / 2.0) + (offset*scale)));
-					
+					g2d.drawString(dijkstraCountString, (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset * scale)),
+							(float) (((getImageY(first) + getImageY(second)) / 2.0) + (offset * scale)));
+					// g2d.drawString(directionString, (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset*scale)), (float) (((getImageY(first) + getImageY(second)) / 2.0) +
+					// (offset*scale)));
+					// double angle = Math.atan2(Math.abs(first.getY() - second.getY()), Math.abs(first.getX() - second.getX()));
+					// g2d.drawString(String.valueOf(angle), (float) (((getImageX(first) + getImageX(second)) / 2.0) - (offset*scale)), (float) (((getImageY(first) + getImageY(second)) / 2.0) +
+					// (offset*scale)));
+
 				}
-				
-				if(Settings.drawArrowHints && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+
+				if (Settings.drawArrowHints && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
 					MetroEdge orgEdge = edge;
-					if(isTransferGraph) {
+					if (isTransferGraph) {
 						orgEdge = tge.getOriginalEdge();
 					}
-					
+
 					int dir = orgEdge.getArrowDirection();
-					
+
 					MetroVertex drawFrom = null;
-					if(dir < 0) {
+					if (dir < 0) {
 						drawFrom = orgEdge.getSecond();
-					} else if(dir > 0) {
+					} else if (dir > 0) {
 						drawFrom = orgEdge.getFirst();
 					}
-					if(drawFrom != null) {
-												
+					if (drawFrom != null) {
+
 						double angle = Math.atan2(first.getY() - second.getY(), first.getX() - second.getX());
 						double edgeLength = scale * scaleMultiplier * -dir * Math.sqrt(Math.pow(first.getY() - second.getY(), 2) + Math.pow(first.getX() - second.getX(), 2));
 						double arrowLength = edgeLength * (Settings.arrowSizePercentage / 100.0);
-						
+
 						double arrowTipLength = arrowLength * 0.1;
-						
+
 						double arrowStartX = getImageX(drawFrom) + (edgeLength - arrowLength) * 0.5 * Math.cos(angle);
 						double arrowStartY = getImageY(drawFrom) - (edgeLength - arrowLength) * 0.5 * Math.sin(angle);
-						
+
 						double arrowTipX = arrowStartX + arrowLength * Math.cos(angle);
 						double arrowTipY = arrowStartY - arrowLength * Math.sin(angle);
-						
+
 						double arrowLeaf1X = arrowStartX + (arrowLength - arrowTipLength) * Math.cos(angle + 0.1);
 						double arrowLeaf1Y = arrowStartY - (arrowLength - arrowTipLength) * Math.sin(angle + 0.1);
 
@@ -625,7 +623,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 						// Draw white arrow (border)
 						g2d.setColor(new Color(0f, 0f, 0f, 1f));
-						g2d.setStroke(new BasicStroke((float)((0.7 + Settings.arrowSizePercentage * 0.005) * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+						g2d.setStroke(new BasicStroke((float) ((0.7 + Settings.arrowSizePercentage * 0.005) * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 						Path2D arrow = new Path2D.Float();
 						arrow.moveTo(arrowStartX, arrowStartY);
 						arrow.lineTo(arrowTipX, arrowTipY);
@@ -633,10 +631,10 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 						arrow.moveTo(arrowTipX, arrowTipY);
 						arrow.lineTo(arrowLeaf2X, arrowLeaf2Y);
 						g2d.draw(arrow);
-						
+
 						// Draw black arrow
 						g2d.setColor(Color.white);
-						g2d.setStroke(new BasicStroke((float)((0.4 + Settings.arrowSizePercentage * 0.005) * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+						g2d.setStroke(new BasicStroke((float) ((0.4 + Settings.arrowSizePercentage * 0.005) * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 						arrow = new Path2D.Float();
 						arrow.moveTo(arrowStartX, arrowStartY);
 						arrow.lineTo(arrowTipX, arrowTipY);
@@ -648,40 +646,39 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				}
 
 				previousEdge = edge;
-				
+
 			}
-		
+
 		}
-		
+
 		// Vertices
 		double transferGraphScaling = 1;
-		if(isTransferGraph) {
+		if (isTransferGraph) {
 			transferGraphScaling = 0.5;
 			for (Object vertexObject : g.getVertices()) {
 				MetroVertex vertex = (MetroVertex) vertexObject;
 				MetroVertex org = vertex.getOriginalVertex();
-				if(org != null) {
+				if (org != null) {
 					org.setOriginalVertexIsDrawn(false);
 				}
 			}
 		}
-		
-		
+
 		for (Object vertexObject : g.getVertices()) {
-			
+
 			MetroVertex vertex = (MetroVertex) vertexObject;
 
 			double x = 0;
 			double y = 0;
 
 			if (!(vertex.isDummy() || vertex.isLabelVertex() || vertex.isJoint())) {
-				
-				if(isTransferGraph) {
+
+				if (isTransferGraph) {
 					// Draw arching circle
 					MetroVertex org = vertex.getOriginalVertex();
-					if(org != null && org.getOriginalVertexIsDrawn() == false) {
+					if (org != null && org.getOriginalVertexIsDrawn() == false) {
 						double stationRadius = 3.0 * scale;
-						if(org.getTransferVertexMap().size() == 1) {
+						if (org.getTransferVertexMap().size() == 1) {
 							stationRadius = 1.0 * scale;
 						}
 						x = getImageX(org) - stationRadius;
@@ -698,10 +695,9 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 				Ellipse2D ellipse;
 				double stationRadius;
-				
 
 				// DEBUG! REMOVE
-				if(true) {
+				if (true) {
 					if (!isTransferGraph && (vertex.degree() > 2 || vertex.isIntersection())) {
 						// Draw circle
 						stationRadius = 2.5 * scale * transferGraphScaling;
@@ -714,7 +710,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 						g2d.setColor(Color.black);
 						g2d.setStroke(new BasicStroke((float) (1.0 * scale * transferGraphScaling)));
 						g2d.draw(ellipse);
-	
+
 					} else if (!isTransferGraph && vertex.degree() == 1) {
 						// Draw thick tick
 						stationRadius = 1.3 * scale * transferGraphScaling;
@@ -726,7 +722,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 						g2d.setStroke(new BasicStroke(0));
 						g2d.fill(ellipse);
 						g2d.draw(ellipse);
-	
+
 					} else {
 						// Draw normal tick
 						stationRadius = 0.7 * scale * transferGraphScaling;
@@ -738,52 +734,52 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 						g2d.setStroke(new BasicStroke(0));
 						g2d.fill(ellipse);
 						g2d.draw(ellipse);
-	
+
 					}
-	
+
 					double bigStationRadius = scale * 15;
-					if(Settings.isGeneratingQuestion == false && vertex.equals(Settings.sourceStation)) {
+					if (Settings.isGeneratingQuestion == false && vertex.equals(Settings.sourceStation)) {
 						ellipse = new Ellipse2D.Float();
 						ellipse.setFrame(x + stationRadius - bigStationRadius, y + stationRadius - bigStationRadius, bigStationRadius * 2, bigStationRadius * 2);
 						g2d.setColor(new Color(1f, 0f, 0f, 0.2f));
 						g2d.setStroke(new BasicStroke(0));
 						g2d.fill(ellipse);
-						g2d.draw(ellipse);						
+						g2d.draw(ellipse);
 					}
-	
-					if(Settings.isGeneratingQuestion == false && vertex.equals(Settings.destinationStation)) {
+
+					if (Settings.isGeneratingQuestion == false && vertex.equals(Settings.destinationStation)) {
 						ellipse = new Ellipse2D.Float();
 						ellipse.setFrame(x + stationRadius - bigStationRadius, y + stationRadius - bigStationRadius, bigStationRadius * 2, bigStationRadius * 2);
 						g2d.setColor(new Color(0f, 1f, 0f, 0.2f));
 						g2d.setStroke(new BasicStroke(0));
 						g2d.fill(ellipse);
-						g2d.draw(ellipse);						
+						g2d.draw(ellipse);
 					}
 				}
-				
+
 				// Draw vertex label
-				if(Settings.drawVertexLabels) {
+				if (Settings.drawVertexLabels) {
 					g2d.setFont(new Font("Arial", Font.PLAIN, (int) (3 * scale)));
 					g2d.setColor(new Color(0, 0, 0, 0.5f));
-					g2d.drawString(vertex.getName(), (float) (getImageX(vertex) + (1.5*scale)), (float) (getImageY(vertex) + (0.7*scale)));
+					g2d.drawString(vertex.getName(), (float) (getImageX(vertex) + (1.5 * scale)), (float) (getImageY(vertex) + (0.7 * scale)));
 				}
-				
+
 				// System.out.println("Drew vertex on position (" + x + ", " + y + ")");
 
 				// Name label
-				//g2d.setColor(new Color(0, 0, 0, 0.5f));
-				//g2d.setFont(new Font("Arial", Font.PLAIN, (int) (10.0 * scale)));
-				//g2d.drawString(vertex.getName() + " (" + vertex.degree() + ")", (float) (x + 5*scale), (float) (y + 3*scale));
+				// g2d.setColor(new Color(0, 0, 0, 0.5f));
+				// g2d.setFont(new Font("Arial", Font.PLAIN, (int) (10.0 * scale)));
+				// g2d.drawString(vertex.getName() + " (" + vertex.degree() + ")", (float) (x + 5*scale), (float) (y + 3*scale));
 
 			}
 
 		}
 
-		//System.out.println("--- drawing done ---");
+		// System.out.println("--- drawing done ---");
 	}
-	
+
 	private void drawTestCircle(Graphics2D g2d, Point vertex) {
-		
+
 		double scale = zoomMultipliers[zoomLevel];
 		double stationRadius = 0.5 * scale;
 		double x = getImageX(vertex) - stationRadius;
@@ -801,13 +797,13 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	private long lastDragRepaint = 0;
 	private int dragRepaintThrottle = 100; // minimal time between two repaints while dragging
 	private int mouseButtonDown = -1;
-	
+
 	private static final int LEFT_BUTTON = MouseEvent.BUTTON1;
 	private static final int RIGHT_BUTTON = MouseEvent.BUTTON3;
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		if(mouseButtonDown == SvgCanvas.LEFT_BUTTON) {
+		if (mouseButtonDown == SvgCanvas.LEFT_BUTTON) {
 			dragOffsetX = dragOffsetXBeforeDragging + (e.getX() - dragStartX);
 			dragOffsetY = dragOffsetYBeforeDragging + (e.getY() - dragStartY);
 			long t = System.currentTimeMillis();
@@ -815,7 +811,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				lastDragRepaint = t;
 				this.repaint();
 			}
-		} else if(mouseButtonDown == SvgCanvas.RIGHT_BUTTON) {
+		} else if (mouseButtonDown == SvgCanvas.RIGHT_BUTTON) {
 			long t = System.currentTimeMillis();
 			if (t > lastDragRepaint + dragRepaintThrottle) {
 				this.selectSourceStationClosestTo(e.getX(), e.getY());
@@ -824,16 +820,16 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 			}
 		}
 	}
-	
+
 	private void handleShiftDownComputation(int x, int y) {
 		MetroVertex dvOld = null;
-		if(Settings.destinationStation instanceof MetroVertex) {
+		if (Settings.destinationStation instanceof MetroVertex) {
 			dvOld = Settings.destinationStation;
 		}
 		long t = System.currentTimeMillis();
 		if (t > lastDragRepaint + dragRepaintThrottle) {
 			this.selectDestinationStationClosestTo(x, y);
-			if(Settings.destinationStation instanceof MetroVertex && Settings.destinationStation.equals(dvOld) == false) {
+			if (Settings.destinationStation instanceof MetroVertex && Settings.destinationStation.equals(dvOld) == false) {
 				lastDragRepaint = t;
 				this.repaint();
 			}
@@ -842,9 +838,9 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		//if(this.shiftButtonIsDown) {
-		//	this.handleShiftDownComputation(e.getX(), e.getY());
-		//}
+		// if(this.shiftButtonIsDown) {
+		// this.handleShiftDownComputation(e.getX(), e.getY());
+		// }
 	}
 
 	@Override
@@ -865,7 +861,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				this.setCursor(closedHand);
 				break;
 			case SvgCanvas.RIGHT_BUTTON:
-				if(this.shiftButtonIsDown) {
+				if (this.shiftButtonIsDown) {
 					this.handleShiftDownComputation(e.getX(), e.getY());
 				} else {
 					this.selectSourceStationClosestTo(e.getX(), e.getY());
@@ -901,32 +897,32 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	public void mouseExited(MouseEvent e) {
 
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 			shiftButtonIsDown = true;
 			this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 			java.awt.Point p = this.getMousePosition();
-			if(p instanceof java.awt.Point) {
+			if (p instanceof java.awt.Point) {
 				this.handleShiftDownComputation(p.x, p.y);
 				this.repaint();
 			}
 		}
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 			shiftButtonIsDown = false;
 			this.setCursor(openHand);
 			this.repaint();
 		}
 	}
-	
+
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+
 	}
 
 	public Graph getGraph() {
@@ -934,43 +930,43 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	}
 
 	private void selectSourceStationClosestTo(int cursorX, int cursorY) {
-		
+
 		double smallestDistance = Double.MAX_VALUE;
 		MetroVertex closestVertex = null;
-		
+
 		for (Object vertexObject : this.g.getVertices()) {
 			MetroVertex vertex = (MetroVertex) vertexObject;
 			double distance = Math.sqrt(Math.pow(getImageX(vertex) - cursorX, 2) + Math.pow(getImageY(vertex) - cursorY, 2));
-			if(distance < smallestDistance) {
+			if (distance < smallestDistance) {
 				closestVertex = vertex;
 				smallestDistance = distance;
 			}
 		}
-		
-		if(closestVertex != null) {
+
+		if (closestVertex != null) {
 			this.app.getGUIBuilder().stationComboBox.setSelectedItem(closestVertex);
 		}
-		
+
 	}
 
 	private void selectDestinationStationClosestTo(int cursorX, int cursorY) {
-		
+
 		double smallestDistance = Double.MAX_VALUE;
 		MetroVertex closestVertex = null;
-		
+
 		for (Object vertexObject : this.g.getVertices()) {
 			MetroVertex vertex = (MetroVertex) vertexObject;
 			double distance = Math.sqrt(Math.pow(getImageX(vertex) - cursorX, 2) + Math.pow(getImageY(vertex) - cursorY, 2));
-			if(distance < smallestDistance) {
+			if (distance < smallestDistance) {
 				closestVertex = vertex;
 				smallestDistance = distance;
 			}
 		}
-		
-		if(closestVertex != null) {
+
+		if (closestVertex != null) {
 			Settings.destinationStation = closestVertex;
 		}
-		
+
 	}
 
 }

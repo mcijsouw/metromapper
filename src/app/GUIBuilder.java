@@ -101,7 +101,7 @@ public class GUIBuilder {
 		// Sidebar
 		JPanel sidebarGeneral = new JPanel();
 		sidebarGeneral.setLayout(new FlowLayout(FlowLayout.LEADING));
-		sidebarGeneral.setPreferredSize(new Dimension(300, 0));
+		sidebarGeneral.setPreferredSize(new Dimension(300, 280));
 		sidebarGeneral.setBorder(new EmptyBorder(4, 10, 10, 10));
 
 		JPanel sidebarSchematization = new JPanel();
@@ -113,71 +113,15 @@ public class GUIBuilder {
 		sidebarRendering.setLayout(new FlowLayout(FlowLayout.LEADING));
 		sidebarRendering.setPreferredSize(new Dimension(300, 0));
 		sidebarRendering.setBorder(new EmptyBorder(4, 10, 10, 10));
-
-		// "Total edge length importance:" label
-		JLabel transferTimeLabel = new JLabel("Transfer time when changing trains:");
-		transferTimeLabel.setFont(new Font("Dialog", Font.BOLD, 11));
-		transferTimeLabel.setPreferredSize(new Dimension(215, 20));
-		sidebarGeneral.add(transferTimeLabel);
-
-		final JTextField transferTimeInput = new JTextField();
-		transferTimeInput.setPreferredSize(new Dimension(50, 20));
-		transferTimeInput.setText(String.valueOf(Settings.defaultTransferTimeInSeconds));
-		sidebarGeneral.add(transferTimeInput);
-		transferTimeInput.getDocument().addDocumentListener(new DocumentListener() {
-			public void changedUpdate(DocumentEvent e) {
-				warn();
-			}
-
-			public void removeUpdate(DocumentEvent e) {
-				warn();
-			}
-
-			public void insertUpdate(DocumentEvent e) {
-				warn();
-			}
-
-			public void warn() {
-				if (transferTimeInput.getText().length() > 0) {
-					int value = (int) Integer.valueOf(transferTimeInput.getText());
-					if (value >= 0 && value <= 10000) {
-						Settings.defaultTransferTimeInSeconds = value;
-						ViewPosition vp = app.getSvgCanvas().getViewPositionObject();
-						saveCurrentSourceStationSelection();
-						app.initializeMap();
-						app.getSvgCanvas().setViewPosition(vp);
-						loadCurrentSourceStationSelection();
-						app.repaintMap();
-					} else {
-						JOptionPane.showMessageDialog(null, "Error: Please enter number between 1 and 10000", "Error Massage", JOptionPane.ERROR_MESSAGE);
-					}
-				}
-			}
-		});
 		
 
-		// Generate Question button
-		final JButton questionBtn = new JButton("Generate question");
-		questionBtn.setPreferredSize(new Dimension(270, 30));
-		questionBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(Settings.sourceStation != null && Settings.destinationStation != null) {
-					Settings.isGeneratingQuestion = true;
-					app.repaintMap();
-					String path = Questionnaire.generateQuestion(app);
-					JOptionPane.showMessageDialog(frame, "Wrote to " + path + "!", "Success!", JOptionPane.INFORMATION_MESSAGE);
-					Settings.isGeneratingQuestion = false;
-				} else {
-					JOptionPane.showMessageDialog(frame, "Specify source and destination stations first!", "Warning!", JOptionPane.WARNING_MESSAGE);
-				}
-			}
-		});
-		sidebarGeneral.add(questionBtn);
+		final JLabel bendsOnLineLabel = new JLabel("Bends on line importance:");
+		final JTextField bendsOnLineInput = new JTextField();
 
 		// "Map:" label
 		JLabel mapsLabel = new JLabel("Map:");
 		mapsLabel.setFont(new Font("Dialog", Font.BOLD, 11));
-		sidebarSchematization.add(mapsLabel);
+		sidebarGeneral.add(mapsLabel);
 
 		// Map chooser
 		JComboBox<String> mapList = new JComboBox<String>(Settings.inputMaps);
@@ -185,11 +129,101 @@ public class GUIBuilder {
 		mapList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.inputMap = (String) ((JComboBox) e.getSource()).getSelectedItem();
+				Settings.loadedGraphMLFile = "";
 				app.initializeMap();
 			}
 		});
 		mapList.setPreferredSize(new Dimension(270, 22));
-		sidebarSchematization.add(mapList);
+		sidebarGeneral.add(mapList);
+
+		// Shortest paths algorithm
+		JLabel pairsLabel = new JLabel("Characteristics:");
+		pairsLabel.setFont(new Font("Dialog", Font.BOLD, 11));
+		sidebarGeneral.add(pairsLabel);
+		
+
+		
+		// "Base bends on a line importance on Dijkstra counts" checkbox
+		/*JCheckBox dijkstraCountBasedBendFactors = new JCheckBox("Use modified schematization algorithm");
+		dijkstraCountBasedBendFactors.setPreferredSize(new Dimension(270, 20));
+		dijkstraCountBasedBendFactors.setSelected(Settings.modifiedSchematization);
+		dijkstraCountBasedBendFactors.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Settings.modifiedSchematization = ((JCheckBox) e.getSource()).isSelected();
+				bendsOnLineLabel.setEnabled(Settings.modifiedSchematization == false);
+				bendsOnLineInput.setEnabled(Settings.modifiedSchematization == false);
+			}
+		});
+		sidebarGeneral.add(dijkstraCountBasedBendFactors);
+		*/
+		
+		JComboBox<String> schematizationCharacteristic = new JComboBox<String>(new String[] { "Raw", "Modified" });
+		if(Settings.modifiedSchematization == true) {
+			schematizationCharacteristic.setSelectedIndex(1);
+		} else {
+			schematizationCharacteristic.setSelectedIndex(0);
+		}
+		schematizationCharacteristic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = ((JComboBox) e.getSource()).getSelectedIndex();
+				Settings.modifiedSchematization = (index == 1);
+				bendsOnLineLabel.setEnabled(Settings.modifiedSchematization == false);
+				bendsOnLineInput.setEnabled(Settings.modifiedSchematization == false);
+			}
+		});
+		schematizationCharacteristic.setPreferredSize(new Dimension(270, 22));
+		sidebarGeneral.add(schematizationCharacteristic);
+
+		JComboBox<String> visualizationCharacteristic = new JComboBox<String>(new String[] { "Source based", "All-pairs based", "Fixed source based", "Fixed" });
+		if(Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+			if(Settings.fixedLineThicknesses == true) {
+				visualizationCharacteristic.setSelectedIndex(2);
+			} else {
+				visualizationCharacteristic.setSelectedIndex(0);
+			}
+		} else {
+			if(Settings.fixedLineThicknesses == true) {
+				visualizationCharacteristic.setSelectedIndex(3);
+			} else {
+				visualizationCharacteristic.setSelectedIndex(1);
+			}
+		}
+		visualizationCharacteristic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = ((JComboBox) e.getSource()).getSelectedIndex();
+				
+				if(index == 0 || index == 2) {
+					Settings.shortestPathsAlgorithm = Settings.SHORTEST_PATHS_SINGLE_SOURCE;
+				} else {
+					Settings.shortestPathsAlgorithm = Settings.SHORTEST_PATHS_ALL_PAIRS;
+				}
+							
+				Settings.fixedLineThicknesses = (index == 2 || index == 3);
+				
+				app.repaintMap();
+			}
+		});
+		visualizationCharacteristic.setPreferredSize(new Dimension(270, 22));
+		sidebarGeneral.add(visualizationCharacteristic);
+		
+
+		// Draw arrow hints
+		JComboBox<String> arrowCharacteristic = new JComboBox<String>(new String[] { "With arrow hints", "Without arrow hints" });
+		if(Settings.drawArrowHints == true) {
+			arrowCharacteristic.setSelectedIndex(0);
+		} else {
+			arrowCharacteristic.setSelectedIndex(1);
+		}
+		arrowCharacteristic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = ((JComboBox) e.getSource()).getSelectedIndex();
+				Settings.drawArrowHints = (index == 0);
+				app.repaintMap();
+			}
+		});
+		arrowCharacteristic.setPreferredSize(new Dimension(270, 22));
+		sidebarGeneral.add(arrowCharacteristic);
+		
 
 		// Contract degree two vertices
 		JLabel contractLabel = new JLabel("Degree-two vertices:");
@@ -305,16 +339,14 @@ public class GUIBuilder {
 		});
 
 		// "Bends on line importance:" label
-		final JLabel bendsOnLineLabel = new JLabel("Bends on line importance:");
 		bendsOnLineLabel.setFont(new Font("Dialog", Font.BOLD, 11));
 		bendsOnLineLabel.setPreferredSize(new Dimension(215, 20));
-		bendsOnLineLabel.setEnabled(Settings.dijkstraCountBasedBendFactors == false);
+		bendsOnLineLabel.setEnabled(Settings.modifiedSchematization == false);
 		sidebarSchematization.add(bendsOnLineLabel);
 
-		final JTextField bendsOnLineInput = new JTextField();
 		bendsOnLineInput.setPreferredSize(new Dimension(50, 20));
 		bendsOnLineInput.setText(String.valueOf(Settings.bendsOnLineImportance));
-		bendsOnLineInput.setEnabled(Settings.dijkstraCountBasedBendFactors == false);
+		bendsOnLineInput.setEnabled(Settings.modifiedSchematization == false);
 		sidebarSchematization.add(bendsOnLineInput);
 		bendsOnLineInput.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
@@ -375,19 +407,6 @@ public class GUIBuilder {
 				}
 			}
 		});
-		
-		// "Base bends on a line importance on Dijkstra counts" checkbox
-		JCheckBox dijkstraCountBasedBendFactors = new JCheckBox("Base \"Bends on line importance\" on Dijkstra counts");
-		dijkstraCountBasedBendFactors.setPreferredSize(new Dimension(270, 30));
-		dijkstraCountBasedBendFactors.setSelected(Settings.dijkstraCountBasedBendFactors);
-		dijkstraCountBasedBendFactors.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Settings.dijkstraCountBasedBendFactors = ((JCheckBox) e.getSource()).isSelected();
-				bendsOnLineLabel.setEnabled(Settings.dijkstraCountBasedBendFactors == false);
-				bendsOnLineInput.setEnabled(Settings.dijkstraCountBasedBendFactors == false);
-			}
-		});
-		sidebarSchematization.add(dijkstraCountBasedBendFactors);
 
 		// Solve button
 		final JButton solveBtn = new JButton("Solve!");
@@ -455,6 +474,7 @@ public class GUIBuilder {
 
 						File file = chooser.getSelectedFile();
 						GraphMLReader r = new GraphMLReader();
+						Settings.loadedGraphMLFile = file.getName();
 						svgCanvas.renderGraph(r.loadGraphBySelectedFile(file));
 						frame.setTitle(file.getName() + " - MetroMapper");
 
@@ -576,17 +596,18 @@ public class GUIBuilder {
 		});
 		sidebarRendering.add(drawPolygonWireframes);
 
-		// Draw arrow hints
-		JCheckBox drawArrowHints = new JCheckBox("Draw arrow hints");
-		drawArrowHints.setPreferredSize(new Dimension(270, 15));
-		drawArrowHints.setSelected(Settings.drawArrowHints);
-		drawArrowHints.addActionListener(new ActionListener() {
+		// Flip map
+		JCheckBox flipMap = new JCheckBox("Flip map");
+		flipMap.setPreferredSize(new Dimension(270, 15));
+		flipMap.setSelected(Settings.flipMap);
+		flipMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Settings.drawArrowHints = ((JCheckBox) e.getSource()).isSelected();
-				app.repaintMap();
+				Settings.flipMap = ((JCheckBox) e.getSource()).isSelected();
+				app.initializeMap();
 			}
 		});
-		sidebarRendering.add(drawArrowHints);
+		sidebarRendering.add(flipMap);
+
 
 		// "Arrow size" label
 		JLabel arrowSizeLabel = new JLabel("Arrow size:");
@@ -676,36 +697,91 @@ public class GUIBuilder {
 			}
 		});
 		sidebarRendering.add(BorderLayout.CENTER, timeSlider);
-		
 
-		JLabel pairsLabel = new JLabel("Shortest paths algorithm:");
-		pairsLabel.setFont(new Font("Dialog", Font.BOLD, 11));
-		sidebarRendering.add(pairsLabel);
+		// "Total edge length importance:" label
+		JLabel transferTimeLabel = new JLabel("Transfer time when changing trains:");
+		transferTimeLabel.setFont(new Font("Dialog", Font.BOLD, 11));
+		transferTimeLabel.setPreferredSize(new Dimension(215, 20));
+		sidebarGeneral.add(transferTimeLabel);
 
-		JComboBox<String> pairsList = new JComboBox<String>(new String[] { "Single source", "All pairs" });
-		pairsList.setSelectedIndex(Settings.shortestPathsAlgorithm);
-		pairsList.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Settings.shortestPathsAlgorithm = ((JComboBox) e.getSource()).getSelectedIndex();
-				app.repaintMap();
+		final JTextField transferTimeInput = new JTextField();
+		transferTimeInput.setPreferredSize(new Dimension(50, 20));
+		transferTimeInput.setText(String.valueOf(Settings.defaultTransferTimeInSeconds));
+		sidebarGeneral.add(transferTimeInput);
+		transferTimeInput.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				warn();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				warn();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				warn();
+			}
+
+			public void warn() {
+				if (transferTimeInput.getText().length() > 0) {
+					int value = (int) Integer.valueOf(transferTimeInput.getText());
+					if (value >= 0 && value <= 10000) {
+						Settings.defaultTransferTimeInSeconds = value;
+						ViewPosition vp = app.getSvgCanvas().getViewPositionObject();
+						saveCurrentSourceStationSelection();
+						app.initializeMap();
+						app.getSvgCanvas().setViewPosition(vp);
+						loadCurrentSourceStationSelection();
+						app.repaintMap();
+					} else {
+						JOptionPane.showMessageDialog(null, "Error: Please enter number between 1 and 10000", "Error Massage", JOptionPane.ERROR_MESSAGE);
+					}
+				}
 			}
 		});
-		pairsList.setPreferredSize(new Dimension(270, 22));
-		sidebarRendering.add(pairsList);
 
-		JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.addTab("General", null, sidebarGeneral, null);
-		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-		tabbedPane.addTab("Schematization", null, sidebarSchematization, null);
-		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-		tabbedPane.addTab("Rendering", null, sidebarRendering, null);
-		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+		// Generate Question button
+		final JButton questionBtn = new JButton("Generate question");
+		questionBtn.setPreferredSize(new Dimension(270, 30));
+		questionBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Settings.sourceStation != null && Settings.destinationStation != null) {
+					Settings.isGeneratingQuestion = true;
+					app.repaintMap();
+					String path = "";
+					try {
+						path = Questionnaire.generateQuestion(app);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+					JOptionPane.showMessageDialog(frame, "Wrote to " + path + "!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+					Settings.isGeneratingQuestion = false;
+				} else {
+					JOptionPane.showMessageDialog(frame, "Specify source and destination stations first!", "Warning!", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		sidebarGeneral.add(questionBtn);
 		
-		tabbedPane.setSelectedIndex(2); // Default tab
-
+		
+		JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane.addTab("Schematization", null, sidebarSchematization, null);
+		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+		tabbedPane.addTab("Rendering", null, sidebarRendering, null);
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+		tabbedPane.setSelectedIndex(0); // Default tab
+		
+		JTabbedPane tabbedQuestionnairePane = new JTabbedPane();
+		tabbedQuestionnairePane.addTab("General / Questionnaire", null, sidebarGeneral, null);
+		tabbedQuestionnairePane.setSelectedIndex(0); // Default tab
+		
+		JPanel splitPane = new JPanel();
+		splitPane.setLayout(new BorderLayout());
+		splitPane.add(BorderLayout.NORTH, tabbedQuestionnairePane);
+		splitPane.add(BorderLayout.CENTER, tabbedPane);
+		
 		center.add(BorderLayout.CENTER, this.svgCanvas);
 		main.add(BorderLayout.CENTER, center);
-		main.add(BorderLayout.WEST, tabbedPane);
+		main.add(BorderLayout.WEST, splitPane);
 
 		this.frame.getContentPane().add(main);
 		this.frame.addWindowListener(new WindowAdapter() {
