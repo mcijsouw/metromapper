@@ -125,6 +125,10 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		computedZoomLevel = zoomMultipliers[zoomLevel];
 
 	}
+	
+	public double getScaleMultiplier() {
+		return scaleMultiplier;
+	}
 
 	public ViewPosition getViewPositionObject() {
 		return new ViewPosition(this.zoomLevel, this.dragOffsetX, this.dragOffsetY);
@@ -251,7 +255,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 		// System.out.println("count: " + count);
 		// System.out.println(Math.atan(count / diff));
-		double r = baseThickness + Math.atan(Math.pow(count, 2) * c1 / Math.pow(diff, 2)) * 6; // dijkstra count curve
+		double r = baseThickness + Math.atan(Math.pow(count, 2) * c1 / Math.pow(diff, 2)) * 10; // dijkstra count curve
 
 		return r;
 	}
@@ -259,7 +263,12 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	private Point computePoint(MetroPath path, MetroEdge edge, MetroVertex mv, Integer slot, boolean debug) {
 
 		HashMap<Integer, MetroPath> slotlist = getSlotListForEdge(edge);
-		double angle = mv.getPerpendicularAngle();
+		double angle;
+		if(Settings.perpendicularAngleByPath) {
+			angle = mv.getPerpendicularAngleByPath(path);
+		} else {
+			angle = mv.getPerpendicularAngle();
+		}
 
 		if (debug) {
 			System.out.println("DEBUG: slotlist for edge " + edge + " and vertex " + mv + ": " + slotlist);
@@ -468,8 +477,17 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 					first = secondTemp;
 				}
 
-				double pAngleFirst = first.getPerpendicularAngle();
-				double pAngleSecond = second.getPerpendicularAngle();
+				
+				double pAngleFirst;
+				double pAngleSecond;
+				if(Settings.perpendicularAngleByPath) {
+					pAngleFirst = first.getPerpendicularAngleByPath(path);
+					pAngleSecond = second.getPerpendicularAngleByPath(path);
+				} else {
+					pAngleFirst = first.getPerpendicularAngle();
+					pAngleSecond = second.getPerpendicularAngle();
+				}
+				
 
 				Point p1org = new Point(first.getX(), first.getY());
 				Point p2org = new Point(second.getX(), second.getY());
@@ -530,7 +548,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 
 					// Dashed line
 
-					float dash[] = { (float) (thickness * scale), (float) (thickness * scale * 2.0) };
+					float dash[] = { (float) (thickness * scale * 0.5), (float) (thickness * scale * 1.0) };
 					g2d.setStroke(new BasicStroke((float) (thickness * scale), BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dash, 0.0f));
 					path2d.moveTo(getImageX(p1), getImageY(p1));
 					path2d.lineTo(getImageX(p2), getImageY(p2));
@@ -694,13 +712,13 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				}
 
 				Ellipse2D ellipse;
-				double stationRadius;
+				double stationRadius = 0;
 
 				// DEBUG! REMOVE
 				if (true) {
 					if (!isTransferGraph && (vertex.degree() > 2 || vertex.isIntersection())) {
 						// Draw circle
-						stationRadius = 2.5 * scale * transferGraphScaling;
+						stationRadius = 5 * scale * transferGraphScaling;
 						x = getImageX(vertex) - stationRadius;
 						y = getImageY(vertex) - stationRadius;
 						ellipse = new Ellipse2D.Float();
@@ -711,29 +729,31 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 						g2d.setStroke(new BasicStroke((float) (1.0 * scale * transferGraphScaling)));
 						g2d.draw(ellipse);
 
-					} else if (!isTransferGraph && vertex.degree() == 1) {
-						// Draw thick tick
-						stationRadius = 1.3 * scale * transferGraphScaling;
-						x = getImageX(vertex) - stationRadius;
-						y = getImageY(vertex) - stationRadius;
-						ellipse = new Ellipse2D.Float();
-						ellipse.setFrame(x, y, stationRadius * 2, stationRadius * 2);
-						g2d.setColor(Color.black);
-						g2d.setStroke(new BasicStroke(0));
-						g2d.fill(ellipse);
-						g2d.draw(ellipse);
-
 					} else {
-						// Draw normal tick
-						stationRadius = 0.7 * scale * transferGraphScaling;
-						x = getImageX(vertex) - stationRadius;
-						y = getImageY(vertex) - stationRadius;
-						ellipse = new Ellipse2D.Float();
-						ellipse.setFrame(x, y, stationRadius * 2, stationRadius * 2);
+						// Draw line tick
+						double angle = vertex.getPerpendicularAngle();
+						double thickness = vertex.getCombinedPathThickness(this, this.getGraph());
+						
+						double width = (1.0 * scale * transferGraphScaling);
+						double c = 0.33;
+						if (!isTransferGraph && vertex.degree() == 1) {
+							width = width * 2;
+							c = 1.0;
+						}
+						
+						double x1 = vertex.getX() + Math.cos(angle) * c * thickness / scaleMultiplier;
+						double y1 = vertex.getY() + Math.sin(angle) * c * thickness / scaleMultiplier;
+						double x2 = vertex.getX() - Math.cos(angle) * c * thickness / scaleMultiplier;
+						double y2 = vertex.getY() - Math.sin(angle) * c * thickness / scaleMultiplier;
+						Path2D tick = new Path2D.Double();
+						x = getImageX(vertex);
+						y = getImageY(vertex);
+						tick.moveTo(getImageX(x1), getImageY(y1));
+						tick.lineTo(getImageX(x2), getImageY(y2));
 						g2d.setColor(Color.black);
-						g2d.setStroke(new BasicStroke(0));
-						g2d.fill(ellipse);
-						g2d.draw(ellipse);
+						
+						g2d.setStroke(new BasicStroke((float) width, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+						g2d.draw(tick);
 
 					}
 

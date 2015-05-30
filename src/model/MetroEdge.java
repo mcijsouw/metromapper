@@ -97,7 +97,7 @@ public class MetroEdge extends UndirectedSparseEdge {
 		if(this.time.get(line) != null) {
 			return this.time.get(line);
 		}
-		return 1;
+		return 0;
 		//return Integer.MAX_VALUE; // @todo
 	}
 	

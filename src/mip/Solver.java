@@ -352,18 +352,25 @@ public class Solver extends SwingWorker<Void, Void> {
 			String id_first = vertexIDs.getLabel(first);
 			String id_second = vertexIDs.getLabel(second);
 			
-			// @Michel debug
-			if(Settings.modifiedSchematization == true) {
-				/*if(first.isIntersection()) {
-					minLength = first.getMinLength(this.app.getSvgCanvas(), g, paths);
-				} else if(second.isIntersection()) {
-					minLength = second.getMinLength(this.app.getSvgCanvas(), g, paths);
-				} else {
-					minLength = orgMinLength;
+			// @Michel
+			if(Settings.modifiedSchematization == true && Settings.increaseSpaceAroundIntersections == true) {
+				minLength = orgMinLength;
+				if(first.degree() > 2) {
+					minLength += (int) (first.getCombinedPathThickness(this.app.getSvgCanvas(), g) * 0.1);
 				}
+				if(second.degree() > 2) {
+					minLength += (int) (second.getCombinedPathThickness(this.app.getSvgCanvas(), g) * 0.1);
+				}
+				if(first.degree() > 2 && second.degree() > 2) {
+					minLength = (int) (minLength * 2);
+				}
+				minLength = (int) (minLength + minLength * e.getMultiplicity() * 0.2);
+				System.out.println("first comb path thickness: " + first.getCombinedPathThickness(this.app.getSvgCanvas(), g));
+				System.out.println("scaleMultiplier: " + this.app.getSvgCanvas().getScaleMultiplier());
+				System.out.println("minLength: " + minLength);
 				if(true) {
 					//throw new UnknownVariableException("die..");
-				}*/
+				}
 			}
 			
 			/* regular and main edges */

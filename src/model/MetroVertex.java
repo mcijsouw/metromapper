@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,13 +9,12 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
-import org.apache.xalan.extensions.MethodResolver;
-
-import app.SvgCanvas;
 import mip.GraphTools;
 import mip.comparator.CircularOrderComparator;
+import app.SvgCanvas;
 import edu.uci.ics.jung.graph.Edge;
 import edu.uci.ics.jung.graph.Graph;
+import edu.uci.ics.jung.graph.impl.UndirectedSparseGraph;
 import edu.uci.ics.jung.graph.impl.UndirectedSparseVertex;
 
 public class MetroVertex extends UndirectedSparseVertex {
@@ -32,11 +32,11 @@ public class MetroVertex extends UndirectedSparseVertex {
 	private double labelLength = 0;
 	private Color color = Color.BLACK;
 	private Integer[] passengerCount = new Integer[96];
-	
+
 	private MetroVertex originalVertex = null; // used in transfer graph
 	private boolean originalVertexIsDrawn = false;
 	private HashMap<MetroPath, MetroVertex> transferVertexMap = new HashMap<MetroPath, MetroVertex>();
-	
+
 	/**
 	 * 
 	 */
@@ -56,50 +56,44 @@ public class MetroVertex extends UndirectedSparseVertex {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public String toString() {
 		String v = super.toString();
 		return v + "[" + this.getName() + "]";
 	}
-	
-	public boolean getOriginalVertexIsDrawn()
-	{
+
+	public boolean getOriginalVertexIsDrawn() {
 		return this.originalVertexIsDrawn;
 	}
-	
-	public void setOriginalVertexIsDrawn(boolean b)
-	{
+
+	public void setOriginalVertexIsDrawn(boolean b) {
 		this.originalVertexIsDrawn = b;
 	}
-	
-	public MetroVertex getOriginalVertex()
-	{
+
+	public MetroVertex getOriginalVertex() {
 		return this.originalVertex;
 	}
-	
-	public void setOriginalVertex(MetroVertex v)
-	{
+
+	public void setOriginalVertex(MetroVertex v) {
 		this.originalVertex = v;
 	}
-	
-	public void setTransferVertexMap(HashMap<MetroPath, MetroVertex> map) 
-	{
+
+	public void setTransferVertexMap(HashMap<MetroPath, MetroVertex> map) {
 		this.transferVertexMap = map;
 	}
-	
-	public HashMap<MetroPath, MetroVertex> getTransferVertexMap() 
-	{
+
+	public HashMap<MetroPath, MetroVertex> getTransferVertexMap() {
 		return this.transferVertexMap;
 	}
-	
+
 	public void setPassengerCount(Integer[] passengerCount) {
 		this.passengerCount = passengerCount;
 	}
-	
+
 	public Integer[] getPassengerCount() {
 		return this.passengerCount;
 	}
-	
+
 	/**
 	 * @return Returns the name.
 	 */
@@ -387,20 +381,20 @@ public class MetroVertex extends UndirectedSparseVertex {
 	public void setColor(Color color) {
 		this.color = color;
 	}
-	
-	public double getPerpendicularAngle() {
+
+	public double getPerpendicularAngleByPath(MetroPath path) {
 		double angleSum = 0;
 		int angleSumAmount = 0;
-		for(Object o : this.getIncidentEdges()) {
+		for (Object o : this.getIncidentEdges()) {
 			MetroEdge e = (MetroEdge) o;
-			
+
 			int i = 0;
-			for(Boolean b : (Boolean[]) e.getUserDatum("lineArray")) {
-				//if(b == true && path.getName().equals("l" + i)) {
+			for (Boolean b : (Boolean[]) e.getUserDatum("lineArray")) {
+				if (b == true && path.getName().equals("l" + i)) {
 					MetroVertex first = e.getFirst();
 					MetroVertex second = e.getSecond();
-					
-					if(second.equals(this)) {
+
+					if (second.equals(this)) {
 						// turn around
 						MetroVertex tempFirst = first;
 						first = second;
@@ -409,66 +403,100 @@ public class MetroVertex extends UndirectedSparseVertex {
 					double angle = Math.atan2(first.getY() - second.getY(), first.getX() - second.getX());
 					angleSum += angle;
 					angleSumAmount++;
-				//}
+				}
 				i++;
 			}
-			
+
 		}
 		double degreeOneAdjustment = 0.0;
-		if(this.degree() == 1) {
+		if (angleSumAmount == 1) {
 			degreeOneAdjustment = Math.PI * 0.5;
 		}
-		return (angleSum / (double)angleSumAmount) + degreeOneAdjustment;
+		return (angleSum / (double) angleSumAmount) + degreeOneAdjustment;
+	}
+
+	public double getPerpendicularAngle() {
+		double angleSum = 0;
+		int angleSumAmount = 0;
+		for (Object o : this.getIncidentEdges()) {
+			MetroEdge e = (MetroEdge) o;
+
+			int i = 0;
+			for (Boolean b : (Boolean[]) e.getUserDatum("lineArray")) {
+				// if(b == true && path.getName().equals("l" + i)) {
+				MetroVertex first = e.getFirst();
+				MetroVertex second = e.getSecond();
+
+				if (second.equals(this)) {
+					// turn around
+					MetroVertex tempFirst = first;
+					first = second;
+					second = tempFirst;
+				}
+				double angle = Math.atan2(first.getY() - second.getY(), first.getX() - second.getX());
+				angleSum += angle;
+				angleSumAmount++;
+				// }
+				i++;
+			}
+
+		}
+		double degreeOneAdjustment = 0.0;
+		if (this.degree() == 1) {
+			degreeOneAdjustment = Math.PI * 0.5;
+		}
+		return (angleSum / (double) angleSumAmount) + degreeOneAdjustment;
 	}
 
 	public double getCombinedThickness(SvgCanvas canvas, MetroPath path) {
-		
+
 		double combinedThickness = 0;
 		int combinedThicknessAmount = 0;
-		for(Object incObj : this.getIncidentEdges()) {
+		for (Object incObj : this.getIncidentEdges()) {
 			MetroEdge incEdge = (MetroEdge) incObj;
 			int i = -1;
-			for(Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
+			for (Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
 				i++;
-				if(b == true && path.getName().equals("l" + i)) {
+				if (b == true && path.getName().equals("l" + i)) {
 					combinedThickness += canvas.getLineThickness(path, incEdge);
 					combinedThicknessAmount++;
 					break;
 				}
 			}
 		}
-		
-		if(combinedThicknessAmount > 0) {
+
+		if (combinedThicknessAmount > 0) {
 			return (combinedThickness / (double) combinedThicknessAmount);
 		}
 		return 0;
 	}
 
-	public int getMinLength(SvgCanvas canvas, Graph g, Set paths) {
-		double max = 0.0;
-		for(Object incObj : this.getIncidentEdges()) {
+	public double getCombinedPathThickness(SvgCanvas canvas, Graph g) {
+		Set paths = GraphTools.getMetroLines(g);
+		double total = 0;
+		for (Object incObj : this.getIncidentEdges()) {
 			MetroEdge incEdge = (MetroEdge) incObj;
 			int i = 0;
-			double total = 0.0;
-			for(Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
-				if(b == true) {
+			for (Boolean b : (Boolean[]) incEdge.getUserDatum("lineArray")) {
+				if (b == true) {
 					MetroPath path = null;
-					for(Object o : paths) {
+					for (Object o : paths) {
 						MetroPath p = (MetroPath) o;
-						if(p.getName().equals("l" + i)) {
+						if (p.getName().equals("l" + i)) {
 							incEdge.getDijkstraCount(p.getName());
 							path = p;
 							break;
 						}
 					}
-					System.out.println("canvas.getLineThickness(" + path + ", " + incEdge + ")");
-					total += canvas.getLineThickness(path, incEdge);
+					//System.out.println("canvas.getLineThickness(" + path + ", " + incEdge + ")");
+					double increase = canvas.getLineThickness(path, incEdge);
+					total += increase;
 				}
 				i++;
 			}
-			max = Math.max(max, total);
 		}
-		return (int) max;
+		return total;
 	}
+
 
 }

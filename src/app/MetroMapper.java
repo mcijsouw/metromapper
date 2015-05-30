@@ -2,12 +2,12 @@ package app;
 
 import io.GraphMLReader;
 
-import javax.swing.ComboBoxModel;
+import java.io.File;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import mip.Solver;
-import model.MetroVertex;
 import model.TransferGraph;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.utils.UserData;
@@ -36,11 +36,28 @@ public class MetroMapper {
 		this.initializeMap("resources/graphml/" + Settings.inputMap);
 	}
 	
+	public void initializeMap(File file) {
+		try {
+			GraphMLReader reader = new GraphMLReader();
+			this.g = reader.loadGraphBySelectedFile(file);
+			this._initializeMapPostProcess();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void initializeMap(String resource) {
-
 		try {
 			GraphMLReader reader = new GraphMLReader();
 			this.g = reader.loadGraph(resource);
+			this._initializeMapPostProcess();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void _initializeMapPostProcess() {
+		try {
 			Graph tg = TransferGraph.convert(this.g);
 			this.g.addUserDatum("transferGraph", tg, UserData.SHARED);
 			if(Settings.renderTransferGraph) {

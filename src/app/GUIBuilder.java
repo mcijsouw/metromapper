@@ -473,10 +473,11 @@ public class GUIBuilder {
 					try {
 
 						File file = chooser.getSelectedFile();
-						GraphMLReader r = new GraphMLReader();
 						Settings.loadedGraphMLFile = file.getName();
-						svgCanvas.renderGraph(r.loadGraphBySelectedFile(file));
+						app.initializeMap(file);
 						frame.setTitle(file.getName() + " - MetroMapper");
+						
+						
 
 					} catch (Exception ex) {
 						ex.printStackTrace();
@@ -836,6 +837,7 @@ public class GUIBuilder {
 		for (MetroVertex v : list) {
 			this.stationComboBox.addItem(v);
 		}
+		System.out.println(list.size() + " stationComboBox items added");
 		this.stationComboBox.addActionListener(this.stationComboBoxActionListener);
 		loadCurrentSourceStationSelection();
 	}
