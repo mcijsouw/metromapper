@@ -129,7 +129,7 @@ public class GUIBuilder {
 		mapList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Settings.inputMap = (String) ((JComboBox) e.getSource()).getSelectedItem();
-				Settings.loadedGraphMLFile = "";
+				Settings.loadedGraphMLFile = null;
 				app.initializeMap();
 			}
 		});
@@ -473,7 +473,7 @@ public class GUIBuilder {
 					try {
 
 						File file = chooser.getSelectedFile();
-						Settings.loadedGraphMLFile = file.getName();
+						Settings.loadedGraphMLFile = file;
 						app.initializeMap(file);
 						frame.setTitle(file.getName() + " - MetroMapper");
 						
@@ -837,7 +837,7 @@ public class GUIBuilder {
 		for (MetroVertex v : list) {
 			this.stationComboBox.addItem(v);
 		}
-		System.out.println(list.size() + " stationComboBox items added");
+		//System.out.println(list.size() + " stationComboBox items added");
 		this.stationComboBox.addActionListener(this.stationComboBoxActionListener);
 		loadCurrentSourceStationSelection();
 	}

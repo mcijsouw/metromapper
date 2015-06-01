@@ -209,7 +209,7 @@ public class GraphMLReader {
 				if (!(gotX && gotY))
 					throw new FatalException("Vertex has no position data");
 				if(Settings.flipMap == true) {
-					Point2D p = this.rotate(mv, 135.0);
+					Point2D p = this.rotate(mv, (double) Settings.flipMapAngle);
 					mv.setX(p.getX());
 					mv.setY(p.getY() * -1);
 				}

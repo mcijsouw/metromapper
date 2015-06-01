@@ -1,6 +1,7 @@
 package io;
 
 import java.awt.Graphics2D;
+import java.awt.geom.Path2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,7 +13,11 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import mip.GraphTools;
+import model.MetroEdge;
+import model.MetroPath;
 import model.MetroVertex;
+import model.Point;
 import model.TransferGraphEdge;
 import app.Dijkstra;
 import app.MetroMapper;
@@ -55,8 +60,8 @@ public class Questionnaire {
 			Graph g = app.getGraph();
 			
 			String map = Settings.inputMap;
-			if(Settings.loadedGraphMLFile != "") {
-				map = Settings.loadedGraphMLFile;
+			if(Settings.loadedGraphMLFile instanceof File) {
+				map = Settings.loadedGraphMLFile.getName();
 			}
 			
 			// Schematization
@@ -118,6 +123,20 @@ public class Questionnaire {
 			output += "\t'schematization' => '" + schematization + "',\r\n";
 			output += "\t'visualization' => '" + visualization + "',\r\n";
 			output += "\t'arrowhints' => " + arrowHints + ",\r\n";
+
+			// Average edge time
+			int timeTotal = 0;
+			int timeTotalCount = 0;
+			for (Object pathObject : GraphTools.getMetroLines(g)) {
+				MetroPath path = (MetroPath) pathObject;
+				for (Object edgeObject : path) {
+					MetroEdge edge = (MetroEdge) edgeObject;
+					timeTotal += edge.getTime(path.getName());
+					timeTotalCount++;
+				}
+			}
+			output += "\t'averageEdgeTime' => " + (timeTotal / timeTotalCount) + ",\r\n";
+			
 			output += ");\r\n";
 		
 			try {

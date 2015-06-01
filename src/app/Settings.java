@@ -1,5 +1,7 @@
 package app;
 
+import java.io.File;
+
 import model.MetroVertex;
 
 public class Settings {
@@ -36,7 +38,7 @@ public class Settings {
 	public static boolean drawOriginalVertices = true;
 	public static String saveSVGDefaultFilePath = "D:/Eclipse Workspace/MetroMapper";
 	public static String loadGraphMLDefaultFilePath = "D:/Eclipse Workspace/MetroMapper/solver";
-	public static String loadedGraphMLFile = "";
+	public static File loadedGraphMLFile = null;
 	public static int passengerCountTime = 30; // 0..95 (24 * 4 time slots)
 	public static int lineThicknessAlgorithm = LINE_THICKNESS_DIJKSTRA_PATH_COUNT;
 	public static int shortestPathsAlgorithm = SHORTEST_PATHS_ALL_PAIRS;
@@ -52,6 +54,7 @@ public class Settings {
 	public static boolean isGeneratingQuestion = false;
 	public static boolean fixedLineThicknesses = true;
 	public static boolean flipMap = false;
+	public static int flipMapAngle = 135;
 	public static String questionnaireBasePath = "D:/Xampp/htdocs/metromapper.dev/public_html/maps/";
 	public static boolean perpendicularAngleByPath = true;
 	public static boolean increaseSpaceAroundIntersections = true;

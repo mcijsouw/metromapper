@@ -352,6 +352,9 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	}
 
 	private void drawGraphToG2D(Graphics2D g2d, Graph g) {
+		
+		int timeTotal = 0;
+		int timeTotalCount = 0;
 
 		double scale = zoomMultipliers[zoomLevel];
 		boolean isTransferGraph = (g.getUserDatum("isTransferGraph") != null && g.getUserDatum("isTransferGraph").equals(true));
@@ -464,6 +467,10 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				// line thickness
 				double thickness = getLineThickness(path, edge);
 
+				// Compute average edge time
+				timeTotal += edge.getTime(path.getName());
+				timeTotalCount++;
+				
 				MetroVertex first = edge.getFirst();
 				MetroVertex second = edge.getSecond();
 
@@ -544,7 +551,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 					g2d.setStroke(new BasicStroke((float) (0.25 * scale), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
 					g2d.drawPolygon(polygon);
 
-				} else if (dijkstraCount == 0 && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE) {
+				} else if (dijkstraCount == 0 && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE && Settings.drawArrowHints == false) {
 
 					// Dashed line
 
@@ -794,7 +801,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 			}
 
 		}
-
+		System.out.println("Average edge time: " + (timeTotal / timeTotalCount) + "s");
 		// System.out.println("--- drawing done ---");
 	}
 

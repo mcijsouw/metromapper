@@ -33,7 +33,11 @@ public class MetroMapper {
 	}
 	
 	public void initializeMap() {
-		this.initializeMap("resources/graphml/" + Settings.inputMap);
+		if(Settings.loadedGraphMLFile instanceof File) {
+			this.initializeMap(Settings.loadedGraphMLFile);
+		} else {
+			this.initializeMap("resources/graphml/" + Settings.inputMap);
+		}
 	}
 	
 	public void initializeMap(File file) {
