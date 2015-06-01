@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
@@ -23,6 +22,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Path2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -69,6 +69,8 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 	private MetroMapper app;
 
 	private boolean shiftButtonIsDown = false;
+	
+	private ArrayList<String> inverseSlotsDirtyList = new ArrayList<String>();
 
 	HashMap<MetroEdge, HashMap<Integer, MetroPath>> slotLists;
 
@@ -85,6 +87,16 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		closedHand = toolkit.createCustomCursor(toolkit.createImage("resources\\img\\cursor-closed-hand.png"), new java.awt.Point(8, 6), "closedHand");
 		this.setCursor(openHand);
 		this.countReader = new CSVCountReader();
+		
+		// Inverse slot sequence for these stations
+		this.inverseSlotsDirtyList.add("Central");
+		this.inverseSlotsDirtyList.add("Town Hall");
+		this.inverseSlotsDirtyList.add("Circular Quay");
+		this.inverseSlotsDirtyList.add("d0");
+		this.inverseSlotsDirtyList.add("St James");
+		this.inverseSlotsDirtyList.add("Museum");
+		this.inverseSlotsDirtyList.add("Erskineville");
+		
 	}
 
 	public void initializeView() {
@@ -301,8 +313,13 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 			offset -= totalEdgeOffset * 0.5;
 		}
 
-		double x = mv.getX() + Math.cos(angle) * offset / scaleMultiplier;
-		double y = mv.getY() + Math.sin(angle) * offset / scaleMultiplier;
+		int dirtyFixConstant = 1;
+		if(this.inverseSlotsDirtyList.contains(mv.getName())) {
+			dirtyFixConstant = -1;
+		}
+		
+		double x = mv.getX() + Math.cos(angle) * offset / scaleMultiplier * dirtyFixConstant;
+		double y = mv.getY() + Math.sin(angle) * offset / scaleMultiplier * dirtyFixConstant;
 
 		return new Point(x, y);
 	}
@@ -801,7 +818,7 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 			}
 
 		}
-		System.out.println("Average edge time: " + (timeTotal / timeTotalCount) + "s");
+		//System.out.println("Average edge time: " + (timeTotal / timeTotalCount) + "s");
 		// System.out.println("--- drawing done ---");
 	}
 

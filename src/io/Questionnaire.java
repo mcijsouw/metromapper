@@ -96,7 +96,7 @@ public class Questionnaire {
 				if(first.degree() > 2 && answerIntersections.contains(first) == false && first.getName().equals(Settings.sourceStation.getName()) == false && first.getName().equals(Settings.destinationStation.getName()) == false) {
 					answerIntersections.add(first);
 				}
-				if(second.degree() > 2 && answerIntersections.contains(second) == false && first.getName().equals(Settings.sourceStation.getName()) == false && first.getName().equals(Settings.destinationStation.getName()) == false) {
+				if(second.degree() > 2 && answerIntersections.contains(second) == false && second.getName().equals(Settings.sourceStation.getName()) == false && second.getName().equals(Settings.destinationStation.getName()) == false) {
 					answerIntersections.add(second);
 				}
 			}
