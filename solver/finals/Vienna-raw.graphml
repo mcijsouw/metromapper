@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" xmlns:y="http://www.yworks.com/xml/graphml">
+<key id="x" for="node" attr.name="x_coordinate" attr.type="double"/>
+<key id="y" for="node" attr.name="y_coordinate" attr.type="double"/>
+<key id="label" for="node" attr.name="station_name" attr.type="string"/>
+<key id="time" for="edge" attr.name="edge_time" attr.type="integer"/><key id="regular" for="node" attr.name="regular_vertex" attr.type="boolean"/>
+<key id="dummy" for="node" attr.name="dummy_vertex" attr.type="boolean"/>
+<key id="labelVertex" for="node" attr.name="label_vertex" attr.type="boolean"/>
+<key id="tick" for="node" attr.name="tick_vertex" attr.type="boolean"/>
+<key id="weight" for="edge" attr.name="edge_weight" attr.type="integer"/>
+<key id="dijkstra_count" for="edge" attr.name="edge_weight" attr.type="integer"/>
+<key id="l0" for="edge" attr.name="l0" attr.type="boolean" color.r="34" color.g="139" color.b="34">
+	<default>FALSE</default>
+</key>
+<key id="l1" for="edge" attr.name="l1" attr.type="boolean" color.r="165" color.g="42" color.b="42">
+	<default>FALSE</default>
+</key>
+<key id="l2" for="edge" attr.name="l2" attr.type="boolean" color.r="255" color.g="140" color.b="0">
+	<default>FALSE</default>
+</key>
+<key id="l3" for="edge" attr.name="l3" attr.type="boolean" color.r="255" color.g="0" color.b="0">
+	<default>FALSE</default>
+</key>
+<key id="l4" for="edge" attr.name="l4" attr.type="boolean" color.r="208" color.g="32" color.b="144">
+	<default>FALSE</default>
+</key>
+<graph id="G" edgedefault="undirected">
+<node id="n54">
+	<data key="x">48.0</data>
+	<data key="y">36.0</data>
+	<data key="label">Kardinal-Nagel-Platz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n72">
+	<data key="x">63.0</data>
+	<data key="y">66.0</data>
+	<data key="label">Kagraner Platz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n18">
+	<data key="x">33.0</data>
+	<data key="y">54.0</data>
+	<data key="label">Spittelau</data>
+	<data key="regular">true</data>
+</node>
+<node id="n36">
+	<data key="x">30.0</data>
+	<data key="y">51.0</data>
+	<data key="label">Nußdorfer Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n0">
+	<data key="x">0.0</data>
+	<data key="y">27.0</data>
+	<data key="label">Hütteldorf</data>
+	<data key="regular">true</data>
+</node>
+<node id="n71">
+	<data key="x">60.0</data>
+	<data key="y">63.0</data>
+	<data key="label">Kagran</data>
+	<data key="tick">true</data>
+</node>
+<node id="n17">
+	<data key="x">33.0</data>
+	<data key="y">51.0</data>
+	<data key="label">Friedensbrücke</data>
+	<data key="tick">true</data>
+</node>
+<node id="n35">
+	<data key="x">27.0</data>
+	<data key="y">48.0</data>
+	<data key="label">Währinger Straße Volksoper</data>
+	<data key="tick">true</data>
+</node>
+<node id="n53">
+	<data key="x">45.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Rochusgasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n70">
+	<data key="x">57.0</data>
+	<data key="y">60.0</data>
+	<data key="label">Alte Donau</data>
+	<data key="tick">true</data>
+</node>
+<node id="n34">
+	<data key="x">24.0</data>
+	<data key="y">45.0</data>
+	<data key="label">Michelbeuern AKH</data>
+	<data key="tick">true</data>
+</node>
+<node id="n52">
+	<data key="x">39.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Stubentor</data>
+	<data key="tick">true</data>
+</node>
+<node id="n16">
+	<data key="x">33.0</data>
+	<data key="y">48.0</data>
+	<data key="label">Roßauer Lände</data>
+	<data key="tick">true</data>
+</node>
+<node id="n69">
+	<data key="x">54.0</data>
+	<data key="y">57.0</data>
+	<data key="label">VIC Kaisermühlen</data>
+	<data key="tick">true</data>
+</node>
+<node id="n33">
+	<data key="x">21.0</data>
+	<data key="y">42.0</data>
+	<data key="label">Alser Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n51">
+	<data key="x">36.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Stephansplatz</data>
+	<data key="regular">true</data>
+</node>
+<node id="n15">
+	<data key="x">36.0</data>
+	<data key="y">45.0</data>
+	<data key="label">Schottenring</data>
+	<data key="regular">true</data>
+</node>
+<node id="n32">
+	<data key="x">21.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Josefstädter Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n50">
+	<data key="x">33.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Herrengasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n68">
+	<data key="x">51.0</data>
+	<data key="y">54.0</data>
+	<data key="label">Donauinsel</data>
+	<data key="tick">true</data>
+</node>
+<node id="n14">
+	<data key="x">39.0</data>
+	<data key="y">42.0</data>
+	<data key="label">Schwedenplatz</data>
+	<data key="regular">true</data>
+</node>
+<node id="n49">
+	<data key="x">30.0</data>
+	<data key="y">36.0</data>
+	<data key="label">Volkstheater</data>
+	<data key="regular">true</data>
+</node>
+<node id="n67">
+	<data key="x">48.0</data>
+	<data key="y">51.0</data>
+	<data key="label">Vorgartenstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n13">
+	<data key="x">42.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Landstraße</data>
+	<data key="regular">true</data>
+</node>
+<node id="n31">
+	<data key="x">21.0</data>
+	<data key="y">36.0</data>
+	<data key="label">Thaliastraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n48">
+	<data key="x">27.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Neubaugasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n66">
+	<data key="x">45.0</data>
+	<data key="y">48.0</data>
+	<data key="label">Praterstern</data>
+	<data key="regular">true</data>
+</node>
+<node id="n12">
+	<data key="x">39.0</data>
+	<data key="y">36.0</data>
+	<data key="label">Stadtpark</data>
+	<data key="tick">true</data>
+</node>
+<node id="n30">
+	<data key="x">21.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Burggasse Stadthalle</data>
+	<data key="tick">true</data>
+</node>
+<node id="n47">
+	<data key="x">24.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Zieglergasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n65">
+	<data key="x">42.0</data>
+	<data key="y">45.0</data>
+	<data key="label">Nestroyplatz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n83">
+	<data key="x">54.0</data>
+	<data key="y">42.0</data>
+	<data key="label">Stadion</data>
+	<data key="regular">true</data>
+</node>
+<node id="n11">
+	<data key="x">36.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Karlsplatz</data>
+	<data key="regular">true</data>
+</node>
+<node id="n29">
+	<data key="x">21.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Westbahnhof</data>
+	<data key="regular">true</data>
+</node>
+<node id="n64">
+	<data key="x">36.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Taubstummengasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n82">
+	<data key="x">51.0</data>
+	<data key="y">45.0</data>
+	<data key="label">Trabrennstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n10">
+	<data key="x">33.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Kettenbrückengasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n28">
+	<data key="x">21.0</data>
+	<data key="y">27.0</data>
+	<data key="label">Gumpendorfer Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n46">
+	<data key="x">18.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Schweglerstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n63">
+	<data key="x">36.0</data>
+	<data key="y">27.0</data>
+	<data key="label">Südtiroler Platz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n81">
+	<data key="x">48.0</data>
+	<data key="y">48.0</data>
+	<data key="label">Messe</data>
+	<data key="tick">true</data>
+</node>
+<node id="n9">
+	<data key="x">30.0</data>
+	<data key="y">27.0</data>
+	<data key="label">Pilgramgasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n27">
+	<data key="x">21.0</data>
+	<data key="y">21.0</data>
+	<data key="label">Niederhofstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n45">
+	<data key="x">15.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Johnstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n62">
+	<data key="x">36.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Keplerplatz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n80">
+	<data key="x">39.0</data>
+	<data key="y">48.0</data>
+	<data key="label">Taborstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n26">
+	<data key="x">21.0</data>
+	<data key="y">18.0</data>
+	<data key="label">Philadelphiabrücke</data>
+	<data key="tick">true</data>
+</node>
+<node id="n44">
+	<data key="x">12.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Hütteldorfer Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n8">
+	<data key="x">27.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Margaretengürtel</data>
+	<data key="tick">true</data>
+</node>
+<node id="n79">
+	<data key="x">33.0</data>
+	<data key="y">42.0</data>
+	<data key="label">Schottentor</data>
+	<data key="tick">true</data>
+</node>
+<node id="n25">
+	<data key="x">21.0</data>
+	<data key="y">15.0</data>
+	<data key="label">Tscherttegasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n43">
+	<data key="x">12.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Kendlerstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n61">
+	<data key="x">36.0</data>
+	<data key="y">21.0</data>
+	<data key="label">Reumannplatz</data>
+	<data key="regular">true</data>
+</node>
+<node id="n7">
+	<data key="x">21.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Längenfeldgasse</data>
+	<data key="regular">true</data>
+</node>
+<node id="n78">
+	<data key="x">30.0</data>
+	<data key="y">39.0</data>
+	<data key="label">Rathaus</data>
+	<data key="tick">true</data>
+</node>
+<node id="n24">
+	<data key="x">18.0</data>
+	<data key="y">12.0</data>
+	<data key="label">Am Schöpfwerk</data>
+	<data key="tick">true</data>
+</node>
+<node id="n42">
+	<data key="x">12.0</data>
+	<data key="y">36.0</data>
+	<data key="label">Ottakring</data>
+	<data key="regular">true</data>
+</node>
+<node id="n60">
+	<data key="x">54.0</data>
+	<data key="y">18.0</data>
+	<data key="label">Simmering</data>
+	<data key="regular">true</data>
+</node>
+<node id="n6">
+	<data key="x">18.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Meidling Hauptstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n77">
+	<data key="x">33.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Museumsquartier</data>
+	<data key="tick">true</data>
+</node>
+<node id="n41">
+	<data key="x">48.0</data>
+	<data key="y">69.0</data>
+	<data key="label">Floridsdorf</data>
+	<data key="regular">true</data>
+</node>
+<node id="n59">
+	<data key="x">54.0</data>
+	<data key="y">21.0</data>
+	<data key="label">Enkplatz</data>
+	<data key="tick">true</data>
+</node>
+<node id="n5">
+	<data key="x">15.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Schönbrunn</data>
+	<data key="tick">true</data>
+</node>
+<node id="n23">
+	<data key="x">15.0</data>
+	<data key="y">9.0</data>
+	<data key="label">Alterlaa</data>
+	<data key="tick">true</data>
+</node>
+<node id="n40">
+	<data key="x">45.0</data>
+	<data key="y">66.0</data>
+	<data key="label">Neue Donau</data>
+	<data key="tick">true</data>
+</node>
+<node id="n58">
+	<data key="x">54.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Zippererstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n76">
+	<data key="x">69.0</data>
+	<data key="y">78.0</data>
+	<data key="label">Leopoldau</data>
+	<data key="regular">true</data>
+</node>
+<node id="n4">
+	<data key="x">12.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Hietzing</data>
+	<data key="tick">true</data>
+</node>
+<node id="n22">
+	<data key="x">15.0</data>
+	<data key="y">6.0</data>
+	<data key="label">Erlaaer Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n39">
+	<data key="x">42.0</data>
+	<data key="y">63.0</data>
+	<data key="label">Handelskai</data>
+	<data key="tick">true</data>
+</node>
+<node id="n57">
+	<data key="x">54.0</data>
+	<data key="y">27.0</data>
+	<data key="label">Gasometer</data>
+	<data key="tick">true</data>
+</node>
+<node id="n75">
+	<data key="x">66.0</data>
+	<data key="y">75.0</data>
+	<data key="label">Großfeldsiedlung</data>
+	<data key="tick">true</data>
+</node>
+<node id="n3">
+	<data key="x">9.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Braunschweiggasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n21">
+	<data key="x">15.0</data>
+	<data key="y">3.0</data>
+	<data key="label">Perfektastraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n56">
+	<data key="x">54.0</data>
+	<data key="y">30.0</data>
+	<data key="label">Erdberg</data>
+	<data key="tick">true</data>
+</node>
+<node id="n74">
+	<data key="x">66.0</data>
+	<data key="y">72.0</data>
+	<data key="label">Aderklaaer Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n2">
+	<data key="x">6.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Unter St. Veit</data>
+	<data key="tick">true</data>
+</node>
+<node id="n20">
+	<data key="x">15.0</data>
+	<data key="y">0.0</data>
+	<data key="label">Siebenhirten</data>
+	<data key="regular">true</data>
+</node>
+<node id="n38">
+	<data key="x">39.0</data>
+	<data key="y">60.0</data>
+	<data key="label">Dresdner Straße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n55">
+	<data key="x">51.0</data>
+	<data key="y">33.0</data>
+	<data key="label">Schlachthausgasse</data>
+	<data key="tick">true</data>
+</node>
+<node id="n73">
+	<data key="x">66.0</data>
+	<data key="y">69.0</data>
+	<data key="label">Rennbahnweg</data>
+	<data key="tick">true</data>
+</node>
+<node id="n19">
+	<data key="x">33.0</data>
+	<data key="y">57.0</data>
+	<data key="label">Heiligenstadt</data>
+	<data key="regular">true</data>
+</node>
+<node id="n37">
+	<data key="x">36.0</data>
+	<data key="y">57.0</data>
+	<data key="label">Jägerstraße</data>
+	<data key="tick">true</data>
+</node>
+<node id="n1">
+	<data key="x">3.0</data>
+	<data key="y">24.0</data>
+	<data key="label">Ober St. Veit</data>
+	<data key="tick">true</data>
+</node>
+<edge id="e0" source="n64" target="n11">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e1" source="n54" target="n55">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e2" source="n43" target="n44">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e3" source="n47" target="n48">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e4" source="n13" target="n14">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e5" source="n61" target="n62">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e6" source="n37" target="n38">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e7" source="n82" target="n83">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e8" source="n66" target="n67">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e9" source="n67" target="n68">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e10" source="n26" target="n27">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e11" source="n13" target="n53">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e12" source="n11" target="n51">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e13" source="n29" target="n47">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e14" source="n11" target="n12">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e15" source="n20" target="n21">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e16" source="n25" target="n26">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e17" source="n14" target="n65">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e18" source="n12" target="n13">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e19" source="n51" target="n52">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e20" source="n55" target="n56">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e21" source="n49" target="n78">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e22" source="n52" target="n13">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e23" source="n56" target="n57">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e24" source="n62" target="n63">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e25" source="n59" target="n60">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e26" source="n10" target="n11">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e27" source="n58" target="n59">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e28" source="n0" target="n1">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e29" source="n9" target="n10">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e30" source="n21" target="n22">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e31" source="n2" target="n3">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e32" source="n16" target="n17">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e33" source="n53" target="n54">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e34" source="n81" target="n82">
+	<data key="l4">true</data>
+	<data key="time" line="l4">60</data>
+</edge>
+<edge id="e35" source="n4" target="n5">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e36" source="n48" target="n49">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e37" source="n40" target="n41">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e38" source="n68" target="n69">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e39" source="n79" target="n15">
+	<data key="l4">true</data>
+	<data key="time" line="l4">60</data>
+</edge>
+<edge id="e40" source="n75" target="n76">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e41" source="n44" target="n45">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e42" source="n74" target="n75">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e43" source="n80" target="n66">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e44" source="n50" target="n51">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e45" source="n8" target="n9">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e46" source="n39" target="n40">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e47" source="n1" target="n2">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e48" source="n7" target="n28">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e49" source="n14" target="n15">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e50" source="n18" target="n37">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e51" source="n3" target="n4">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e52" source="n6" target="n7">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e53" source="n63" target="n64">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e54" source="n46" target="n29">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e55" source="n70" target="n71">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e56" source="n71" target="n72">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e57" source="n33" target="n34">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e58" source="n32" target="n33">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e59" source="n57" target="n58">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e60" source="n11" target="n77">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e61" source="n73" target="n74">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e62" source="n34" target="n35">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e63" source="n35" target="n36">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e64" source="n27" target="n7">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e65" source="n5" target="n6">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e66" source="n18" target="n19">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e67" source="n31" target="n32">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e68" source="n23" target="n24">
+	<data key="l1">true</data>
+	<data key="time" line="l1">180</data>
+</edge>
+<edge id="e69" source="n29" target="n30">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e70" source="n36" target="n18">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e71" source="n28" target="n29">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e72" source="n65" target="n66">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e73" source="n7" target="n8">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e74" source="n30" target="n31">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e75" source="n69" target="n70">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e76" source="n49" target="n50">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e77" source="n78" target="n79">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e78" source="n72" target="n73">
+	<data key="l3">true</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e79" source="n45" target="n46">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e80" source="n38" target="n39">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e81" source="n77" target="n49">
+	<data key="l4">true</data>
+	<data key="time" line="l4">60</data>
+</edge>
+<edge id="e82" source="n24" target="n25">
+	<data key="l1">true</data>
+	<data key="time" line="l1">60</data>
+</edge>
+<edge id="e83" source="n15" target="n80">
+	<data key="l4">true</data>
+	<data key="time" line="l4">60</data>
+</edge>
+<edge id="e84" source="n66" target="n81">
+	<data key="l4">true</data>
+	<data key="time" line="l4">120</data>
+</edge>
+<edge id="e85" source="n51" target="n14">
+	<data key="l3">true</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e86" source="n22" target="n23">
+	<data key="l1">true</data>
+	<data key="time" line="l1">120</data>
+</edge>
+<edge id="e87" source="n42" target="n43">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e88" source="n15" target="n16">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e89" source="n17" target="n18">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+</graph>
+</graphml>

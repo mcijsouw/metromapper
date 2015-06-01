@@ -1,0 +1,3674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" xmlns:y="http://www.yworks.com/xml/graphml">
+<key id="x" for="node" attr.name="x_coordinate" attr.type="double"/>
+<key id="y" for="node" attr.name="y_coordinate" attr.type="double"/>
+<key id="label" for="node" attr.name="station_name" attr.type="string"/>
+<key id="time" for="edge" attr.name="edge_time" attr.type="integer"/><key id="regular" for="node" attr.name="regular_vertex" attr.type="boolean"/>
+<key id="dummy" for="node" attr.name="dummy_vertex" attr.type="boolean"/>
+<key id="labelVertex" for="node" attr.name="label_vertex" attr.type="boolean"/>
+<key id="tick" for="node" attr.name="tick_vertex" attr.type="boolean"/>
+<key id="weight" for="edge" attr.name="edge_weight" attr.type="integer"/>
+<key id="dijkstra_count" for="edge" attr.name="edge_weight" attr.type="integer"/>
+<key id="l0" for="edge" attr.name="l0" attr.type="boolean" color.r="0" color.g="176" color.b="144">
+	<default>FALSE</default>
+</key>
+<key id="l1" for="edge" attr.name="l1" attr.type="boolean" color.r="255" color.g="182" color.b="193">
+	<default>FALSE</default>
+</key>
+<key id="l2" for="edge" attr.name="l2" attr.type="boolean" color.r="50" color.g="205" color.b="50">
+	<default>FALSE</default>
+</key>
+<key id="l3" for="edge" attr.name="l3" attr.type="boolean" color.r="255" color.g="215" color.b="0">
+	<default>FALSE</default>
+</key>
+<key id="l4" for="edge" attr.name="l4" attr.type="boolean" color.r="0" color.g="255" color.b="192">
+	<default>FALSE</default>
+</key>
+<key id="l5" for="edge" attr.name="l5" attr.type="boolean" color.r="0" color.g="0" color.b="0">
+	<default>FALSE</default>
+</key>
+<key id="l6" for="edge" attr.name="l6" attr.type="boolean" color.r="64" color.g="160" color.b="240">
+	<default>FALSE</default>
+</key>
+<key id="l7" for="edge" attr.name="l7" attr.type="boolean" color.r="255" color.g="0" color.b="0">
+	<default>FALSE</default>
+</key>
+<key id="l8" for="edge" attr.name="l8" attr.type="boolean" color.r="199" color.g="21" color.b="133">
+	<default>FALSE</default>
+</key>
+<key id="l9" for="edge" attr.name="l9" attr.type="boolean" color.r="190" color.g="190" color.b="190">
+	<default>FALSE</default>
+</key>
+<key id="l10" for="edge" attr.name="l10" attr.type="boolean" color.r="0" color.g="0" color.b="128">
+	<default>FALSE</default>
+</key>
+<key id="l11" for="edge" attr.name="l11" attr.type="boolean" color.r="139" color.g="69" color.b="19">
+	<default>FALSE</default>
+</key>
+<graph id="G" edgedefault="undirected">
+<node id="Belsize Park">
+	<data key="x">85.5</data>
+	<data key="y">1514.5</data>
+	<data key="label">Belsize Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Westferry">
+	<data key="x">133.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Westferry</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hounslow West">
+	<data key="x">18.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Hounslow West</data>
+	<data key="tick">true</data>
+</node>
+<node id="Royal Albert">
+	<data key="x">163.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Royal Albert</data>
+	<data key="tick">true</data>
+</node>
+<node id="Crossharbour">
+	<data key="x">133.5</data>
+	<data key="y">1460.5</data>
+	<data key="label">Crossharbour</data>
+	<data key="tick">true</data>
+</node>
+<node id="Warren Street">
+	<data key="x">88.5</data>
+	<data key="y">1499.5</data>
+	<data key="label">Warren Street</data>
+	<data key="regular">true</data>
+</node>
+<node id="Russell Square">
+	<data key="x">97.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Russell Square</data>
+	<data key="tick">true</data>
+</node>
+<node id="Caledonian Road">
+	<data key="x">97.5</data>
+	<data key="y">1508.5</data>
+	<data key="label">Caledonian Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Highgate">
+	<data key="x">91.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Highgate</data>
+	<data key="tick">true</data>
+</node>
+<node id="Croxley">
+	<data key="x">18.0</data>
+	<data key="y">1549.0</data>
+	<data key="label">Croxley</data>
+	<data key="regular">true</data>
+</node>
+<node id="Stepney Green">
+	<data key="x">133.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Stepney Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Edgware Road (Cir)">
+	<data key="x">69.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Edgware Road (Cir)</data>
+	<data key="regular">true</data>
+</node>
+<node id="d5">
+	<data key="x">63.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">d5</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Highbury &amp; Islington">
+	<data key="x">106.5</data>
+	<data key="y">1514.5</data>
+	<data key="label">Highbury &amp; Islington</data>
+	<data key="tick">true</data>
+</node>
+<node id="Perivale">
+	<data key="x">27.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">Perivale</data>
+	<data key="tick">true</data>
+</node>
+<node id="White City">
+	<data key="x">42.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">White City</data>
+	<data key="tick">true</data>
+</node>
+<node id="Southfields">
+	<data key="x">60.0</data>
+	<data key="y">1460.5</data>
+	<data key="label">Southfields</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Silvertown DLR Station">
+	<data key="x">154.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">West Silvertown DLR Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="South Harrow">
+	<data key="x">24.0</data>
+	<data key="y">1516.0</data>
+	<data key="label">South Harrow</data>
+	<data key="tick">true</data>
+</node>
+<node id="Borough Station">
+	<data key="x">106.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">Borough Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Canons Park">
+	<data key="x">51.0</data>
+	<data key="y">1531.0</data>
+	<data key="label">Canons Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Turnham Green">
+	<data key="x">42.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">Turnham Green</data>
+	<data key="regular">true</data>
+</node>
+<node id="Great Portland Street">
+	<data key="x">76.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Great Portland Street</data>
+	<data key="tick">true</data>
+</node>
+<node id="Wembley Park">
+	<data key="x">57.0</data>
+	<data key="y">1522.0</data>
+	<data key="label">Wembley Park</data>
+	<data key="regular">true</data>
+</node>
+<node id="High Street Kensington">
+	<data key="x">60.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">High Street Kensington</data>
+	<data key="regular">true</data>
+</node>
+<node id="Mill Hill East">
+	<data key="x">88.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">Mill Hill East</data>
+	<data key="regular">true</data>
+</node>
+<node id="Holborn">
+	<data key="x">97.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Holborn</data>
+	<data key="regular">true</data>
+</node>
+<node id="Victoria">
+	<data key="x">82.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Victoria</data>
+	<data key="regular">true</data>
+</node>
+<node id="South Wimbledon">
+	<data key="x">61.5</data>
+	<data key="y">1436.5</data>
+	<data key="label">South Wimbledon</data>
+	<data key="tick">true</data>
+</node>
+<node id="Stratford">
+	<data key="x">151.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Stratford</data>
+	<data key="regular">true</data>
+</node>
+<node id="d1">
+	<data key="x">39.0</data>
+	<data key="y">1531.0</data>
+	<data key="label">d1</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Wood Green Station">
+	<data key="x">103.5</data>
+	<data key="y">1526.5</data>
+	<data key="label">Wood Green Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Arsenal">
+	<data key="x">103.5</data>
+	<data key="y">1514.5</data>
+	<data key="label">Arsenal</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Harrow">
+	<data key="x">30.0</data>
+	<data key="y">1528.0</data>
+	<data key="label">West Harrow</data>
+	<data key="tick">true</data>
+</node>
+<node id="North Greenwich">
+	<data key="x">151.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">North Greenwich</data>
+	<data key="tick">true</data>
+</node>
+<node id="Snaresbrook">
+	<data key="x">157.5</data>
+	<data key="y">1505.5</data>
+	<data key="label">Snaresbrook</data>
+	<data key="tick">true</data>
+</node>
+<node id="Pimlico">
+	<data key="x">82.5</data>
+	<data key="y">1466.5</data>
+	<data key="label">Pimlico</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kensal Green">
+	<data key="x">54.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Kensal Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Star Lane">
+	<data key="x">148.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">Star Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="Mornington Crescent">
+	<data key="x">94.5</data>
+	<data key="y">1508.5</data>
+	<data key="label">Mornington Crescent</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Finchley">
+	<data key="x">91.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">West Finchley</data>
+	<data key="tick">true</data>
+</node>
+<node id="Custom House">
+	<data key="x">157.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Custom House</data>
+	<data key="tick">true</data>
+</node>
+<node id="Leicester Square">
+	<data key="x">88.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Leicester Square</data>
+	<data key="regular">true</data>
+</node>
+<node id="Goldhawk Road">
+	<data key="x">36.0</data>
+	<data key="y">1489.0</data>
+	<data key="label">Goldhawk Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Hampstead">
+	<data key="x">69.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">West Hampstead</data>
+	<data key="tick">true</data>
+</node>
+<node id="Stratford International DLR">
+	<data key="x">148.5</data>
+	<data key="y">1499.5</data>
+	<data key="label">Stratford International DLR</data>
+	<data key="regular">true</data>
+</node>
+<node id="Elm Park">
+	<data key="x">178.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Elm Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Westminster">
+	<data key="x">88.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">Westminster</data>
+	<data key="regular">true</data>
+</node>
+<node id="South Quay">
+	<data key="x">133.5</data>
+	<data key="y">1463.5</data>
+	<data key="label">South Quay</data>
+	<data key="tick">true</data>
+</node>
+<node id="North Acton">
+	<data key="x">36.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">North Acton</data>
+	<data key="regular">true</data>
+</node>
+<node id="Barking">
+	<data key="x">163.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Barking</data>
+	<data key="regular">true</data>
+</node>
+<node id="Seven Sisters">
+	<data key="x">109.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Seven Sisters</data>
+	<data key="tick">true</data>
+</node>
+<node id="King George V.">
+	<data key="x">163.5</data>
+	<data key="y">1472.5</data>
+	<data key="label">King George V.</data>
+	<data key="tick">true</data>
+</node>
+<node id="d14">
+	<data key="x">145.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">d14</data>
+	<data key="dummy">true</data>
+</node>
+<node id="South Ealing">
+	<data key="x">36.0</data>
+	<data key="y">1484.5</data>
+	<data key="label">South Ealing</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bounds Green">
+	<data key="x">100.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">Bounds Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Canary Wharf DLR Station">
+	<data key="x">133.5</data>
+	<data key="y">1472.5</data>
+	<data key="label">Canary Wharf DLR Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="Ruislip Manor">
+	<data key="x">15.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Ruislip Manor</data>
+	<data key="tick">true</data>
+</node>
+<node id="Greenford">
+	<data key="x">24.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">Greenford</data>
+	<data key="tick">true</data>
+</node>
+<node id="East India">
+	<data key="x">145.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">East India</data>
+	<data key="tick">true</data>
+</node>
+<node id="Swiss Cottage">
+	<data key="x">75.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">Swiss Cottage</data>
+	<data key="tick">true</data>
+</node>
+<node id="North Harrow">
+	<data key="x">30.0</data>
+	<data key="y">1534.0</data>
+	<data key="label">North Harrow</data>
+	<data key="tick">true</data>
+</node>
+<node id="Regent&apos;s Park">
+	<data key="x">78.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">Regent&apos;s Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Walthamstow Central">
+	<data key="x">118.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">Walthamstow Central</data>
+	<data key="regular">true</data>
+</node>
+<node id="Stanmore">
+	<data key="x">48.0</data>
+	<data key="y">1534.0</data>
+	<data key="label">Stanmore</data>
+	<data key="regular">true</data>
+</node>
+<node id="South Ruislip">
+	<data key="x">18.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">South Ruislip</data>
+	<data key="tick">true</data>
+</node>
+<node id="Notting Hill Gate">
+	<data key="x">60.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Notting Hill Gate</data>
+	<data key="regular">true</data>
+</node>
+<node id="Marylebone">
+	<data key="x">69.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">Marylebone</data>
+	<data key="tick">true</data>
+</node>
+<node id="Canada Water">
+	<data key="x">127.5</data>
+	<data key="y">1466.5</data>
+	<data key="label">Canada Water</data>
+	<data key="tick">true</data>
+</node>
+<node id="Wimbledon Park">
+	<data key="x">60.0</data>
+	<data key="y">1457.5</data>
+	<data key="label">Wimbledon Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Ladbroke Grove">
+	<data key="x">51.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Ladbroke Grove</data>
+	<data key="tick">true</data>
+</node>
+<node id="d10">
+	<data key="x">103.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">d10</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Chalk Farm">
+	<data key="x">88.5</data>
+	<data key="y">1511.5</data>
+	<data key="label">Chalk Farm</data>
+	<data key="tick">true</data>
+</node>
+<node id="Temple">
+	<data key="x">91.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Temple</data>
+	<data key="tick">true</data>
+</node>
+<node id="Arnos Grove">
+	<data key="x">97.5</data>
+	<data key="y">1532.5</data>
+	<data key="label">Arnos Grove</data>
+	<data key="tick">true</data>
+</node>
+<node id="Upton Park">
+	<data key="x">157.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Upton Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kilburn Park">
+	<data key="x">60.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">Kilburn Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Monument">
+	<data key="x">109.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Monument</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bank">
+	<data key="x">106.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Bank</data>
+	<data key="regular">true</data>
+</node>
+<node id="King&apos;s Cross St.Pancras">
+	<data key="x">97.5</data>
+	<data key="y">1505.5</data>
+	<data key="label">King&apos;s Cross St.Pancras</data>
+	<data key="regular">true</data>
+</node>
+<node id="Kilburn">
+	<data key="x">66.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Kilburn</data>
+	<data key="tick">true</data>
+</node>
+<node id="Greenwich Station">
+	<data key="x">133.5</data>
+	<data key="y">1448.5</data>
+	<data key="label">Greenwich Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Hatton Cross">
+	<data key="x">15.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Hatton Cross</data>
+	<data key="regular">true</data>
+</node>
+<node id="Tower Gateway">
+	<data key="x">118.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Tower Gateway</data>
+	<data key="regular">true</data>
+</node>
+<node id="Shadwell DLR">
+	<data key="x">121.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Shadwell DLR</data>
+	<data key="regular">true</data>
+</node>
+<node id="Camden Town">
+	<data key="x">91.5</data>
+	<data key="y">1508.5</data>
+	<data key="label">Camden Town</data>
+	<data key="regular">true</data>
+</node>
+<node id="Deptford Bridge">
+	<data key="x">133.5</data>
+	<data key="y">1445.5</data>
+	<data key="label">Deptford Bridge</data>
+	<data key="tick">true</data>
+</node>
+<node id="Boston Manor">
+	<data key="x">30.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">Boston Manor</data>
+	<data key="tick">true</data>
+</node>
+<node id="Shepherd&apos;s Bush (Central Line)">
+	<data key="x">54.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Shepherd&apos;s Bush (Central Line)</data>
+	<data key="tick">true</data>
+</node>
+<node id="d6">
+	<data key="x">72.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">d6</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Hillingdon">
+	<data key="x">3.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Hillingdon</data>
+	<data key="tick">true</data>
+</node>
+<node id="Queen&apos;s Park (London)">
+	<data key="x">57.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">Queen&apos;s Park (London)</data>
+	<data key="tick">true</data>
+</node>
+<node id="Totteridge &amp; Whetstone">
+	<data key="x">91.5</data>
+	<data key="y">1535.5</data>
+	<data key="label">Totteridge &amp; Whetstone</data>
+	<data key="tick">true</data>
+</node>
+<node id="Fairlop">
+	<data key="x">169.5</data>
+	<data key="y">1517.5</data>
+	<data key="label">Fairlop</data>
+	<data key="tick">true</data>
+</node>
+<node id="Woolwich Arsenal DLR">
+	<data key="x">166.5</data>
+	<data key="y">1469.5</data>
+	<data key="label">Woolwich Arsenal DLR</data>
+	<data key="regular">true</data>
+</node>
+<node id="Leytonstone">
+	<data key="x">157.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Leytonstone</data>
+	<data key="regular">true</data>
+</node>
+<node id="North Ealing">
+	<data key="x">33.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">North Ealing</data>
+	<data key="tick">true</data>
+</node>
+<node id="St. Paul&apos;s">
+	<data key="x">103.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">St. Paul&apos;s</data>
+	<data key="tick">true</data>
+</node>
+<node id="Aldgate">
+	<data key="x">112.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Aldgate</data>
+	<data key="regular">true</data>
+</node>
+<node id="Heathrow Terminal 4">
+	<data key="x">12.0</data>
+	<data key="y">1472.5</data>
+	<data key="label">Heathrow Terminal 4</data>
+	<data key="tick">true</data>
+</node>
+<node id="Dagenham East">
+	<data key="x">175.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Dagenham East</data>
+	<data key="tick">true</data>
+</node>
+<node id="Gloucester Road">
+	<data key="x">63.0</data>
+	<data key="y">1478.5</data>
+	<data key="label">Gloucester Road</data>
+	<data key="regular">true</data>
+</node>
+<node id="Chigwell">
+	<data key="x">163.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Chigwell</data>
+	<data key="tick">true</data>
+</node>
+<node id="Leyton">
+	<data key="x">154.5</data>
+	<data key="y">1499.5</data>
+	<data key="label">Leyton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Charing Cross">
+	<data key="x">88.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">Charing Cross</data>
+	<data key="regular">true</data>
+</node>
+<node id="Wanstead">
+	<data key="x">160.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Wanstead</data>
+	<data key="tick">true</data>
+</node>
+<node id="Southgate">
+	<data key="x">94.5</data>
+	<data key="y">1535.5</data>
+	<data key="label">Southgate</data>
+	<data key="tick">true</data>
+</node>
+<node id="d2">
+	<data key="x">33.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">d2</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Stratford High Street">
+	<data key="x">154.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Stratford High Street</data>
+	<data key="tick">true</data>
+</node>
+<node id="Ealing Broadway">
+	<data key="x">30.0</data>
+	<data key="y">1493.5</data>
+	<data key="label">Ealing Broadway</data>
+	<data key="regular">true</data>
+</node>
+<node id="Ruislip">
+	<data key="x">12.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Ruislip</data>
+	<data key="tick">true</data>
+</node>
+<node id="Clapham South">
+	<data key="x">76.5</data>
+	<data key="y">1451.5</data>
+	<data key="label">Clapham South</data>
+	<data key="tick">true</data>
+</node>
+<node id="East Putney">
+	<data key="x">60.0</data>
+	<data key="y">1463.5</data>
+	<data key="label">East Putney</data>
+	<data key="tick">true</data>
+</node>
+<node id="Osterley">
+	<data key="x">27.0</data>
+	<data key="y">1478.5</data>
+	<data key="label">Osterley</data>
+	<data key="tick">true</data>
+</node>
+<node id="Paddington (H&amp;C Line)">
+	<data key="x">60.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Paddington (H&amp;C Line)</data>
+	<data key="tick">true</data>
+</node>
+<node id="Dollis Hill">
+	<data key="x">60.0</data>
+	<data key="y">1516.0</data>
+	<data key="label">Dollis Hill</data>
+	<data key="tick">true</data>
+</node>
+<node id="Farringdon">
+	<data key="x">100.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Farringdon</data>
+	<data key="tick">true</data>
+</node>
+<node id="Grange Hill">
+	<data key="x">166.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Grange Hill</data>
+	<data key="tick">true</data>
+</node>
+<node id="Wimbledon">
+	<data key="x">60.0</data>
+	<data key="y">1454.5</data>
+	<data key="label">Wimbledon</data>
+	<data key="regular">true</data>
+</node>
+<node id="St James&apos;s Park">
+	<data key="x">85.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">St James&apos;s Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Archway">
+	<data key="x">91.5</data>
+	<data key="y">1517.5</data>
+	<data key="label">Archway</data>
+	<data key="tick">true</data>
+</node>
+<node id="Royal Victoria">
+	<data key="x">154.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Royal Victoria</data>
+	<data key="tick">true</data>
+</node>
+<node id="Paddington">
+	<data key="x">66.0</data>
+	<data key="y">1492.0</data>
+	<data key="label">Paddington</data>
+	<data key="regular">true</data>
+</node>
+<node id="Balham">
+	<data key="x">73.5</data>
+	<data key="y">1448.5</data>
+	<data key="label">Balham</data>
+	<data key="tick">true</data>
+</node>
+<node id="Mansion House">
+	<data key="x">97.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Mansion House</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tottenham Court Road">
+	<data key="x">88.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Tottenham Court Road</data>
+	<data key="regular">true</data>
+</node>
+<node id="Holland Park">
+	<data key="x">57.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Holland Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Newbury Park">
+	<data key="x">169.5</data>
+	<data key="y">1511.5</data>
+	<data key="label">Newbury Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Green Park">
+	<data key="x">82.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">Green Park</data>
+	<data key="regular">true</data>
+</node>
+<node id="Beckton">
+	<data key="x">172.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Beckton</data>
+	<data key="regular">true</data>
+</node>
+<node id="d15">
+	<data key="x">133.5</data>
+	<data key="y">1466.5</data>
+	<data key="label">d15</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Bow Road">
+	<data key="x">142.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Bow Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Cockfosters">
+	<data key="x">88.5</data>
+	<data key="y">1541.5</data>
+	<data key="label">Cockfosters</data>
+	<data key="regular">true</data>
+</node>
+<node id="Stockwell">
+	<data key="x">85.5</data>
+	<data key="y">1460.5</data>
+	<data key="label">Stockwell</data>
+	<data key="regular">true</data>
+</node>
+<node id="Golders Green">
+	<data key="x">79.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Golders Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kennington Station">
+	<data key="x">91.5</data>
+	<data key="y">1466.5</data>
+	<data key="label">Kennington Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="Piccadilly Circus">
+	<data key="x">85.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Piccadilly Circus</data>
+	<data key="regular">true</data>
+</node>
+<node id="Neasden">
+	<data key="x">57.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Neasden</data>
+	<data key="tick">true</data>
+</node>
+<node id="Island Gardens">
+	<data key="x">133.5</data>
+	<data key="y">1454.5</data>
+	<data key="label">Island Gardens</data>
+	<data key="tick">true</data>
+</node>
+<node id="Becontree">
+	<data key="x">169.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Becontree</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Kensington">
+	<data key="x">57.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">West Kensington</data>
+	<data key="tick">true</data>
+</node>
+<node id="Chancery Lane">
+	<data key="x">100.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Chancery Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tufnell Park">
+	<data key="x">91.5</data>
+	<data key="y">1514.5</data>
+	<data key="label">Tufnell Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Lewisham DLR Station">
+	<data key="x">139.5</data>
+	<data key="y">1439.5</data>
+	<data key="label">Lewisham DLR Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="Northwood">
+	<data key="x">21.0</data>
+	<data key="y">1543.0</data>
+	<data key="label">Northwood</data>
+	<data key="tick">true</data>
+</node>
+<node id="Dagenham Heathway">
+	<data key="x">172.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Dagenham Heathway</data>
+	<data key="tick">true</data>
+</node>
+<node id="Chesham">
+	<data key="x">6.0</data>
+	<data key="y">1555.0</data>
+	<data key="label">Chesham</data>
+	<data key="regular">true</data>
+</node>
+<node id="Parsons Green">
+	<data key="x">60.0</data>
+	<data key="y">1469.5</data>
+	<data key="label">Parsons Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="London Bridge Station">
+	<data key="x">106.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">London Bridge Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="d11">
+	<data key="x">106.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">d11</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Hounslow East">
+	<data key="x">24.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Hounslow East</data>
+	<data key="tick">true</data>
+</node>
+<node id="Finsbury Park">
+	<data key="x">106.5</data>
+	<data key="y">1517.5</data>
+	<data key="label">Finsbury Park</data>
+	<data key="regular">true</data>
+</node>
+<node id="Chalfont &amp; Latimer">
+	<data key="x">9.0</data>
+	<data key="y">1552.0</data>
+	<data key="label">Chalfont &amp; Latimer</data>
+	<data key="regular">true</data>
+</node>
+<node id="Redbridge">
+	<data key="x">163.5</data>
+	<data key="y">1505.5</data>
+	<data key="label">Redbridge</data>
+	<data key="tick">true</data>
+</node>
+<node id="Shepherd&apos;s Bush Market">
+	<data key="x">39.0</data>
+	<data key="y">1492.0</data>
+	<data key="label">Shepherd&apos;s Bush Market</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bayswater">
+	<data key="x">63.0</data>
+	<data key="y">1489.0</data>
+	<data key="label">Bayswater</data>
+	<data key="tick">true</data>
+</node>
+<node id="East Finchley">
+	<data key="x">91.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">East Finchley</data>
+	<data key="tick">true</data>
+</node>
+<node id="Liverpool Street">
+	<data key="x">109.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Liverpool Street</data>
+	<data key="regular">true</data>
+</node>
+<node id="Blackhorse Road">
+	<data key="x">115.5</data>
+	<data key="y">1526.5</data>
+	<data key="label">Blackhorse Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Northwood Hills">
+	<data key="x">24.0</data>
+	<data key="y">1540.0</data>
+	<data key="label">Northwood Hills</data>
+	<data key="tick">true</data>
+</node>
+<node id="Euston Square">
+	<data key="x">94.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Euston Square</data>
+	<data key="tick">true</data>
+</node>
+<node id="Knightsbridge">
+	<data key="x">76.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">Knightsbridge</data>
+	<data key="tick">true</data>
+</node>
+<node id="Loughton">
+	<data key="x">157.5</data>
+	<data key="y">1526.5</data>
+	<data key="label">Loughton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tooting Broadway">
+	<data key="x">67.5</data>
+	<data key="y">1442.5</data>
+	<data key="label">Tooting Broadway</data>
+	<data key="tick">true</data>
+</node>
+<node id="Clapham North">
+	<data key="x">82.5</data>
+	<data key="y">1457.5</data>
+	<data key="label">Clapham North</data>
+	<data key="tick">true</data>
+</node>
+<node id="Plaistow">
+	<data key="x">154.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Plaistow</data>
+	<data key="tick">true</data>
+</node>
+<node id="High Barnet">
+	<data key="x">91.5</data>
+	<data key="y">1538.5</data>
+	<data key="label">High Barnet</data>
+	<data key="regular">true</data>
+</node>
+<node id="d7">
+	<data key="x">66.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">d7</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Cannon Street">
+	<data key="x">100.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Cannon Street</data>
+	<data key="tick">true</data>
+</node>
+<node id="Royal Oak">
+	<data key="x">57.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Royal Oak</data>
+	<data key="tick">true</data>
+</node>
+<node id="Pudding Mill Lane">
+	<data key="x">148.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Pudding Mill Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="Sudbury Town">
+	<data key="x">30.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Sudbury Town</data>
+	<data key="tick">true</data>
+</node>
+<node id="Amersham">
+	<data key="x">6.0</data>
+	<data key="y">1552.0</data>
+	<data key="label">Amersham</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hendon Central">
+	<data key="x">73.5</data>
+	<data key="y">1526.5</data>
+	<data key="label">Hendon Central</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kentish Town">
+	<data key="x">91.5</data>
+	<data key="y">1511.5</data>
+	<data key="label">Kentish Town</data>
+	<data key="tick">true</data>
+</node>
+<node id="Gunnersbury">
+	<data key="x">39.0</data>
+	<data key="y">1478.5</data>
+	<data key="label">Gunnersbury</data>
+	<data key="tick">true</data>
+</node>
+<node id="Queensbury">
+	<data key="x">54.0</data>
+	<data key="y">1528.0</data>
+	<data key="label">Queensbury</data>
+	<data key="tick">true</data>
+</node>
+<node id="Queensway">
+	<data key="x">63.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Queensway</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tooting Bec Station">
+	<data key="x">70.5</data>
+	<data key="y">1445.5</data>
+	<data key="label">Tooting Bec Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Finchley Central">
+	<data key="x">91.5</data>
+	<data key="y">1526.5</data>
+	<data key="label">Finchley Central</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hyde Park Corner">
+	<data key="x">79.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Hyde Park Corner</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Ruislip">
+	<data key="x">6.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">West Ruislip</data>
+	<data key="regular">true</data>
+</node>
+<node id="Pinner">
+	<data key="x">27.0</data>
+	<data key="y">1537.0</data>
+	<data key="label">Pinner</data>
+	<data key="tick">true</data>
+</node>
+<node id="Colindale">
+	<data key="x">70.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">Colindale</data>
+	<data key="tick">true</data>
+</node>
+<node id="Langdon Park">
+	<data key="x">142.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Langdon Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="d3">
+	<data key="x">33.0</data>
+	<data key="y">1493.5</data>
+	<data key="label">d3</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Devons Road">
+	<data key="x">145.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">Devons Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Woodside Park">
+	<data key="x">91.5</data>
+	<data key="y">1532.5</data>
+	<data key="label">Woodside Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Ealing Common">
+	<data key="x">33.0</data>
+	<data key="y">1490.5</data>
+	<data key="label">Ealing Common</data>
+	<data key="regular">true</data>
+</node>
+<node id="Fulham Broadway">
+	<data key="x">60.0</data>
+	<data key="y">1472.5</data>
+	<data key="label">Fulham Broadway</data>
+	<data key="tick">true</data>
+</node>
+<node id="East Ham">
+	<data key="x">160.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">East Ham</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bromley-By-Bow">
+	<data key="x">148.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Bromley-By-Bow</data>
+	<data key="tick">true</data>
+</node>
+<node id="Hanger Lane">
+	<data key="x">30.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">Hanger Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tottenham Hale">
+	<data key="x">112.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Tottenham Hale</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bond Street">
+	<data key="x">76.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Bond Street</data>
+	<data key="regular">true</data>
+</node>
+<node id="Kenton">
+	<data key="x">39.0</data>
+	<data key="y">1534.0</data>
+	<data key="label">Kenton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Edgware Road (Bak)">
+	<data key="x">66.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">Edgware Road (Bak)</data>
+	<data key="tick">true</data>
+</node>
+<node id="Buckhurst Hill">
+	<data key="x">157.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Buckhurst Hill</data>
+	<data key="tick">true</data>
+</node>
+<node id="Finchley Road">
+	<data key="x">72.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">Finchley Road</data>
+	<data key="regular">true</data>
+</node>
+<node id="Stamford Brook">
+	<data key="x">45.0</data>
+	<data key="y">1484.5</data>
+	<data key="label">Stamford Brook</data>
+	<data key="tick">true</data>
+</node>
+<node id="Theydon Bois">
+	<data key="x">163.5</data>
+	<data key="y">1532.5</data>
+	<data key="label">Theydon Bois</data>
+	<data key="tick">true</data>
+</node>
+<node id="Lambeth North">
+	<data key="x">88.5</data>
+	<data key="y">1475.5</data>
+	<data key="label">Lambeth North</data>
+	<data key="tick">true</data>
+</node>
+<node id="Acton Town">
+	<data key="x">39.0</data>
+	<data key="y">1484.5</data>
+	<data key="label">Acton Town</data>
+	<data key="regular">true</data>
+</node>
+<node id="Cutty Sark for Maritime Greenwich">
+	<data key="x">133.5</data>
+	<data key="y">1451.5</data>
+	<data key="label">Cutty Sark for Maritime Greenwich</data>
+	<data key="tick">true</data>
+</node>
+<node id="Chiswick Park">
+	<data key="x">39.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">Chiswick Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="South Woodford">
+	<data key="x">157.5</data>
+	<data key="y">1508.5</data>
+	<data key="label">South Woodford</data>
+	<data key="tick">true</data>
+</node>
+<node id="Tower Hill">
+	<data key="x">112.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">Tower Hill</data>
+	<data key="regular">true</data>
+</node>
+<node id="Oval">
+	<data key="x">88.5</data>
+	<data key="y">1463.5</data>
+	<data key="label">Oval</data>
+	<data key="tick">true</data>
+</node>
+<node id="Edgware">
+	<data key="x">64.5</data>
+	<data key="y">1535.5</data>
+	<data key="label">Edgware</data>
+	<data key="regular">true</data>
+</node>
+<node id="Bow Church DLR">
+	<data key="x">145.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Bow Church DLR</data>
+	<data key="tick">true</data>
+</node>
+<node id="Earl&apos;s Court">
+	<data key="x">60.0</data>
+	<data key="y">1478.5</data>
+	<data key="label">Earl&apos;s Court</data>
+	<data key="regular">true</data>
+</node>
+<node id="Upney">
+	<data key="x">166.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Upney</data>
+	<data key="tick">true</data>
+</node>
+<node id="Hounslow Central">
+	<data key="x">21.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Hounslow Central</data>
+	<data key="tick">true</data>
+</node>
+<node id="Holloway Road">
+	<data key="x">100.5</data>
+	<data key="y">1511.5</data>
+	<data key="label">Holloway Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Cyprus">
+	<data key="x">169.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Cyprus</data>
+	<data key="tick">true</data>
+</node>
+<node id="Moor Park">
+	<data key="x">18.0</data>
+	<data key="y">1546.0</data>
+	<data key="label">Moor Park</data>
+	<data key="regular">true</data>
+</node>
+<node id="Northwick Park">
+	<data key="x">36.0</data>
+	<data key="y">1531.0</data>
+	<data key="label">Northwick Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Beckton Park">
+	<data key="x">166.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Beckton Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kew Gardens">
+	<data key="x">36.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Kew Gardens</data>
+	<data key="tick">true</data>
+</node>
+<node id="Willesden Green">
+	<data key="x">63.0</data>
+	<data key="y">1513.0</data>
+	<data key="label">Willesden Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Oxford Circus">
+	<data key="x">82.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Oxford Circus</data>
+	<data key="regular">true</data>
+</node>
+<node id="Old Street">
+	<data key="x">106.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">Old Street</data>
+	<data key="tick">true</data>
+</node>
+<node id="Baker Street">
+	<data key="x">72.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">Baker Street</data>
+	<data key="regular">true</data>
+</node>
+<node id="Pontoon Dock">
+	<data key="x">157.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Pontoon Dock</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Ham">
+	<data key="x">151.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">West Ham</data>
+	<data key="regular">true</data>
+</node>
+<node id="Willesden Junction">
+	<data key="x">51.0</data>
+	<data key="y">1513.0</data>
+	<data key="label">Willesden Junction</data>
+	<data key="tick">true</data>
+</node>
+<node id="d12">
+	<data key="x">112.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">d12</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Brent Cross Station">
+	<data key="x">76.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Brent Cross Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Ickenham">
+	<data key="x">6.0</data>
+	<data key="y">1513.0</data>
+	<data key="label">Ickenham</data>
+	<data key="tick">true</data>
+</node>
+<node id="London City Airport">
+	<data key="x">160.5</data>
+	<data key="y">1475.5</data>
+	<data key="label">London City Airport</data>
+	<data key="tick">true</data>
+</node>
+<node id="Burnt Oak">
+	<data key="x">67.5</data>
+	<data key="y">1532.5</data>
+	<data key="label">Burnt Oak</data>
+	<data key="tick">true</data>
+</node>
+<node id="Westbourne Park">
+	<data key="x">54.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Westbourne Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Debden">
+	<data key="x">160.5</data>
+	<data key="y">1529.5</data>
+	<data key="label">Debden</data>
+	<data key="tick">true</data>
+</node>
+<node id="Covent Garden">
+	<data key="x">94.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Covent Garden</data>
+	<data key="tick">true</data>
+</node>
+<node id="Marble Arch">
+	<data key="x">73.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Marble Arch</data>
+	<data key="tick">true</data>
+</node>
+<node id="Barons Court">
+	<data key="x">54.0</data>
+	<data key="y">1478.5</data>
+	<data key="label">Barons Court</data>
+	<data key="regular">true</data>
+</node>
+<node id="Angel">
+	<data key="x">103.5</data>
+	<data key="y">1505.5</data>
+	<data key="label">Angel</data>
+	<data key="tick">true</data>
+</node>
+<node id="Moorgate">
+	<data key="x">106.5</data>
+	<data key="y">1499.5</data>
+	<data key="label">Moorgate</data>
+	<data key="regular">true</data>
+</node>
+<node id="Poplar">
+	<data key="x">139.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Poplar</data>
+	<data key="regular">true</data>
+</node>
+<node id="Rickmansworth">
+	<data key="x">15.0</data>
+	<data key="y">1546.0</data>
+	<data key="label">Rickmansworth</data>
+	<data key="regular">true</data>
+</node>
+<node id="Preston Road">
+	<data key="x">48.0</data>
+	<data key="y">1531.0</data>
+	<data key="label">Preston Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kensington (Olympia)">
+	<data key="x">57.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">Kensington (Olympia)</data>
+	<data key="regular">true</data>
+</node>
+<node id="St.John&apos;s Wood">
+	<data key="x">69.0</data>
+	<data key="y">1501.0</data>
+	<data key="label">St.John&apos;s Wood</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Acton">
+	<data key="x">36.0</data>
+	<data key="y">1493.5</data>
+	<data key="label">West Acton</data>
+	<data key="tick">true</data>
+</node>
+<node id="d8">
+	<data key="x">91.5</data>
+	<data key="y">1502.5</data>
+	<data key="label">d8</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Embankment">
+	<data key="x">91.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Embankment</data>
+	<data key="regular">true</data>
+</node>
+<node id="Wood Lane">
+	<data key="x">42.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Wood Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="All Saints">
+	<data key="x">139.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">All Saints</data>
+	<data key="tick">true</data>
+</node>
+<node id="Mile End">
+	<data key="x">136.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Mile End</data>
+	<data key="regular">true</data>
+</node>
+<node id="Clapham Common">
+	<data key="x">79.5</data>
+	<data key="y">1454.5</data>
+	<data key="label">Clapham Common</data>
+	<data key="tick">true</data>
+</node>
+<node id="Rayners Lane">
+	<data key="x">21.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Rayners Lane</data>
+	<data key="regular">true</data>
+</node>
+<node id="Ruislip Gardens">
+	<data key="x">15.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Ruislip Gardens</data>
+	<data key="tick">true</data>
+</node>
+<node id="Heathrow Terminal 5">
+	<data key="x">9.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Heathrow Terminal 5</data>
+	<data key="regular">true</data>
+</node>
+<node id="Canning Town">
+	<data key="x">151.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Canning Town</data>
+	<data key="regular">true</data>
+</node>
+<node id="Goodge Street">
+	<data key="x">88.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Goodge Street</data>
+	<data key="tick">true</data>
+</node>
+<node id="Lancaster Gate">
+	<data key="x">66.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Lancaster Gate</data>
+	<data key="tick">true</data>
+</node>
+<node id="Roding Valley">
+	<data key="x">160.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Roding Valley</data>
+	<data key="tick">true</data>
+</node>
+<node id="Blackwall">
+	<data key="x">142.5</data>
+	<data key="y">1481.5</data>
+	<data key="label">Blackwall</data>
+	<data key="tick">true</data>
+</node>
+<node id="Park Royal">
+	<data key="x">33.0</data>
+	<data key="y">1501.0</data>
+	<data key="label">Park Royal</data>
+	<data key="tick">true</data>
+</node>
+<node id="Mudchute">
+	<data key="x">133.5</data>
+	<data key="y">1457.5</data>
+	<data key="label">Mudchute</data>
+	<data key="tick">true</data>
+</node>
+<node id="Sudbury Hill">
+	<data key="x">27.0</data>
+	<data key="y">1513.0</data>
+	<data key="label">Sudbury Hill</data>
+	<data key="tick">true</data>
+</node>
+<node id="Turnpike Lane">
+	<data key="x">106.5</data>
+	<data key="y">1523.5</data>
+	<data key="label">Turnpike Lane</data>
+	<data key="tick">true</data>
+</node>
+<node id="d4">
+	<data key="x">45.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">d4</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Oakwood">
+	<data key="x">91.5</data>
+	<data key="y">1538.5</data>
+	<data key="label">Oakwood</data>
+	<data key="tick">true</data>
+</node>
+<node id="Elephant &amp; Castle">
+	<data key="x">94.5</data>
+	<data key="y">1469.5</data>
+	<data key="label">Elephant &amp; Castle</data>
+	<data key="regular">true</data>
+</node>
+<node id="Manor House">
+	<data key="x">106.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Manor House</data>
+	<data key="tick">true</data>
+</node>
+<node id="Southwark">
+	<data key="x">96.0</data>
+	<data key="y">1474.0</data>
+	<data key="label">Southwark</data>
+	<data key="tick">true</data>
+</node>
+<node id="Bermondsey">
+	<data key="x">109.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Bermondsey</data>
+	<data key="tick">true</data>
+</node>
+<node id="Whitechapel">
+	<data key="x">130.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Whitechapel</data>
+	<data key="tick">true</data>
+</node>
+<node id="Latimer Road">
+	<data key="x">48.0</data>
+	<data key="y">1495.0</data>
+	<data key="label">Latimer Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Hammersmith">
+	<data key="x">51.0</data>
+	<data key="y">1481.5</data>
+	<data key="label">Hammersmith</data>
+	<data key="regular">true</data>
+</node>
+<node id="Bethnal Green">
+	<data key="x">123.0</data>
+	<data key="y">1510.0</data>
+	<data key="label">Bethnal Green</data>
+	<data key="tick">true</data>
+</node>
+<node id="Barbican">
+	<data key="x">103.5</data>
+	<data key="y">1499.5</data>
+	<data key="label">Barbican</data>
+	<data key="tick">true</data>
+</node>
+<node id="Upminster">
+	<data key="x">187.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Upminster</data>
+	<data key="regular">true</data>
+</node>
+<node id="Chorleywood">
+	<data key="x">12.0</data>
+	<data key="y">1549.0</data>
+	<data key="label">Chorleywood</data>
+	<data key="tick">true</data>
+</node>
+<node id="Northolt">
+	<data key="x">21.0</data>
+	<data key="y">1504.0</data>
+	<data key="label">Northolt</data>
+	<data key="tick">true</data>
+</node>
+<node id="Aldgate East">
+	<data key="x">127.5</data>
+	<data key="y">1496.5</data>
+	<data key="label">Aldgate East</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hainault">
+	<data key="x">169.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Hainault</data>
+	<data key="tick">true</data>
+</node>
+<node id="Warwick Avenue">
+	<data key="x">60.0</data>
+	<data key="y">1498.0</data>
+	<data key="label">Warwick Avenue</data>
+	<data key="tick">true</data>
+</node>
+<node id="Brixton">
+	<data key="x">85.5</data>
+	<data key="y">1457.5</data>
+	<data key="label">Brixton</data>
+	<data key="regular">true</data>
+</node>
+<node id="d0">
+	<data key="x">9.0</data>
+	<data key="y">1516.0</data>
+	<data key="label">d0</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Vauxhall">
+	<data key="x">85.5</data>
+	<data key="y">1463.5</data>
+	<data key="label">Vauxhall</data>
+	<data key="tick">true</data>
+</node>
+<node id="East Acton">
+	<data key="x">39.0</data>
+	<data key="y">1501.0</data>
+	<data key="label">East Acton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Hampstead Station">
+	<data key="x">82.5</data>
+	<data key="y">1517.5</data>
+	<data key="label">Hampstead Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Maida Vale">
+	<data key="x">60.0</data>
+	<data key="y">1501.0</data>
+	<data key="label">Maida Vale</data>
+	<data key="tick">true</data>
+</node>
+<node id="Gants Hill">
+	<data key="x">166.5</data>
+	<data key="y">1508.5</data>
+	<data key="label">Gants Hill</data>
+	<data key="tick">true</data>
+</node>
+<node id="Richmond (London)">
+	<data key="x">33.0</data>
+	<data key="y">1472.5</data>
+	<data key="label">Richmond (London)</data>
+	<data key="regular">true</data>
+</node>
+<node id="Wembley Central">
+	<data key="x">42.0</data>
+	<data key="y">1522.0</data>
+	<data key="label">Wembley Central</data>
+	<data key="tick">true</data>
+</node>
+<node id="Prince Regent">
+	<data key="x">160.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">Prince Regent</data>
+	<data key="tick">true</data>
+</node>
+<node id="Heathrow Terminals 1-3">
+	<data key="x">12.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">Heathrow Terminals 1-3</data>
+	<data key="regular">true</data>
+</node>
+<node id="Limehouse">
+	<data key="x">130.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Limehouse</data>
+	<data key="tick">true</data>
+</node>
+<node id="Morden">
+	<data key="x">58.5</data>
+	<data key="y">1433.5</data>
+	<data key="label">Morden</data>
+	<data key="regular">true</data>
+</node>
+<node id="Elverson Road">
+	<data key="x">136.5</data>
+	<data key="y">1442.5</data>
+	<data key="label">Elverson Road</data>
+	<data key="tick">true</data>
+</node>
+<node id="Colliers Wood">
+	<data key="x">64.5</data>
+	<data key="y">1439.5</data>
+	<data key="label">Colliers Wood</data>
+	<data key="tick">true</data>
+</node>
+<node id="Kingsbury">
+	<data key="x">57.0</data>
+	<data key="y">1525.0</data>
+	<data key="label">Kingsbury</data>
+	<data key="tick">true</data>
+</node>
+<node id="Ravenscourt Park">
+	<data key="x">48.0</data>
+	<data key="y">1484.5</data>
+	<data key="label">Ravenscourt Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Gallions Reach">
+	<data key="x">172.5</data>
+	<data key="y">1487.5</data>
+	<data key="label">Gallions Reach</data>
+	<data key="tick">true</data>
+</node>
+<node id="Uxbridge">
+	<data key="x">0.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">Uxbridge</data>
+	<data key="regular">true</data>
+</node>
+<node id="South Kenton">
+	<data key="x">39.0</data>
+	<data key="y">1528.0</data>
+	<data key="label">South Kenton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Waterloo">
+	<data key="x">91.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Waterloo</data>
+	<data key="regular">true</data>
+</node>
+<node id="Putney Bridge">
+	<data key="x">60.0</data>
+	<data key="y">1466.5</data>
+	<data key="label">Putney Bridge</data>
+	<data key="tick">true</data>
+</node>
+<node id="Blackfriars">
+	<data key="x">94.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Blackfriars</data>
+	<data key="tick">true</data>
+</node>
+<node id="North Wembley">
+	<data key="x">39.0</data>
+	<data key="y">1525.0</data>
+	<data key="label">North Wembley</data>
+	<data key="tick">true</data>
+</node>
+<node id="d13">
+	<data key="x">115.5</data>
+	<data key="y">1484.5</data>
+	<data key="label">d13</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Alperton">
+	<data key="x">33.0</data>
+	<data key="y">1507.0</data>
+	<data key="label">Alperton</data>
+	<data key="tick">true</data>
+</node>
+<node id="Abbey Road DLR Station">
+	<data key="x">154.5</data>
+	<data key="y">1493.5</data>
+	<data key="label">Abbey Road DLR Station</data>
+	<data key="tick">true</data>
+</node>
+<node id="Canary Wharf">
+	<data key="x">136.5</data>
+	<data key="y">1466.5</data>
+	<data key="label">Canary Wharf</data>
+	<data key="tick">true</data>
+</node>
+<node id="Harrow-on-the-Hill">
+	<data key="x">33.0</data>
+	<data key="y">1531.0</data>
+	<data key="label">Harrow-on-the-Hill</data>
+	<data key="regular">true</data>
+</node>
+<node id="Harlesden">
+	<data key="x">48.0</data>
+	<data key="y">1516.0</data>
+	<data key="label">Harlesden</data>
+	<data key="tick">true</data>
+</node>
+<node id="Watford Underground Station">
+	<data key="x">21.0</data>
+	<data key="y">1552.0</data>
+	<data key="label">Watford Underground Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="Woodford">
+	<data key="x">157.5</data>
+	<data key="y">1520.5</data>
+	<data key="label">Woodford</data>
+	<data key="regular">true</data>
+</node>
+<node id="Euston">
+	<data key="x">94.5</data>
+	<data key="y">1505.5</data>
+	<data key="label">Euston</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hornchurch">
+	<data key="x">181.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Hornchurch</data>
+	<data key="tick">true</data>
+</node>
+<node id="Sloane Square">
+	<data key="x">79.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">Sloane Square</data>
+	<data key="tick">true</data>
+</node>
+<node id="Harrow &amp; Wealdstone Station">
+	<data key="x">39.0</data>
+	<data key="y">1537.0</data>
+	<data key="label">Harrow &amp; Wealdstone Station</data>
+	<data key="regular">true</data>
+</node>
+<node id="Hammersmith (Ham &amp; City Line)">
+	<data key="x">33.0</data>
+	<data key="y">1486.0</data>
+	<data key="label">Hammersmith (Ham &amp; City Line)</data>
+	<data key="regular">true</data>
+</node>
+<node id="South Kensington">
+	<data key="x">73.5</data>
+	<data key="y">1478.5</data>
+	<data key="label">South Kensington</data>
+	<data key="regular">true</data>
+</node>
+<node id="Upminster Bridge">
+	<data key="x">184.5</data>
+	<data key="y">1490.5</data>
+	<data key="label">Upminster Bridge</data>
+	<data key="tick">true</data>
+</node>
+<node id="West India Quay">
+	<data key="x">136.5</data>
+	<data key="y">1475.5</data>
+	<data key="label">West India Quay</data>
+	<data key="regular">true</data>
+</node>
+<node id="Barkingside">
+	<data key="x">169.5</data>
+	<data key="y">1514.5</data>
+	<data key="label">Barkingside</data>
+	<data key="tick">true</data>
+</node>
+<node id="Heron Quays">
+	<data key="x">133.5</data>
+	<data key="y">1469.5</data>
+	<data key="label">Heron Quays</data>
+	<data key="tick">true</data>
+</node>
+<node id="d9">
+	<data key="x">91.5</data>
+	<data key="y">1472.5</data>
+	<data key="label">d9</data>
+	<data key="dummy">true</data>
+</node>
+<node id="Eastcote">
+	<data key="x">18.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Eastcote</data>
+	<data key="tick">true</data>
+</node>
+<node id="Stonebridge Park">
+	<data key="x">45.0</data>
+	<data key="y">1519.0</data>
+	<data key="label">Stonebridge Park</data>
+	<data key="tick">true</data>
+</node>
+<node id="Epping">
+	<data key="x">166.5</data>
+	<data key="y">1535.5</data>
+	<data key="label">Epping</data>
+	<data key="regular">true</data>
+</node>
+<node id="Northfields">
+	<data key="x">33.0</data>
+	<data key="y">1484.5</data>
+	<data key="label">Northfields</data>
+	<data key="tick">true</data>
+</node>
+<node id="West Brompton">
+	<data key="x">60.0</data>
+	<data key="y">1475.5</data>
+	<data key="label">West Brompton</data>
+	<data key="tick">true</data>
+</node>
+<edge id="e0" source="Barons Court" target="Earl&apos;s Court">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e1" source="Leyton" target="Leytonstone">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e2" source="High Street Kensington" target="Notting Hill Gate">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e3" source="Temple" target="Blackfriars">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e4" source="Caledonian Road" target="Holloway Road">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e5" source="Notting Hill Gate" target="Queensway">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e6" source="Canary Wharf DLR Station" target="Heron Quays">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e7" source="d6" target="Baker Street">
+	<data key="l8">true</data>
+</edge>
+<edge id="e8" source="Earl&apos;s Court" target="Gloucester Road">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e9" source="Barbican" target="Moorgate">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e10" source="Ladbroke Grove" target="Westbourne Park">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e11" source="Finchley Central" target="Mill Hill East">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e12" source="Royal Albert" target="Beckton Park">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e13" source="d14" target="Devons Road">
+	<data key="l0">true</data>
+</edge>
+<edge id="e14" source="Northolt" target="Greenford">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e15" source="Willesden Junction" target="Harlesden">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e16" source="Northwick Park" target="d1">
+	<data key="l8">true</data>
+</edge>
+<edge id="e17" source="Shepherd&apos;s Bush Market" target="Wood Lane">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e18" source="Sudbury Town" target="Alperton">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e19" source="Becontree" target="Dagenham Heathway">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e20" source="Heathrow Terminals 1-3" target="Hatton Cross">
+	<data key="l10">true</data>
+	<data key="time" line="l10">240</data>
+</edge>
+<edge id="e21" source="Lambeth North" target="d9">
+	<data key="l11">true</data>
+</edge>
+<edge id="e22" source="Custom House" target="Prince Regent">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e23" source="Wembley Park" target="Finchley Road">
+	<data key="l8">true</data>
+	<data key="time" line="l8">360</data>
+</edge>
+<edge id="e24" source="King&apos;s Cross St.Pancras" target="Caledonian Road">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e25" source="King&apos;s Cross St.Pancras" target="Highbury &amp; Islington">
+	<data key="l6">true</data>
+	<data key="time" line="l6">120</data>
+</edge>
+<edge id="e26" source="Wembley Central" target="North Wembley">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e27" source="Wimbledon Park" target="Southfields">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e28" source="Holloway Road" target="Arsenal">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e29" source="South Wimbledon" target="Colliers Wood">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e30" source="d4" target="Latimer Road">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e31" source="Langdon Park" target="All Saints">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e32" source="Acton Town" target="Chiswick Park">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e33" source="Maida Vale" target="Kilburn Park">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e34" source="Westminster" target="Embankment">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e35" source="d12" target="Aldgate">
+	<data key="l3">true</data>
+</edge>
+<edge id="e36" source="Dagenham Heathway" target="Dagenham East">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e37" source="Woodford" target="Buckhurst Hill">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e38" source="Hounslow West" target="Hounslow Central">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e39" source="Island Gardens" target="Cutty Sark for Maritime Greenwich">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e40" source="Shadwell DLR" target="Limehouse">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e41" source="Tottenham Hale" target="Blackhorse Road">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e42" source="South Woodford" target="Woodford">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e43" source="Paddington" target="d7">
+	<data key="l11">true</data>
+</edge>
+<edge id="e44" source="Pudding Mill Lane" target="Bow Church DLR">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e45" source="Westferry" target="Poplar">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e46" source="Stamford Brook" target="Ravenscourt Park">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e47" source="West Ham" target="Star Lane">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e48" source="Ravenscourt Park" target="Hammersmith">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e49" source="Rickmansworth" target="Croxley">
+	<data key="l8">true</data>
+	<data key="time" line="l8">360</data>
+</edge>
+<edge id="e50" source="St. Paul&apos;s" target="Bank">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e51" source="d2" target="Park Royal">
+	<data key="l10">true</data>
+</edge>
+<edge id="e52" source="Theydon Bois" target="Epping">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e53" source="Stratford High Street" target="Abbey Road DLR Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e54" source="Liverpool Street" target="Bethnal Green">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e55" source="Southfields" target="East Putney">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e56" source="Cyprus" target="Gallions Reach">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e57" source="Shepherd&apos;s Bush (Central Line)" target="Holland Park">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e58" source="Woodford" target="Roding Valley">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e59" source="Pimlico" target="Victoria">
+	<data key="l6">true</data>
+	<data key="time" line="l6">120</data>
+</edge>
+<edge id="e60" source="Whitechapel" target="Stepney Green">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e61" source="Canary Wharf" target="North Greenwich">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e62" source="Kennington Station" target="Elephant &amp; Castle">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e63" source="London City Airport" target="King George V.">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e64" source="Paddington (H&amp;C Line)" target="d5">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e65" source="Arsenal" target="Finsbury Park">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e66" source="Oxford Circus" target="Warren Street">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e67" source="Greenford" target="Perivale">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e68" source="South Quay" target="Crossharbour">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e69" source="Limehouse" target="Westferry">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e70" source="Bow Road" target="d14">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e71" source="Latimer Road" target="Ladbroke Grove">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e72" source="North Wembley" target="South Kenton">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e73" source="Northwood Hills" target="Pinner">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e74" source="d0" target="Ruislip">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+</edge>
+<edge id="e75" source="Kensal Green" target="Willesden Junction">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e76" source="Chalfont &amp; Latimer" target="Chorleywood">
+	<data key="l8">true</data>
+	<data key="time" line="l8">240</data>
+</edge>
+<edge id="e77" source="Beckton Park" target="Cyprus">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e78" source="North Greenwich" target="Canning Town">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e79" source="d8" target="Euston">
+	<data key="l5">true</data>
+	<data key="l6">true</data>
+</edge>
+<edge id="e80" source="Gunnersbury" target="Turnham Green">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e81" source="Gloucester Road" target="South Kensington">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e82" source="Leytonstone" target="Snaresbrook">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e83" source="Tottenham Court Road" target="Holborn">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e84" source="Camden Town" target="Chalk Farm">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e85" source="Chigwell" target="Grange Hill">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e86" source="Stratford" target="Leyton">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e87" source="North Ealing" target="d3">
+	<data key="l10">true</data>
+</edge>
+<edge id="e88" source="Tooting Bec Station" target="Balham">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e89" source="Euston Square" target="King&apos;s Cross St.Pancras">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e90" source="Rayners Lane" target="South Harrow">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e91" source="Bank" target="d12">
+	<data key="l0">true</data>
+</edge>
+<edge id="e92" source="Embankment" target="Charing Cross">
+	<data key="l5">true</data>
+	<data key="l11">true</data>
+</edge>
+<edge id="e93" source="Colliers Wood" target="Tooting Broadway">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e94" source="Oxford Circus" target="Tottenham Court Road">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e95" source="Monument" target="Tower Hill">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e96" source="South Kensington" target="Sloane Square">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e97" source="Leytonstone" target="Wanstead">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e98" source="South Ruislip" target="Northolt">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e99" source="Knightsbridge" target="Hyde Park Corner">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e100" source="d6" target="St.John&apos;s Wood">
+	<data key="l9">true</data>
+</edge>
+<edge id="e101" source="Burnt Oak" target="Edgware">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e102" source="Lancaster Gate" target="Marble Arch">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e103" source="Goldhawk Road" target="Shepherd&apos;s Bush Market">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e104" source="Holborn" target="Russell Square">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e105" source="Rickmansworth" target="Moor Park">
+	<data key="l8">true</data>
+	<data key="time" line="l8">300</data>
+</edge>
+<edge id="e106" source="d15" target="Canary Wharf">
+	<data key="l9">true</data>
+</edge>
+<edge id="e107" source="Loughton" target="Debden">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e108" source="Marble Arch" target="Bond Street">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e109" source="Hounslow East" target="Osterley">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e110" source="Kenton" target="d1">
+	<data key="l11">true</data>
+</edge>
+<edge id="e111" source="Green Park" target="Westminster">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e112" source="Morden" target="South Wimbledon">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e113" source="West Ham" target="Plaistow">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e114" source="Waterloo" target="d10">
+	<data key="l4">true</data>
+</edge>
+<edge id="e115" source="Highgate" target="East Finchley">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e116" source="Warwick Avenue" target="Maida Vale">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e117" source="Hammersmith" target="Barons Court">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e118" source="All Saints" target="Poplar">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e119" source="Finchley Central" target="West Finchley">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e120" source="East Acton" target="White City">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e121" source="Finsbury Park" target="Seven Sisters">
+	<data key="l6">true</data>
+	<data key="time" line="l6">180</data>
+</edge>
+<edge id="e122" source="d4" target="Shepherd&apos;s Bush (Central Line)">
+	<data key="l7">true</data>
+</edge>
+<edge id="e123" source="Tower Gateway" target="Shadwell DLR">
+	<data key="l0">true</data>
+	<data key="time" line="l0">180</data>
+</edge>
+<edge id="e124" source="Kingsbury" target="Wembley Park">
+	<data key="l9">true</data>
+	<data key="time" line="l9">180</data>
+</edge>
+<edge id="e125" source="Piccadilly Circus" target="Leicester Square">
+	<data key="l10">true</data>
+</edge>
+<edge id="e126" source="Putney Bridge" target="Parsons Green">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e127" source="Wanstead" target="Redbridge">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e128" source="d13" target="Aldgate East">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e129" source="Upminster Bridge" target="Upminster">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e130" source="Ealing Broadway" target="Ealing Common">
+	<data key="l2">true</data>
+	<data key="time" line="l2">240</data>
+</edge>
+<edge id="e131" source="Rayners Lane" target="West Harrow">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e132" source="Euston" target="Camden Town">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e133" source="Ruislip" target="Ruislip Manor">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l8">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e134" source="Camden Town" target="Kentish Town">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e135" source="Star Lane" target="Canning Town">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e136" source="Leicester Square" target="Tottenham Court Road">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e137" source="Great Portland Street" target="d8">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+</edge>
+<edge id="e138" source="Liverpool Street" target="Aldgate East">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e139" source="Tufnell Park" target="Archway">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e140" source="Dagenham East" target="Elm Park">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e141" source="Goodge Street" target="Warren Street">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e142" source="Park Royal" target="North Ealing">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e143" source="Crossharbour" target="Mudchute">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e144" source="Stratford" target="Pudding Mill Lane">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e145" source="East Finchley" target="Finchley Central">
+	<data key="l5">true</data>
+	<data key="time" line="l5">180</data>
+</edge>
+<edge id="e146" source="d2" target="North Acton">
+	<data key="l7">true</data>
+</edge>
+<edge id="e147" source="Barons Court" target="West Kensington">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e148" source="Poplar" target="West India Quay">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e149" source="Devons Road" target="Langdon Park">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e150" source="d11" target="Monument">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e151" source="Woodside Park" target="Totteridge &amp; Whetstone">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e152" source="Stonebridge Park" target="Wembley Central">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e153" source="Sudbury Hill" target="Sudbury Town">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e154" source="Osterley" target="Boston Manor">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e155" source="Edgware Road (Cir)" target="Baker Street">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e156" source="Westminster" target="Waterloo">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e157" source="Regent&apos;s Park" target="Baker Street">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e158" source="Finchley Road" target="d6">
+	<data key="l8">true</data>
+</edge>
+<edge id="e159" source="Wood Green Station" target="Bounds Green">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e160" source="Bond Street" target="Green Park">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e161" source="Upney" target="Becontree">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e162" source="Bow Church DLR" target="d14">
+	<data key="l0">true</data>
+</edge>
+<edge id="e163" source="Hammersmith (Ham &amp; City Line)" target="Goldhawk Road">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e164" source="Bayswater" target="Paddington">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e165" source="Totteridge &amp; Whetstone" target="High Barnet">
+	<data key="l5">true</data>
+	<data key="time" line="l5">180</data>
+</edge>
+<edge id="e166" source="d0" target="Ruislip Gardens">
+	<data key="l7">true</data>
+</edge>
+<edge id="e167" source="London Bridge Station" target="Bermondsey">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e168" source="Heathrow Terminal 4" target="Heathrow Terminals 1-3">
+	<data key="l10">true</data>
+	<data key="time" line="l10">90</data>
+</edge>
+<edge id="e169" source="Waterloo" target="Embankment">
+	<data key="l5">true</data>
+	<data key="l11">true</data>
+	<data key="time" line="l5">60</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e170" source="Baker Street" target="Great Portland Street">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l3">120</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e171" source="d9" target="Waterloo">
+	<data key="l5">true</data>
+</edge>
+<edge id="e172" source="Chancery Lane" target="St. Paul&apos;s">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e173" source="Croxley" target="Moor Park">
+	<data key="l8">true</data>
+	<data key="time" line="l8">180</data>
+</edge>
+<edge id="e174" source="Finsbury Park" target="Manor House">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e175" source="Notting Hill Gate" target="Bayswater">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e176" source="Kilburn Park" target="Queen&apos;s Park (London)">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e177" source="West Kensington" target="Earl&apos;s Court">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e178" source="Abbey Road DLR Station" target="West Ham">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e179" source="Wood Lane" target="d4">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e180" source="Fairlop" target="Hainault">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e181" source="Pontoon Dock" target="London City Airport">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e182" source="Holland Park" target="Notting Hill Gate">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e183" source="Green Park" target="Oxford Circus">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e184" source="Tower Hill" target="d12">
+	<data key="l3">true</data>
+</edge>
+<edge id="e185" source="Piccadilly Circus" target="Oxford Circus">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e186" source="Tottenham Court Road" target="Goodge Street">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e187" source="Deptford Bridge" target="Elverson Road">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e188" source="Archway" target="Highgate">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e189" source="Roding Valley" target="Chigwell">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e190" source="Newbury Park" target="Barkingside">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e191" source="Charing Cross" target="Piccadilly Circus">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e192" source="East Ham" target="Barking">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">180</data>
+	<data key="time" line="l2">180</data>
+	<data key="time" line="l3">180</data>
+</edge>
+<edge id="e193" source="d7" target="Edgware Road (Cir)">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e194" source="Eastcote" target="Rayners Lane">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l8">120</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e195" source="Canning Town" target="Royal Victoria">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e196" source="Green Park" target="Piccadilly Circus">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e197" source="Elm Park" target="Hornchurch">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e198" source="d15" target="South Quay">
+	<data key="l0">true</data>
+</edge>
+<edge id="e199" source="Elephant &amp; Castle" target="Borough Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e200" source="Colindale" target="Burnt Oak">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e201" source="Aldgate East" target="Whitechapel">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e202" source="Alperton" target="d2">
+	<data key="l10">true</data>
+</edge>
+<edge id="e203" source="Oval" target="Kennington Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e204" source="Neasden" target="Dollis Hill">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e205" source="Boston Manor" target="Northfields">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e206" source="Fulham Broadway" target="West Brompton">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e207" source="Cannon Street" target="d10">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e208" source="Hounslow Central" target="Hounslow East">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e209" source="Royal Oak" target="Paddington (H&amp;C Line)">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e210" source="Debden" target="Theydon Bois">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e211" source="Stratford" target="Stratford High Street">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e212" source="Acton Town" target="Turnham Green">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e213" source="Heathrow Terminal 5" target="Heathrow Terminals 1-3">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e214" source="Bermondsey" target="Canada Water">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e215" source="Watford Underground Station" target="Croxley">
+	<data key="l8">true</data>
+	<data key="time" line="l8">180</data>
+</edge>
+<edge id="e216" source="d5" target="Warwick Avenue">
+	<data key="l11">true</data>
+</edge>
+<edge id="e217" source="Grange Hill" target="Hainault">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e218" source="Aldgate" target="Liverpool Street">
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l3">60</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e219" source="Uxbridge" target="Hillingdon">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l8">180</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e220" source="Barkingside" target="Fairlop">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e221" source="d13" target="Shadwell DLR">
+	<data key="l0">true</data>
+</edge>
+<edge id="e222" source="Baker Street" target="Bond Street">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e223" source="Turnham Green" target="Stamford Brook">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e224" source="Gallions Reach" target="Beckton">
+	<data key="l0">true</data>
+	<data key="time" line="l0">180</data>
+</edge>
+<edge id="e225" source="Ickenham" target="d0">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+</edge>
+<edge id="e226" source="West Brompton" target="Earl&apos;s Court">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e227" source="Victoria" target="Green Park">
+	<data key="l6">true</data>
+	<data key="time" line="l6">120</data>
+</edge>
+<edge id="e228" source="Canning Town" target="West Silvertown DLR Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">180</data>
+</edge>
+<edge id="e229" source="Angel" target="King&apos;s Cross St.Pancras">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e230" source="Warren Street" target="d8">
+	<data key="l5">true</data>
+	<data key="l6">true</data>
+</edge>
+<edge id="e231" source="Paddington" target="Edgware Road (Cir)">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">180</data>
+	<data key="time" line="l3">180</data>
+</edge>
+<edge id="e232" source="Mornington Crescent" target="Camden Town">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e233" source="Mudchute" target="Island Gardens">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e234" source="Tooting Broadway" target="Tooting Bec Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e235" source="Lambeth North" target="Waterloo">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e236" source="Chesham" target="Chalfont &amp; Latimer">
+	<data key="l8">true</data>
+	<data key="time" line="l8">480</data>
+</edge>
+<edge id="e237" source="Hampstead Station" target="Golders Green">
+	<data key="l5">true</data>
+	<data key="time" line="l5">180</data>
+</edge>
+<edge id="e238" source="Balham" target="Clapham South">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e239" source="d3" target="West Acton">
+	<data key="l7">true</data>
+</edge>
+<edge id="e240" source="South Harrow" target="Sudbury Hill">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e241" source="Mile End" target="Stratford">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e242" source="Moorgate" target="Old Street">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e243" source="Stockwell" target="Vauxhall">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e244" source="d11" target="Bank">
+	<data key="l5">true</data>
+</edge>
+<edge id="e245" source="Northwood" target="Northwood Hills">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e246" source="Canons Park" target="Queensbury">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e247" source="Oakwood" target="Cockfosters">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e248" source="Manor House" target="Turnpike Lane">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e249" source="Old Street" target="Angel">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e250" source="Clapham Common" target="Clapham North">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e251" source="Kew Gardens" target="Gunnersbury">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e252" source="Swiss Cottage" target="d6">
+	<data key="l9">true</data>
+</edge>
+<edge id="e253" source="Earl&apos;s Court" target="High Street Kensington">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e254" source="Canning Town" target="West Ham">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e255" source="Southwark" target="London Bridge Station">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e256" source="Wimbledon" target="Wimbledon Park">
+	<data key="l2">true</data>
+	<data key="time" line="l2">240</data>
+</edge>
+<edge id="e257" source="Pinner" target="North Harrow">
+	<data key="l8">true</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e258" source="Canada Water" target="d15">
+	<data key="l9">true</data>
+</edge>
+<edge id="e259" source="Clapham North" target="Stockwell">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e260" source="Holborn" target="Chancery Lane">
+	<data key="l7">true</data>
+</edge>
+<edge id="e261" source="Barking" target="Upney">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e262" source="d1" target="Preston Road">
+	<data key="l8">true</data>
+</edge>
+<edge id="e263" source="Westbourne Park" target="Royal Oak">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e264" source="Blackfriars" target="Mansion House">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e265" source="Turnham Green" target="Hammersmith">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e266" source="d9" target="Elephant &amp; Castle">
+	<data key="l11">true</data>
+</edge>
+<edge id="e267" source="Mile End" target="Bow Road">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e268" source="Brent Cross Station" target="Hendon Central">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e269" source="Kilburn" target="West Hampstead">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e270" source="Hillingdon" target="Ickenham">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l8">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e271" source="Sloane Square" target="Victoria">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e272" source="Dollis Hill" target="Willesden Green">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e273" source="White City" target="d4">
+	<data key="l7">true</data>
+</edge>
+<edge id="e274" source="Willesden Green" target="Kilburn">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e275" source="Charing Cross" target="Leicester Square">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e276" source="North Acton" target="East Acton">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e277" source="Kentish Town" target="Tufnell Park">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e278" source="Tower Hill" target="d13">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e279" source="Harrow-on-the-Hill" target="Northwick Park">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e280" source="Covent Garden" target="Holborn">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e281" source="Brixton" target="Stockwell">
+	<data key="l6">true</data>
+	<data key="time" line="l6">120</data>
+</edge>
+<edge id="e282" source="Royal Victoria" target="Custom House">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e283" source="West Harrow" target="Harrow-on-the-Hill">
+	<data key="l8">true</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e284" source="Bounds Green" target="Arnos Grove">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e285" source="Hornchurch" target="Upminster Bridge">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e286" source="Chiswick Park" target="Turnham Green">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e287" source="d7" target="Edgware Road (Bak)">
+	<data key="l11">true</data>
+</edge>
+<edge id="e288" source="Stanmore" target="Canons Park">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e289" source="Redbridge" target="Gants Hill">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e290" source="Richmond (London)" target="Kew Gardens">
+	<data key="l2">true</data>
+	<data key="time" line="l2">240</data>
+</edge>
+<edge id="e291" source="Buckhurst Hill" target="Loughton">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e292" source="Ruislip Gardens" target="South Ruislip">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e293" source="West India Quay" target="Canary Wharf DLR Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e294" source="Cutty Sark for Maritime Greenwich" target="Greenwich Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e295" source="Hanger Lane" target="d2">
+	<data key="l7">true</data>
+</edge>
+<edge id="e296" source="West Hampstead" target="Finchley Road">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e297" source="West Finchley" target="Woodside Park">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e298" source="Queen&apos;s Park (London)" target="Kensal Green">
+	<data key="l11">true</data>
+	<data key="time" line="l11">300</data>
+</edge>
+<edge id="e299" source="d10" target="d11">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e300" source="West Silvertown DLR Station" target="Pontoon Dock">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e301" source="Baker Street" target="Marylebone">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e302" source="Kenton" target="Harrow &amp; Wealdstone Station">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e303" source="Amersham" target="Chalfont &amp; Latimer">
+	<data key="l8">true</data>
+	<data key="time" line="l8">180</data>
+</edge>
+<edge id="e304" source="Bromley-By-Bow" target="West Ham">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e305" source="King&apos;s Cross St.Pancras" target="Farringdon">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">180</data>
+	<data key="time" line="l3">180</data>
+	<data key="time" line="l8">180</data>
+</edge>
+<edge id="e306" source="St.John&apos;s Wood" target="Baker Street">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e307" source="Euston" target="Mornington Crescent">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e308" source="Victoria" target="St James&apos;s Park">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e309" source="Hatton Cross" target="Hounslow West">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e310" source="Stockwell" target="Oval">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e311" source="Westferry" target="West India Quay">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e312" source="d14" target="Bromley-By-Bow">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e313" source="Waterloo" target="Southwark">
+	<data key="l9">true</data>
+	<data key="time" line="l9">60</data>
+</edge>
+<edge id="e314" source="Moorgate" target="Liverpool Street">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e315" source="Prince Regent" target="Royal Albert">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e316" source="West Ruislip" target="d0">
+	<data key="l7">true</data>
+</edge>
+<edge id="e317" source="Hendon Central" target="Colindale">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e318" source="Moor Park" target="Northwood">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e319" source="Farringdon" target="Barbican">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l3">60</data>
+	<data key="time" line="l8">60</data>
+</edge>
+<edge id="e320" source="Kennington Station" target="d9">
+	<data key="l5">true</data>
+</edge>
+<edge id="e321" source="Harlesden" target="Stonebridge Park">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e322" source="King George V." target="Woolwich Arsenal DLR">
+	<data key="l0">true</data>
+	<data key="time" line="l0">180</data>
+</edge>
+<edge id="e323" source="Chalk Farm" target="Belsize Park">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e324" source="Bethnal Green" target="Mile End">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e325" source="Queensbury" target="Kingsbury">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e326" source="Turnpike Lane" target="Wood Green Station">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e327" source="Westferry" target="Canary Wharf DLR Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">180</data>
+</edge>
+<edge id="e328" source="d3" target="Ealing Common">
+	<data key="l10">true</data>
+</edge>
+<edge id="e329" source="Vauxhall" target="Pimlico">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e330" source="Snaresbrook" target="South Woodford">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e331" source="Marylebone" target="Edgware Road (Bak)">
+	<data key="l11">true</data>
+	<data key="time" line="l11">60</data>
+</edge>
+<edge id="e332" source="Arnos Grove" target="Southgate">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e333" source="Hatton Cross" target="Heathrow Terminal 4">
+	<data key="l10">true</data>
+	<data key="time" line="l10">240</data>
+</edge>
+<edge id="e334" source="Clapham South" target="Clapham Common">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e335" source="High Street Kensington" target="Gloucester Road">
+	<data key="l3">true</data>
+	<data key="time" line="l3">180</data>
+</edge>
+<edge id="e336" source="Gants Hill" target="Newbury Park">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e337" source="Belsize Park" target="Hampstead Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e338" source="Blackwall" target="East India">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e339" source="Leicester Square" target="Covent Garden">
+	<data key="l10">true</data>
+</edge>
+<edge id="e340" source="d5" target="d7">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+</edge>
+<edge id="e341" source="Greenwich Station" target="Deptford Bridge">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e342" source="King&apos;s Cross St.Pancras" target="Euston">
+	<data key="l5">true</data>
+	<data key="l6">true</data>
+	<data key="time" line="l5">60</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e343" source="Ealing Common" target="Acton Town">
+	<data key="l2">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e344" source="Heron Quays" target="d15">
+	<data key="l0">true</data>
+</edge>
+<edge id="e345" source="West Acton" target="North Acton">
+	<data key="l7">true</data>
+	<data key="time" line="l7">180</data>
+</edge>
+<edge id="e346" source="Kensington (Olympia)" target="Earl&apos;s Court">
+	<data key="l2">true</data>
+	<data key="time" line="l2">180</data>
+</edge>
+<edge id="e347" source="South Ealing" target="Acton Town">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e348" source="d1" target="South Kenton">
+	<data key="l11">true</data>
+</edge>
+<edge id="e349" source="Perivale" target="Hanger Lane">
+	<data key="l7">true</data>
+	<data key="time" line="l7">120</data>
+</edge>
+<edge id="e350" source="Highbury &amp; Islington" target="Finsbury Park">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e351" source="Stepney Green" target="Mile End">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e352" source="d10" target="Bank">
+	<data key="l4">true</data>
+</edge>
+<edge id="e353" source="Northfields" target="South Ealing">
+	<data key="l10">true</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e354" source="East Putney" target="Putney Bridge">
+	<data key="l2">true</data>
+	<data key="time" line="l2">60</data>
+</edge>
+<edge id="e355" source="Borough Station" target="London Bridge Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">60</data>
+</edge>
+<edge id="e356" source="Wembley Park" target="Neasden">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e357" source="Bank" target="Liverpool Street">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e358" source="Parsons Green" target="Fulham Broadway">
+	<data key="l2">true</data>
+	<data key="time" line="l2">120</data>
+</edge>
+<edge id="e359" source="Bank" target="Moorgate">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e360" source="Preston Road" target="Wembley Park">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e361" source="Paddington" target="d5">
+	<data key="l11">true</data>
+</edge>
+<edge id="e362" source="Golders Green" target="Brent Cross Station">
+	<data key="l5">true</data>
+	<data key="time" line="l5">120</data>
+</edge>
+<edge id="e363" source="Stratford International DLR" target="Stratford">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e364" source="South Kensington" target="Knightsbridge">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e365" source="East India" target="Canning Town">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e366" source="d12" target="d13">
+	<data key="l0">true</data>
+</edge>
+<edge id="e367" source="Blackhorse Road" target="Walthamstow Central">
+	<data key="l6">true</data>
+	<data key="time" line="l6">60</data>
+</edge>
+<edge id="e368" source="Hyde Park Corner" target="Green Park">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e369" source="Chorleywood" target="Rickmansworth">
+	<data key="l8">true</data>
+	<data key="time" line="l8">240</data>
+</edge>
+<edge id="e370" source="Poplar" target="Blackwall">
+	<data key="l0">true</data>
+	<data key="time" line="l0">120</data>
+</edge>
+<edge id="e371" source="Elverson Road" target="Lewisham DLR Station">
+	<data key="l0">true</data>
+	<data key="time" line="l0">60</data>
+</edge>
+<edge id="e372" source="St James&apos;s Park" target="Westminster">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e373" source="North Harrow" target="Harrow-on-the-Hill">
+	<data key="l8">true</data>
+	<data key="time" line="l8">120</data>
+</edge>
+<edge id="e374" source="Queensway" target="Lancaster Gate">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e375" source="d8" target="Euston Square">
+	<data key="l1">true</data>
+	<data key="l3">true</data>
+	<data key="l8">true</data>
+</edge>
+<edge id="e376" source="Bond Street" target="Oxford Circus">
+	<data key="l7">true</data>
+	<data key="time" line="l7">60</data>
+</edge>
+<edge id="e377" source="Embankment" target="Temple">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e378" source="Oxford Circus" target="Regent&apos;s Park">
+	<data key="l11">true</data>
+	<data key="time" line="l11">120</data>
+</edge>
+<edge id="e379" source="Plaistow" target="Upton Park">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">60</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e380" source="Seven Sisters" target="Tottenham Hale">
+	<data key="l6">true</data>
+	<data key="time" line="l6">120</data>
+</edge>
+<edge id="e381" source="Russell Square" target="King&apos;s Cross St.Pancras">
+	<data key="l10">true</data>
+	<data key="time" line="l10">120</data>
+</edge>
+<edge id="e382" source="Ruislip Manor" target="Eastcote">
+	<data key="l8">true</data>
+	<data key="l10">true</data>
+	<data key="time" line="l8">60</data>
+	<data key="time" line="l10">60</data>
+</edge>
+<edge id="e383" source="Finchley Road" target="Swiss Cottage">
+	<data key="l9">true</data>
+</edge>
+<edge id="e384" source="Ealing Broadway" target="d3">
+	<data key="l7">true</data>
+</edge>
+<edge id="e385" source="Southgate" target="Oakwood">
+	<data key="l10">true</data>
+	<data key="time" line="l10">180</data>
+</edge>
+<edge id="e386" source="Upton Park" target="East Ham">
+	<data key="l1">true</data>
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l1">120</data>
+	<data key="time" line="l2">120</data>
+	<data key="time" line="l3">120</data>
+</edge>
+<edge id="e387" source="West Ham" target="Stratford">
+	<data key="l9">true</data>
+	<data key="time" line="l9">120</data>
+</edge>
+<edge id="e388" source="Mansion House" target="Cannon Street">
+	<data key="l2">true</data>
+	<data key="l3">true</data>
+	<data key="time" line="l2">60</data>
+	<data key="time" line="l3">60</data>
+</edge>
+<edge id="e389" source="London Bridge Station" target="d11">
+	<data key="l5">true</data>
+</edge>
+</graph>
+</graphml>
