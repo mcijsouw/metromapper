@@ -513,7 +513,7 @@ public class GUIBuilder {
 				}
 			}
 		});
-		sidebarSchematization.add(reset);
+		//sidebarSchematization.add(reset);
 
 		/*
 		 * 
@@ -607,13 +607,26 @@ public class GUIBuilder {
 				app.initializeMap();
 			}
 		});
-		sidebarRendering.add(flipMap);
+		sidebarRendering.add(flipMap);		
+		
+		
+		// Small intersections
+		JCheckBox smallIntersections = new JCheckBox("Small intersections");
+		smallIntersections.setPreferredSize(new Dimension(270, 15));
+		smallIntersections.setSelected(Settings.smallIntersections);
+		smallIntersections.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Settings.smallIntersections = ((JCheckBox) e.getSource()).isSelected();
+				app.repaintMap();
+			}
+		});
+		sidebarRendering.add(smallIntersections);
 
 
 		// "Arrow size" label
 		JLabel arrowSizeLabel = new JLabel("Arrow size:");
 		arrowSizeLabel.setFont(new Font("Dialog", Font.BOLD, 11));
-		sidebarRendering.add(arrowSizeLabel);
+		//sidebarRendering.add(arrowSizeLabel);
 
 		// Arrow size
 		JSlider arrowSizeSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, Settings.arrowSizePercentage);
@@ -630,7 +643,7 @@ public class GUIBuilder {
 				app.repaintMap();
 			}
 		});
-		sidebarRendering.add(BorderLayout.CENTER, arrowSizeSlider);
+		//sidebarRendering.add(BorderLayout.CENTER, arrowSizeSlider);
 
 		// Station list
 		JLabel sourceStationLabel = new JLabel("Source station:");
@@ -650,7 +663,7 @@ public class GUIBuilder {
 		// "Passenger count" label
 		timeLabel.setEnabled(Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_PASSENGER_COUNT);
 		timeLabel.setFont(new Font("Dialog", Font.BOLD, 11));
-		sidebarRendering.add(BorderLayout.NORTH, timeLabel);
+		//sidebarRendering.add(BorderLayout.NORTH, timeLabel);
 
 		// Passenger count slider
 		timeSlider.setEnabled(Settings.lineThicknessAlgorithm == Settings.LINE_THICKNESS_PASSENGER_COUNT);
@@ -697,7 +710,7 @@ public class GUIBuilder {
 				}
 			}
 		});
-		sidebarRendering.add(BorderLayout.CENTER, timeSlider);
+		//sidebarRendering.add(BorderLayout.CENTER, timeSlider);
 
 		// "Total edge length importance:" label
 		JLabel transferTimeLabel = new JLabel("Transfer time when changing trains:");

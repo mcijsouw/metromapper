@@ -2422,7 +2422,7 @@ public class Solver extends SwingWorker<Void, Void> {
 							currentBendFac = bendFac;
 						}
 
-						// Modification by Michel
+						// Modification by @Michel
 						// if(line is important) {
 						// currentBendFac *= thickness;
 						// }
@@ -2440,8 +2440,10 @@ public class Solver extends SwingWorker<Void, Void> {
 						// System.out.println("find shared edge between " + realFirst + " and " + realSecond);
 						if(Settings.modifiedSchematization == true) {
 							int count = (int) currentEdge.getAllPairsDijkstraCount(currentLine.getName());
-							int multiplier = (int) (((double) (count - allPairsDijkstraAvgCount)) / ((double) (allPairsDijkstraMaxCount - allPairsDijkstraAvgCount)) * 10.0);
-							currentBendFac = Math.max(0, multiplier + 5); // varies from 1 - (10 + 5)
+							int multiplier = (int) (((double) (count - allPairsDijkstraAvgCount)) / ((double) (allPairsDijkstraMaxCount - allPairsDijkstraAvgCount)) * 10.0) + 5;
+							System.out.println(multiplier);
+							currentBendFac = Math.max(0, multiplier); // varies from 1 - (10 + 5)
+							
 							System.out.println("currentBendFac dev(" + firstID + "," + secondID + "," + thirdID + "): " + currentBendFac);
 						}
 						

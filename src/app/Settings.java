@@ -57,6 +57,7 @@ public class Settings {
 	public static int flipMapAngle = 135;
 	public static String questionnaireBasePath = "D:/Xampp/htdocs/metromapper.dev/public_html/maps/";
 	public static boolean perpendicularAngleByPath = true;
-	public static boolean increaseSpaceAroundIntersections = true;
+	public static boolean increaseSpaceAroundIntersections = false;
+	protected static boolean smallIntersections = true;
 
 }

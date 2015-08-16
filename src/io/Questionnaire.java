@@ -65,7 +65,14 @@ public class Questionnaire {
 			}
 			
 			// Schematization
-			String schematization = (Settings.modifiedSchematization ? Questionnaire.MODIFIED : Questionnaire.RAW);
+			String schematization = "";
+			if(Settings.loadedGraphMLFile instanceof File && Settings.loadedGraphMLFile.getName().contains("-modified")) {
+				schematization = Questionnaire.MODIFIED;
+			} else if(Settings.loadedGraphMLFile instanceof File && Settings.loadedGraphMLFile.getName().contains("-raw")) {
+				schematization = Questionnaire.RAW;
+			} else {
+				schematization = (Settings.modifiedSchematization ? Questionnaire.MODIFIED : Questionnaire.RAW);
+			}
 			
 			// Visualization
 			String visualization = "";
@@ -84,7 +91,7 @@ public class Questionnaire {
 			}
 			
 			// Arrow hints
-			String arrowHints = (Settings.drawArrowHints ? "true" : "false");
+			String arrowHints = (Settings.drawArrowHints && Settings.shortestPathsAlgorithm == Settings.SHORTEST_PATHS_SINGLE_SOURCE ? "true" : "false");
 			
 			// Correct answer
 			List shortestPath = Dijkstra.shortestPaths.get(Settings.sourceStation).get(Settings.destinationStation);

@@ -92,10 +92,15 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 		this.inverseSlotsDirtyList.add("Central");
 		this.inverseSlotsDirtyList.add("Town Hall");
 		this.inverseSlotsDirtyList.add("Circular Quay");
-		this.inverseSlotsDirtyList.add("d0");
 		this.inverseSlotsDirtyList.add("St James");
 		this.inverseSlotsDirtyList.add("Museum");
 		this.inverseSlotsDirtyList.add("Erskineville");
+		this.inverseSlotsDirtyList.add("Euston Square");
+		this.inverseSlotsDirtyList.add("Euston");
+		this.inverseSlotsDirtyList.add("Great Port");
+		this.inverseSlotsDirtyList.add("d0");
+		
+		this.inverseSlotsDirtyList.add("Potomac Ave");
 		
 	}
 
@@ -742,7 +747,11 @@ public class SvgCanvas extends JPanel implements KeyListener, MouseListener, Mou
 				if (true) {
 					if (!isTransferGraph && (vertex.degree() > 2 || vertex.isIntersection())) {
 						// Draw circle
-						stationRadius = 5 * scale * transferGraphScaling;
+						double r = 5;
+						if(Settings.smallIntersections) {
+							r = 3.5;
+						}
+						stationRadius = r * scale * transferGraphScaling;
 						x = getImageX(vertex) - stationRadius;
 						y = getImageY(vertex) - stationRadius;
 						ellipse = new Ellipse2D.Float();
